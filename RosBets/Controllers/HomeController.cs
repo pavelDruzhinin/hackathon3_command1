@@ -27,4 +27,6 @@ namespace RosBets.Controllers
             return View();
         }
     }
+    // простой комментарий для гита
+    //еще комментарий
 }
