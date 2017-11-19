@@ -11,7 +11,8 @@ namespace RosBets.Controllers
         // GET: Test
         public ActionResult Index()
         {
-            return View();
+            ViewBag.Title="123";
+			return View();
         }
     }
 }
