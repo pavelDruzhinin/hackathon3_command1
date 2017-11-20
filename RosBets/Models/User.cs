@@ -7,11 +7,7 @@ namespace RosBets.Models
 {
     public class User
     {
-        public User()
-        {
-            Bets = new List<Bet>();
-        }
-
+        
         // модель пользователя базы
 
         public int Id { get; set;}
@@ -30,6 +26,6 @@ namespace RosBets.Models
 
         public string Password { get; set; }
 
-        public ICollection<Bet> Bets { get; set; }
+        List<Bet> Bets { get; set; }
     }
 }

@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RosBets.Context;
 
 namespace RosBets.Controllers
 {
     public class HomeController : Controller
     {
 
-
+        RosBetsContext db = new RosBetsContext();
 
 
         public ActionResult Index()
         {   ViewBag.Title="11";
-	    
+//заглушка для создания бд
+
+           var x =  db.Users.FirstOrDefault();
             return View();
         }
 

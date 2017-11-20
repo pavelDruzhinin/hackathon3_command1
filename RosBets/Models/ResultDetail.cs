@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,17 +8,14 @@ namespace RosBets.Models
 {
     public class ResultDetail
     {
-        public ResultDetail()
-        {
-            Results = new List<Result>();
-        }
+        
 
         public int ResultId { get; set; }
-
+        public Result Result { get; set; }
+        [MaxLength(448)]
         public string Event { get; set; }
 
-        public ICollection<Result> Results { get; set; }
-
+        
         public bool? FirstWin { get; set; }
 
         public bool? SecondWin { get; set; }

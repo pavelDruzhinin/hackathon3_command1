@@ -9,7 +9,11 @@ namespace RosBets.Context
 {
     public class RosBetsContext : DbContext
     {
-        
+        public RosBetsContext()
+            : base("name=RosBetsContext")
+        {
+        }
+
         public DbSet<Bet> Bets { get; set; }
 
         public DbSet<BetsDetail> BetDetails { get; set; }
@@ -21,5 +25,14 @@ namespace RosBets.Context
         public DbSet<ResultDetail> ResultDetails { get; set; }
 
         public DbSet<User> Users { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<BetsDetail>()
+            .HasKey(bd => new { bd.BetsId, bd.Event });
+
+            modelBuilder.Entity<ResultDetail>()
+            .HasKey(rd => new { rd.ResultId, rd.Event });
+
+        }
     }
 }

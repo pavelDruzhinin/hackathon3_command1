@@ -11,14 +11,14 @@ namespace RosBets.Models
 
         public string IdGames { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
         public string Event { get; set; }
 
-        public float P1 { get; set; }
+        public float? P1 { get; set; }
 
-        public float X { get; set; }
+        public float? X { get; set; }
 
-        public float P { get; set; }
+        public float? P { get; set; }
     }
 }
