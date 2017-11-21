@@ -1,0 +1,84 @@
+﻿@{
+    //Layout = null;
+}
+@model RosBets.Models.User
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Регистрация пользователя</title>
+</head>
+<body>
+
+<div>
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post,new{id="edit"})) {
+        <table id="edt">
+            <tr>
+                <td>Имя</td>
+                <td>
+                    @Html.TextBoxFor(m=>m.FirstName)
+                    <span id="errorMsg2" style="color: red" hidden>Введите имя</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Фамилия</td>
+                <td>
+                    @Html.TextBoxFor(m=>m.LastName)
+                    <span id="errorMsg3" style="color: red" hidden>Введите Фамилию</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Отчество</td>
+                <td>
+                    @Html.TextBoxFor(m=>m.MiddleName)
+                    <span id="errorMsg4" style="color: red" hidden>Введите Отчество</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>
+                    @Html.TextBoxFor(m=>m.Mail)
+                    <span id="errorMsg5" style="color: red" hidden>Введите Почту</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Телефон</td>
+                <td>
+                    @Html.TextBoxFor(m=>m.Phone)
+                    <span id="errorMsg6" style="color: red" hidden>Введите Номер телефона</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Город</td>
+                <td>
+                    @Html.TextBoxFor(m=>m.City)
+                    <span id="errorMsg7" style="color: red" hidden>Введите Город</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Пароль</td>
+                <td>
+                    @Html.PasswordFor(m=>m.Password);
+                    <span id="errorMsg" style="color: red" hidden>Пароли не совпадают</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Повторите пароль</td>
+                <td>
+                    @Html.Password("RePass")
+                </td>
+            </tr>
+            <tr>
+                <td><input type="button" id="Register" name="Register" value="Зарегистрироваться"></td>
+            </tr>
+        </table>
+    }
+</div>
+</body>
+</html>
+
+@section scripts{
+    @Scripts.Render("~/Scripts/RegisterUser.js");
+}

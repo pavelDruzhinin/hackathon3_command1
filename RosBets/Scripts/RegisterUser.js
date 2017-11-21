@@ -37,7 +37,7 @@ $('#Register').on('click',
             $.ajax(
                 {
                     type: 'POST',
-                    url: '/Home/Register',
+                    url:'Register',
                     data: JSON.stringify(user),
                     contentType: 'application/json; charset=UTF-8',
                     success: function (response) {
