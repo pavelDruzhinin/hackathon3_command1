@@ -34,6 +34,12 @@ namespace RosBets.Controllers
 
             return View();
         }
+        public ActionResult Info()
+        {
+            ViewBag.Message = "Your info page.";
+
+            return View();
+        }
     }
     // простой комментарий для гита
     //еще комментарий
