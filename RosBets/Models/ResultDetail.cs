@@ -13,6 +13,7 @@ namespace RosBets.Models
         public int ResultId { get; set; }
         public Result Result { get; set; }
         [MaxLength(448)]
+        public string Championat { get; set; }
         public string Event { get; set; }
 
         

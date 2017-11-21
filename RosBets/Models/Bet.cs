@@ -13,6 +13,8 @@ namespace RosBets.Models
         public User User { get; set; }
         public DateTime Date { get; set; }
         public bool? Success { get; set; }
+        public float? ToPayoff { get; set; }//к ваплате
+        public float BetAmount { get; set; }//Сумма ставки
         public List<BetsDetail> BetsDetails { get; set; }
     }
 }

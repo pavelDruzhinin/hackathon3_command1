@@ -10,6 +10,7 @@ namespace RosBets.Models
         public int Id { get; set; }
 
         public DateTime Date { get; set; }
+        public string Championat { get; set; }
 
         public string Event { get; set; }
 

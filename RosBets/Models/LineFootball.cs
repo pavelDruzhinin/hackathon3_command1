@@ -12,6 +12,7 @@ namespace RosBets.Models
         public string IdGames { get; set; }
 
         public DateTime? Date { get; set; }
+        public string Championat { get; set; }
 
         public string Event { get; set; }
 
@@ -19,6 +20,6 @@ namespace RosBets.Models
 
         public float? X { get; set; }
 
-        public float? P { get; set; }
+        public float? P2 { get; set; }
     }
 }

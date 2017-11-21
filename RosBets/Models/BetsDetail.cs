@@ -12,6 +12,7 @@ namespace RosBets.Models
         public int BetsId { get; set; }
         public Bet Bets { get; set; }
         [MaxLength(448)]
+        public string Championat { get; set; }
         public string Event { get; set; }
 
         public float Cef { get; set; }
@@ -23,7 +24,7 @@ namespace RosBets.Models
         public bool X { get; set; }
 
         public bool P2 { get; set; }
-
         
+
     }
 }
