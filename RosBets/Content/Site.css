@@ -1,6 +1,7 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿html {
+    font-size: 16px;
+}
+body {    
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,49 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+/**
+    Header Section
+*/
+.header {
+    min-height: 70px;
+    background-color: #2b2D42;
+}
+
+.header .main-logo {
+    display: inline-block;
+    line-height: 70px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.header .main-logo-link {
+    color: #EDF2F4;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2em;
+}
+
+.header .nav-list {
+    display: block;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.header .nav-link {
+    width: 70px;    
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 70px;
+    min-height: 70px;
+}
+
+.header .nav-link a {
+    font-size: 1.5em;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #EDF2F4;
 }
