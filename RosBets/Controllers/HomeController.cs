@@ -41,7 +41,7 @@ namespace RosBets.Controllers
             return View();
         }
 
-        public void Register(string FirstName, string LastName,string MiddleName,string Mail,string Phone,string City, string Password)
+        public void Register(string FirstName, string LastName,string MiddleName,string Mail,string Phone,string City, string Password,float Money)
         {
             var User = new User
             {
@@ -51,7 +51,9 @@ namespace RosBets.Controllers
                 Mail = Mail,
                 Phone = Phone,
                 City = City,
-                Password = Password
+                Password = Password,
+                Money = Money;
+
             };
             db.Users.Add(User);
             db.SaveChanges();

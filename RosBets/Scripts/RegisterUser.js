@@ -31,8 +31,9 @@ $('#Register').on('click',
                 Mail: data[3].value,
                 Phone: data[4].value,
                 City: data[5].value,
-                Password: data[6].value
-            };
+                Password: data[6].value,
+                Money: 200
+        };
             $.ajax(
                 {
                     type: 'POST',
