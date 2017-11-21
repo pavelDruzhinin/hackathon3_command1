@@ -62,9 +62,9 @@ textarea {
 }
 
 .header .nav-link a {
+    text-align: left;
     font-size: 1.5em;
     display: block;
-    text-align: center;
     text-decoration: none;
     color: #EDF2F4;
 }

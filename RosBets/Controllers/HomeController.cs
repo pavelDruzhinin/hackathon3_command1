@@ -16,11 +16,12 @@ namespace RosBets.Controllers
 
 
         public ActionResult Index()
-        {   ViewBag.Title="11";
+        {
+            ViewBag.Title="11";
 //заглушка для создания бд
 
-           var x =  db.Users.FirstOrDefault();
-            return View();
+           //var x =  db.Users.FirstOrDefault();
+           return View();
         }
 
         public ActionResult About()
