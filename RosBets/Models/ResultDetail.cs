@@ -8,9 +8,9 @@ namespace RosBets.Models
 {
     public class ResultDetail
     {
-        
+        public int Id { get; set; } // добавил первичный ключ / primary key 
 
-        public int ResultId { get; set; }
+        public int ResultId { get; set; } // это внешний ключ/foreign key
         public Result Result { get; set; }
         [MaxLength(448)]
         public string Event { get; set; }
