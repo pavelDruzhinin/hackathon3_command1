@@ -2,6 +2,7 @@
     Header Section
 */
 @import '_header.css';
+
 /*
     main-color: #2b2D42;
     interactive color: #EF233C;
@@ -36,8 +37,7 @@ textarea {
     max-width: 280px;
 }
 
-<<<<<<< HEAD
-=======
+
 .icons-conteiner {
     margin: 10px auto;
     overflow: auto;
@@ -84,4 +84,3 @@ textarea {
 .icons:hover {
     opacity: 0.5;
 }
->>>>>>> f2523402d3f531fa94f858b9113a456637fe15c7
