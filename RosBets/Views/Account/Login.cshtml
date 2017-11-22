@@ -2,6 +2,7 @@
 @{
     Layout = null;
 }
+@model RosBets.Models.User
 
 <!DOCTYPE html>
 
@@ -12,9 +13,27 @@
 </head>
 <body>
 <div>
-    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "Login" }))
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
     {
-
+        <table>
+            <tr>
+                <td>Email</td>
+                <td>
+                    @Html.TextBoxFor(m=>m.Mail)
+                </td>
+            </tr>
+            <tr>
+                <td>Пароль</td>
+                <td>
+                    @Html.PasswordFor(m=>m.Password)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" id="Login" name="Login" value="Войти">
+                </td>
+            </tr>
+        </table>
     });
 </div>
 </body>
