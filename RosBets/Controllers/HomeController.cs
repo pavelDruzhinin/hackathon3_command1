@@ -36,8 +36,16 @@ namespace RosBets.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }   
+
+        public ActionResult Info()
+        {
+            ViewBag.Message = "Your info page.";
+
+            return View();
         }
-    }    
+    }
+
     // простой комментарий для гита
     //еще комментарий
 }
