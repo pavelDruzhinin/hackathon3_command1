@@ -13,7 +13,7 @@
 <body>
 
 <div>
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post,new{id="edit"})) {
+    @using (Html.BeginForm("Registration", "Account", FormMethod.Post)) {
         <table id="edt">
             <tr>
                 <td>Имя</td>
@@ -71,7 +71,9 @@
                 </td>
             </tr>
             <tr>
-                <td><input type="button" id="Register" name="Register" value="Зарегистрироваться"></td>
+                <td>
+                    <input type="submit" id="Register" name="Register" value="Зарегистрироваться">
+                </td>
             </tr>
         </table>
     }
