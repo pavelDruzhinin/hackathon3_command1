@@ -14,10 +14,7 @@ namespace RosBets.Controllers
         RosBetsContext db = new RosBetsContext();
         // GET: Account
 
-        //public ActionResult Login()
-        //{
-        //   return View();
-        //}
+        
         public ActionResult Registration(User User)
         {
             User test = null;
