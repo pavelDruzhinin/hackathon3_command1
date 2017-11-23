@@ -14,7 +14,17 @@ namespace RosBets.Controllers
         RosBetsContext db = new RosBetsContext();
         // GET: Account
 
-        
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        public ActionResult Registration()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult Registration(User User)
         {
             User test = null;
@@ -41,6 +51,7 @@ namespace RosBets.Controllers
             return View(User);
         }
 
+        [HttpPost]
         public ActionResult Login(User user)
         {
             if (ModelState.IsValid)
