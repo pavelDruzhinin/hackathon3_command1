@@ -2,6 +2,7 @@
     Header Section
 */
 @import '_header.css';
+@import '_main-page.css';
 
 /*
     main-color: #2b2D42;
@@ -15,12 +16,6 @@ html {
 }
 body {
     font-family: 'Open Sans', sans-serif;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
