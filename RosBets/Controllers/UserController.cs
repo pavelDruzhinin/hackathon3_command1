@@ -39,9 +39,25 @@ namespace RosBets.Controllers
             return View(user);
         }
 
-        public ActionResult Story(int id)
+        public ActionResult Story(int? id)
         {
             return View();
+        }
+
+        public ActionResult ChangePassword(int? id)
+        {
+            if (id == null)
+            {
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest); - это думаю здесь не нужно, но пока оставил
+                //Если не введени Id пользователя то кидаем на логин ??
+                return View("~/Views/Account/Login.cshtml");
+            }
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
         }
 
         // GET: User/Create

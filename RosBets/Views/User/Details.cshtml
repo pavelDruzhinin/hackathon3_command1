@@ -8,92 +8,49 @@
 {
 <h2>Личный кабинет</h2>
 <table>
-    <tr><a href="~/User/Details/@Model.Id"><button>Личная информация</button></a></tr>
-    <tr><a href="~/User/Story/@Model.Id"><button>История пари</button></a></tr>
+    <tr><a href="~/User/Details/@Model.Id">Личная информация  </a></tr>
+    <tr>     </tr>
+    <tr><a href="~/User/Story/@Model.Id">   История пари</a></tr>
 </table>
 
 <h4>Личная информация</h4>
 
-<div>
-    <table>
-        <div>Адрес электронной почты</div>
-        <div>@Model.Mail</div>
+<dl class="dl-horizontal">
+    
+    <dt>Адрес электронной почты</dt>
 
-    </table>
+    <dd>@Model.Mail</dd>
 
-    <h4>User</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+    <dt>Пароль</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+    <dd>@Model.Mail</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+    <dd>
+        <a href="~/User/ChangePassword/@Model.Id">Сменить пароль</a>
+    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+    <dt>Имя</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MiddleName)
-        </dt>
+    <dd>@Model.FirstName @Model.MiddleName @Model.LastName</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.MiddleName)
-        </dd>
+    @*<dt>Дата рождения</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Mail)
-        </dt>
+    <dd>Сюда вставить дату рождения</dd>*@
 
-        <dd>
-            @Html.DisplayFor(model => model.Mail)
-        </dd>
+    <h3>Контактная информация</h3>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
+    <dt>Город проживания</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
+    <dd>@Model.City</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
+    <dt>Мобильный телефон</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
+    <dd>@Model.Phone</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
+ </dl>
 
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Money)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Money)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")*@
-
-    <a href="~/Home/Index"><button>На главную</button></a>
-</p>
+   
+    <p>
+        <a href="~/Home/Index">На главную</a>
+    </p>
 }
