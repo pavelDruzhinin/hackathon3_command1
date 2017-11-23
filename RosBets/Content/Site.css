@@ -1,6 +1,20 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿/**
+    Header Section
+*/
+@import '_header.css';
+
+/*
+    main-color: #2b2D42;
+    interactive color: #EF233C;
+    text color: #EDF2F4;
+*/
+
+html {
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +35,52 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+
+.icons-conteiner {
+    margin: 10px auto;
+    overflow: auto;
+}
+
+.icons {
+    background-image: url(img/icons_sprite.png);
+    width: 50px;
+    height: 50px;
+}
+
+.icon-bar {
+    margin: 50px 0px;
+}
+
+#instagram {
+    background-position-x: 0px;
+}
+
+#skype {
+    background-position-x: -51px;
+}
+
+#linkedin {
+    background-position-x: -102px;
+}
+
+#vkontakte {
+    background-position-x: -153px;
+}
+
+#youtube {
+    background-position-x: -204px;
+}
+
+#github {
+    background-position-x: -255px;
+}
+
+#facebook {
+    background-position-x: -306px;
+}
+
+.icons:hover {
+    opacity: 0.5;
 }

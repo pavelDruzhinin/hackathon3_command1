@@ -16,11 +16,12 @@ namespace RosBets.Controllers
 
 
         public ActionResult Index()
-        {   ViewBag.Title="11";
+        {
+            ViewBag.Title="11";
 //заглушка для создания бд
 
            var x =  db.Users.FirstOrDefault();
-            return View();
+           return View();
         }
 
         public ActionResult About()
@@ -35,28 +36,16 @@ namespace RosBets.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-        public ActionResult Registration()
+        }   
+
+        public ActionResult Info()
         {
+            ViewBag.Message = "Your info page.";
+
             return View();
         }
-        public void Register(string FirstName, string LastName, string MiddleName, string Mail, string Phone, string City, string Password, float Money)
-        {
-            var User = new User
-            {
-                FirstName = FirstName,
-                LastName = LastName,
-                MiddleName = MiddleName,
-                Mail = Mail,
-                Phone = Phone,
-                City = City,
-                Password = Password,
-                Money = Money
-            };
-            db.Users.Add(User);
-            db.SaveChanges();
-        }
-}    
+    }
+
     // простой комментарий для гита
     //еще комментарий
 }

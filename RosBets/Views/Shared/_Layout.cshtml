@@ -7,33 +7,84 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body>    
+    <!--header
+    <header class="header">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <div class="row">                
+                <div class="main-logo col-md-2">
+                    @Html.ActionLink("RosBets", "Index", "Home", new { @class = "main-logo-link" })
+                </div>
+                <div class="col-md-6">
+                    <nav class="nav">
+                        <ul class="nav-list">
+                            <li class="nav-link"><a href="#">АПЛ</a></li>
+                            <li class="nav-link"><a href="#">РФПЛ</a></li>
+                            <li class="nav-link"><a href="#">НХЛ</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="user-navigation col-md-4">
+                </div>
             </div>
         </div>
-    </div>
+    </header>--header-->
+    <header class="header">    
+        <div class="row">
+            <div class="navbar navbar-inverse col-sm-6 col-md-6">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("RosBets", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("АПЛ", "#", "#")</li>
+                        <li>@Html.ActionLink("РФПЛ", "#", "#")</li>
+                        <li>@Html.ActionLink("НХЛ", "#", "#")</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="user-bar col-sm-6 col-md-6">
+                <div class="container">
+                    <div class="row">
+                        <div class="bar user col-sm-12 col-md-4">
+                            <div class="round-box">
+                                <a class="circle" href="#">
+                                <i class="fa fa-user fa-1x"></i>
+                                </a>
+                                <span class="text" href="#">Тест</span>    
+                            </div>                                                 
+                        </div>
+                        <div class="bar money col-sm-12 col-md-4">
+                            <div class="round-box">
+                                <a class="circle" href="#">
+                                    <i class="fa fa-money fa-1x"></i>
+                                </a>
+                                <span class="text" href="#">0,00 р.</span>
+                            </div>
+                        </div>
+                        <div class="bar login col-sm-12 col-md-4">
+                            <div class="round-box">
+                                <a class="circle" href="#">
+                                    <i class="fa fa-sign-in fa-1x"></i>
+                                </a> 
+                                <span class="text" href="#">Вход</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        <hr />        
     </div>
+    @{Html.RenderPartial("footer");}
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
