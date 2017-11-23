@@ -12,12 +12,19 @@ namespace RosBets.Controllers
     public class AccountController : Controller
     {
         RosBetsContext db = new RosBetsContext();
-        // GET: Account
 
-        //public ActionResult Login()
-        //{
-        //   return View();
-        //}
+
+        public ActionResult Login()
+        {
+           return View();
+        }
+
+        public ActionResult Registration()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult Registration(User User)
         {
             User test = null;
@@ -44,6 +51,7 @@ namespace RosBets.Controllers
             return View(User);
         }
 
+        [HttpPost]
         public ActionResult Login(User user)
         {
             if (ModelState.IsValid)
@@ -62,7 +70,6 @@ namespace RosBets.Controllers
             }
             return View(user);
         }
-
         public string Index()
         {
             string result = "Вы не авторизованы";
