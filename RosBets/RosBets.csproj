@@ -157,7 +157,28 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Migrations\201711241051562_SmallFixed.cs" />
+    <Compile Include="Migrations\201711241051562_SmallFixed.Designer.cs">
+      <DependentUpon>201711241051562_SmallFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711241055507_SmallFixedFixed.cs" />
+    <Compile Include="Migrations\201711241055507_SmallFixedFixed.Designer.cs">
+      <DependentUpon>201711241055507_SmallFixedFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Championship.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Migrations\201711240545317_InitialCreate.cs" />
+    <Compile Include="Migrations\201711240545317_InitialCreate.Designer.cs">
+      <DependentUpon>201711240545317_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711240636444_DatabaseRework.cs" />
+    <Compile Include="Migrations\201711240636444_DatabaseRework.Designer.cs">
+      <DependentUpon>201711240636444_DatabaseRework.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BetEvent.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\MatchEvent.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\RosBetsContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -165,16 +186,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bet.cs" />
-    <Compile Include="Models\BetsDetail.cs" />
-    <Compile Include="Models\LineFootball.cs" />
-    <Compile Include="Models\Result.cs" />
-    <Compile Include="Models\ResultDetail.cs" />
+    <Compile Include="Models\Match.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\main.jpg" />
+    <Content Include="Content\_main-page.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -216,6 +236,7 @@
     <Content Include="Views\Account\Registration.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Shared\header.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
@@ -234,6 +255,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711240545317_InitialCreate.resx">
+      <DependentUpon>201711240545317_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711240636444_DatabaseRework.resx">
+      <DependentUpon>201711240636444_DatabaseRework.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241051562_SmallFixed.resx">
+      <DependentUpon>201711241051562_SmallFixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241055507_SmallFixedFixed.resx">
+      <DependentUpon>201711241055507_SmallFixedFixed.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
