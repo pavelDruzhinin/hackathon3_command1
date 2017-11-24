@@ -20,7 +20,7 @@ namespace RosBets.Controllers
             ViewBag.Title="11";
 //заглушка для создания бд
 
-           var x =  db.Users.FirstOrDefault();
+           //var x =  db.Users.FirstOrDefault();
            return View();
         }
 
