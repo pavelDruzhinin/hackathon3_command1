@@ -25,7 +25,8 @@ namespace RosBets.Models
         public string City { get; set; }
 
         public string Password { get; set; }
-        public float Money { get; set; }
+
+        public decimal Money { get; set; }
 
         List<Bet> Bets { get; set; }
     }
