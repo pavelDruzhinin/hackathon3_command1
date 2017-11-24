@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO.Ports;
 using System.Linq;
 using System.Web;
 
@@ -26,6 +27,10 @@ namespace RosBets.Context
         public DbSet<Event> Events { get; set; }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Championship> Championships { get; set; }
+
+        public DbSet<Sport> Sports { get; set; }
 
     }
 
