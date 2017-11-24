@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Web;
 
 namespace RosBets.Models
@@ -8,6 +9,9 @@ namespace RosBets.Models
     public class Match
     {
         public int Id { get; set; }
+
+        public int MatchNumber { get; set; }
+        public string MatchName { get; set; }
 
         public string Team1Name { get; set; }
 
