@@ -14,16 +14,18 @@ namespace RosBets.Models
         public string Team2Name { get; set; }
 
         public DateTime? Date { get; set; }
-
-        public string Championship { get; set; }
+        
 
         public bool Finished { get; set; }
 
-        public int Team1Score { get; set; }
+        public int? Team1Score { get; set; }
 
-        public int Team2Score { get; set; }
+        public int? Team2Score { get; set; }
 
         public List<Bet> Bets { get; set; }
+        public List<MatchEvent> MatchEvents { get; set; }
+        public int ChampionshipId { get; set; }
+        public Championship Championship { get; set; }
 
     }
 }

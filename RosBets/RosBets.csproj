@@ -157,6 +157,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Migrations\201711241051562_SmallFixed.cs" />
+    <Compile Include="Migrations\201711241051562_SmallFixed.Designer.cs">
+      <DependentUpon>201711241051562_SmallFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711241055507_SmallFixedFixed.cs" />
+    <Compile Include="Migrations\201711241055507_SmallFixedFixed.Designer.cs">
+      <DependentUpon>201711241055507_SmallFixedFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Championship.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Migrations\201711240545317_InitialCreate.cs" />
     <Compile Include="Migrations\201711240545317_InitialCreate.Designer.cs">
@@ -245,6 +254,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711240636444_DatabaseRework.resx">
       <DependentUpon>201711240636444_DatabaseRework.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241051562_SmallFixed.resx">
+      <DependentUpon>201711241051562_SmallFixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241055507_SmallFixedFixed.resx">
+      <DependentUpon>201711241055507_SmallFixedFixed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
