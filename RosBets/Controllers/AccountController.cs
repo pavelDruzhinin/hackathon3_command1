@@ -25,60 +25,62 @@ namespace RosBets.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registration(User User)
+        public ActionResult Registration(User user)
         {
             User test = null;
             if (ModelState.IsValid)
             {
-                test = db.Users.FirstOrDefault(u => u.Mail == User.Mail);
+                test = db.Users.FirstOrDefault(u => u.Mail == user.Mail);
 
                 if (test == null)
                 {
-                    db.Users.Add(User);
+                    db.Users.Add(user);
                     db.SaveChanges();
-                    test = db.Users.Where(u => u.Mail == User.Mail && u.Password == User.Password).FirstOrDefault();
+                    test = db.Users.Where(u => u.Mail == user.Mail && u.Password == user.Password).FirstOrDefault();
                     if (test != null)
                     {
-                        FormsAuthentication.SetAuthCookie(User.Mail, true);
-                        return RedirectToAction("Index", "Account");
+                        FormsAuthentication.SetAuthCookie(user.Mail, true);
+                        return RedirectToAction("Index", "Home");
                     }
+                    else
+                    {
+                        return View(user);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Пользователь уже существует");
+                    return View(user);
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Пользователь уже существует");
+                return View(user);
             }
-            return View(User);
         }
 
         [HttpPost]
-        public ActionResult Login(User user)
+        public ActionResult Login(UserLogin user)
         {
             if (ModelState.IsValid)
             {
                 User test = null;
-                test = db.Users.FirstOrDefault(u => u.Mail == user.Mail && u.Password == user.Password);
+                test = db.Users.FirstOrDefault(u => u.Mail == user.Login && u.Password == user.Password);
                 if (test == null)
                 {
                     ModelState.AddModelError("", "Пользователя с таким логином и паролем нет");
+                    return View(user);
                 }
                 else
                 {
-                    FormsAuthentication.SetAuthCookie(user.Mail, true);
-                    return RedirectToAction("Index", "Account");
+                    FormsAuthentication.SetAuthCookie(user.Login, true);
+                    return RedirectToAction("Index", "Home");
                 }
             }
-            return View(user);
-        }
-
-        public string Index()
-        {
-            string result = "Вы не авторизованы";
-            if (User.Identity.IsAuthenticated)
+            else
             {
-                result = "Ваш логин: " + User.Identity.Name;
+                return View(user);
             }
-            return result;
         }
     }
 }

@@ -166,6 +166,10 @@
     <Compile Include="Migrations\201711240636444_DatabaseRework.Designer.cs">
       <DependentUpon>201711240636444_DatabaseRework.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711241159102_DataAnnotation.cs" />
+    <Compile Include="Migrations\201711241159102_DataAnnotation.Designer.cs">
+      <DependentUpon>201711241159102_DataAnnotation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BetEvent.cs" />
     <Compile Include="Models\Event.cs" />
@@ -178,6 +182,7 @@
     <Compile Include="Models\Bet.cs" />
     <Compile Include="Models\Match.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Account\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -245,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711240636444_DatabaseRework.resx">
       <DependentUpon>201711240636444_DatabaseRework.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241159102_DataAnnotation.resx">
+      <DependentUpon>201711241159102_DataAnnotation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
