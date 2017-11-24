@@ -260,14 +260,16 @@
     <EmbeddedResource Include="Migrations\201711240636444_DatabaseRework.resx">
       <DependentUpon>201711240636444_DatabaseRework.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711241159102_DataAnnotation.resx">
-      <DependentUpon>201711241159102_DataAnnotation.cs</DependentUpon>
-    </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="Migrations\201711241051562_SmallFixed.resx">
       <DependentUpon>201711241051562_SmallFixed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711241055507_SmallFixedFixed.resx">
       <DependentUpon>201711241055507_SmallFixedFixed.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Migrations\201711241159102_DataAnnotation.resx">
+      <DependentUpon>201711241159102_DataAnnotation.cs</DependentUpon>
+>>>>>>> OsipovBranch
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
