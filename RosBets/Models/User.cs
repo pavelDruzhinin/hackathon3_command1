@@ -47,7 +47,7 @@ namespace RosBets.Models
         [Display(Name = "Пароль")]
         public string Password { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введите пароль снова")]
         [Compare("Password", ErrorMessage = "Пароли не совпадают")]
         [Display(Name = "Повторите пароль")]
         [NotMapped]
