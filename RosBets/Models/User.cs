@@ -17,7 +17,7 @@ namespace RosBets.Models
         [Display(Name = "Имя")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Фамилию")]
+        [Required(ErrorMessage = "Введите фамилию")]
         [Display(Name = "Фамилия")]
         public string LastName { get; set; }
 
