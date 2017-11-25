@@ -15,6 +15,7 @@
 <div>
     @using (Html.BeginForm("Login", "Account", FormMethod.Post))
     {
+        @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
         <table>
             <tr>

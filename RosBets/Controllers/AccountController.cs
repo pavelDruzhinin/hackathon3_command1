@@ -16,57 +16,21 @@ namespace RosBets.Controllers
 
         public ActionResult Login()
         {
-            return View();
-        }
-
-        public ActionResult Registration()
-        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
         [HttpPost]
-        public ActionResult Registration(User user)
-        {
-            User test = null;
-            if (ModelState.IsValid)
-            {
-                test = db.Users.FirstOrDefault(u => u.Mail == user.Mail);
-
-                if (test == null)
-                {
-                    db.Users.Add(user);
-                    db.SaveChanges();
-                    test = db.Users.Where(u => u.Mail == user.Mail && u.Password == user.Password).FirstOrDefault();
-                    if (test != null)
-                    {
-                        FormsAuthentication.SetAuthCookie(user.Mail, true);
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                        return View(user);
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Пользователь уже существует");
-                    return View(user);
-                }
-            }
-            else
-            {
-                return View(user);
-            }
-        }
-
-        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(UserLogin user)
         {
             if (ModelState.IsValid)
             {
-                User test = null;
-                test = db.Users.FirstOrDefault(u => u.Mail == user.Login && u.Password == user.Password);
-                if (test == null)
+                var existingUser = db.Users.FirstOrDefault(u => u.Mail == user.Login && u.Password == user.Password);
+                if (existingUser == null)
                 {
                     ModelState.AddModelError("", "Пользователя с таким логином и паролем нет");
                     return View(user);
@@ -82,5 +46,54 @@ namespace RosBets.Controllers
                 return View(user);
             }
         }
+
+
+
+        public ActionResult Registration()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Registration(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingUser = db.Users.FirstOrDefault(u => u.Mail == user.Mail);
+
+                if (existingUser == null)
+                {
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    FormsAuthentication.SetAuthCookie(user.Mail, true);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Пользователь с таким e-mail уже существует");
+                    return View(user);
+                }
+            }
+            else
+            {
+                return View(user);
+            }
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

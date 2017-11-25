@@ -10,15 +10,11 @@ namespace RosBets.Models
 {
     public class User
     {
-        
-        // модель пользователя базы
-
-        public int Id { get; set;}
+        public int Id { get; set; }
 
 
         [Required(ErrorMessage = "Введите имя")]
         [Display(Name = "Имя")]
-        //[]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Фамилию")]

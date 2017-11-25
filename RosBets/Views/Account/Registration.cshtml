@@ -13,7 +13,9 @@
 <body>
 
 <div>
-    @using (Html.BeginForm("Registration", "Account", FormMethod.Post)) {
+    @using (Html.BeginForm("Registration", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
         <table id="edt">
             <tr>
