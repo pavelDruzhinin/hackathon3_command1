@@ -86,13 +86,4 @@
 
 @section scripts{
     @Scripts.Render("~/Bundles/jqueryval");
-    <script>
-    $('#Register').on('click',
-        function () {
-            if ($('#Password').val() !== $('#RePass').val()) {
-                $('#comparison').show();
-                console.log('error 1');
-                return false;
-            }
-    </script>
 }
