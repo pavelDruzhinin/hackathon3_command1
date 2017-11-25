@@ -161,6 +161,14 @@
     <Compile Include="Migrations\201711241800405_FixingMigrations.Designer.cs">
       <DependentUpon>201711241800405_FixingMigrations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711251559403_News.cs" />
+    <Compile Include="Migrations\201711251559403_News.Designer.cs">
+      <DependentUpon>201711251559403_News.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711251622132_Number.cs" />
+    <Compile Include="Migrations\201711251622132_Number.Designer.cs">
+      <DependentUpon>201711251622132_Number.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Championship.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -168,6 +176,7 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\MatchEvent.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\News.cs" />
     <Compile Include="Models\RosBetsContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -249,6 +258,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711241800405_FixingMigrations.resx">
       <DependentUpon>201711241800405_FixingMigrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711251559403_News.resx">
+      <DependentUpon>201711251559403_News.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711251622132_Number.resx">
+      <DependentUpon>201711251622132_Number.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

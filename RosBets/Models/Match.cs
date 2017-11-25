@@ -10,7 +10,7 @@ namespace RosBets.Models
     {
         public int Id { get; set; }
 
-        public int MatchNumber { get; set; }
+        public string MatchNumber { get; set; }
         public string MatchName { get; set; }
 
         public string Team1Name { get; set; }
