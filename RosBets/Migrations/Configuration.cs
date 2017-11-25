@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using RosBets.Models;
+﻿using RosBets.Models;
 
 namespace RosBets.Migrations
 {
@@ -13,7 +12,6 @@ namespace RosBets.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "RosBets.Context.RosBetsContext";
         }
 
         protected override void Seed(RosBets.Context.RosBetsContext context)
@@ -22,6 +20,7 @@ namespace RosBets.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+
 
             #region Создание двух пользователей
 
@@ -36,6 +35,7 @@ namespace RosBets.Migrations
                     Phone = "+79000000000",
                     Mail = "test@mail.ru",
                     Password = "123456",
+                    ConfirmPassword = "123456",
                     Money = 1500
 
                 },
@@ -49,6 +49,7 @@ namespace RosBets.Migrations
                     Phone = "+79111111111",
                     Mail = "primer@mail.ru",
                     Password = "789102",
+                    ConfirmPassword = "789102",
                     Money = 3000
                 }
             );
@@ -66,55 +67,55 @@ namespace RosBets.Migrations
                     Shortname = "Total",
                     FullName = "Тотал матча"
                 },
-               new Event
+                new Event
                 {
                     Id = 2,
                     Shortname = "TotalMore",
                     FullName = "Тотал больше"
                 },
-               new Event
+                new Event
                 {
                     Id = 3,
                     Shortname = "TotalLess",
                     FullName = "Тотал меньше"
                 },
-               new Event
+                new Event
                 {
                     Id = 4,
                     Shortname = "Win1",
                     FullName = "Победа хозяев"
                 },
-               new Event
+                new Event
                 {
                     Id = 5,
                     Shortname = "X",
                     FullName = "Ничья"
                 },
-               new Event
+                new Event
                 {
                     Id = 6,
                     Shortname = "Win2",
                     FullName = "Победа гостей"
                 },
-               new Event
+                new Event
                 {
                     Id = 7,
                     Shortname = "1X",
                     FullName = "Победа хозяев или ничья"
                 },
-               new Event
+                new Event
                 {
                     Id = 8,
                     Shortname = "12",
                     FullName = "Победа хозяев или гостей"
                 },
-               new Event
+                new Event
                 {
                     Id = 9,
                     Shortname = "2X",
                     FullName = "Победа гостей или ничья"
                 },
-               new Event
+                new Event
                 {
                     Id = 10,
                     Shortname = "iT1",
@@ -132,7 +133,7 @@ namespace RosBets.Migrations
                     Shortname = "iT1Less",
                     FullName = "Индивидуальный тотал Хозяев меньше"
                 },
-               new Event
+                new Event
                 {
                     Id = 13,
                     Shortname = "iT2",

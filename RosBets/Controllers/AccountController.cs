@@ -16,69 +16,84 @@ namespace RosBets.Controllers
 
         public ActionResult Login()
         {
-            return View();
-        }
-
-        public ActionResult Registration()
-        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
         [HttpPost]
-        public ActionResult Registration(User User)
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(UserLogin user)
         {
-            User test = null;
             if (ModelState.IsValid)
             {
-                test = db.Users.FirstOrDefault(u => u.Mail == User.Mail);
-
-                if (test == null)
+                var existingUser = db.Users.FirstOrDefault(u => u.Mail == user.Login && u.Password == user.Password);
+                if (existingUser == null)
                 {
-                    db.Users.Add(User);
-                    db.SaveChanges();
-                    test = db.Users.Where(u => u.Mail == User.Mail && u.Password == User.Password).FirstOrDefault();
-                    if (test != null)
-                    {
-                        FormsAuthentication.SetAuthCookie(User.Mail, true);
-                        return RedirectToAction("Index", "Account");
-                    }
+                    ModelState.AddModelError("", "Пользователя с таким логином и паролем нет");
+                    return View(user);
+                }
+                else
+                {
+                    FormsAuthentication.SetAuthCookie(user.Login, true);
+                    return RedirectToAction("Index", "Home");
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Пользователь уже существует");
+                return View(user);
             }
-            return View(User);
+        }
+
+
+
+        public ActionResult Registration()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Login(User user)
+        [ValidateAntiForgeryToken]
+        public ActionResult Registration(User user)
         {
             if (ModelState.IsValid)
             {
-                User test = null;
-                test = db.Users.FirstOrDefault(u => u.Mail == user.Mail && u.Password == user.Password);
-                if (test == null)
+                var existingUser = db.Users.FirstOrDefault(u => u.Mail == user.Mail);
+
+                if (existingUser == null)
                 {
-                    ModelState.AddModelError("", "Пользователя с таким логином и паролем нет");
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    FormsAuthentication.SetAuthCookie(user.Mail, true);
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    FormsAuthentication.SetAuthCookie(user.Mail, true);
-                    return RedirectToAction("Index", "Account");
+                    ModelState.AddModelError("", "Пользователь с таким e-mail уже существует");
+                    return View(user);
                 }
             }
-            return View(user);
+            else
+            {
+                return View(user);
+            }
         }
 
-        public string Index()
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Logout()
         {
-            string result = "Вы не авторизованы";
-            if (User.Identity.IsAuthenticated)
-            {
-                result = "Ваш логин: " + User.Identity.Name;
-            }
-            return result;
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction("Index", "Home");
         }
+
     }
 }

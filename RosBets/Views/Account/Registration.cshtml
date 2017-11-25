@@ -13,62 +13,66 @@
 <body>
 
 <div>
-    @using (Html.BeginForm("Registration", "Account", FormMethod.Post)) {
+    @using (Html.BeginForm("Registration", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
         <table id="edt">
             <tr>
-                <td>Имя</td>
+                <td>@Html.LabelFor(m=>m.FirstName)</td>
                 <td>
                     @Html.TextBoxFor(m=>m.FirstName)
-                    <span id="errorMsg2" style="color: red" hidden>Введите имя</span>
                 </td>
+                <td>@Html.ValidationMessageFor(m => m.FirstName)</td>
             </tr>
             <tr>
-                <td>Фамилия</td>
+                <td>@Html.LabelFor(m => m.LastName)</td>
                 <td>
                     @Html.TextBoxFor(m=>m.LastName)
-                    <span id="errorMsg3" style="color: red" hidden>Введите Фамилию</span>
                 </td>
+                <td>@Html.ValidationMessageFor(m => m.LastName)</td>
             </tr>
             <tr>
-                <td>Отчество</td>
+                <td>@Html.LabelFor(m => m.MiddleName)</td>
                 <td>
                     @Html.TextBoxFor(m=>m.MiddleName)
-                    <span id="errorMsg4" style="color: red" hidden>Введите Отчество</span>
                 </td>
+                <td>@Html.ValidationMessageFor(m => m.MiddleName)</td>
             </tr>
             <tr>
-                <td>Email</td>
+                <td>@Html.LabelFor(m => m.Mail)</td>
                 <td>
                     @Html.TextBoxFor(m=>m.Mail)
-                    <span id="errorMsg5" style="color: red" hidden>Введите Почту</span>
                 </td>
+                <td>@Html.ValidationMessageFor(m => m.Mail)</td>
             </tr>
             <tr>
-                <td>Телефон</td>
+                <td>@Html.LabelFor(m => m.Phone)</td>
                 <td>
                     @Html.TextBoxFor(m=>m.Phone)
-                    <span id="errorMsg6" style="color: red" hidden>Введите Номер телефона</span>
                 </td>
+                <td>@Html.ValidationMessageFor(m => m.Phone)</td>
             </tr>
             <tr>
-                <td>Город</td>
+                <td>@Html.LabelFor(m => m.City)</td>
                 <td>
-                    @Html.TextBoxFor(m=>m.City)
-                    <span id="errorMsg7" style="color: red" hidden>Введите Город</span>
+                    @Html.TextBoxFor(m=>m.City)                   
                 </td>
+                <td>@Html.ValidationMessageFor(m => m.City)</td>
             </tr>
             <tr>
-                <td>Пароль</td>
+                <td>@Html.LabelFor(m=>m.Password)</td>
                 <td>
                     @Html.PasswordFor(m=>m.Password)
-                    <span id="errorMsg" style="color: red" hidden>Пароли не совпадают</span>
                 </td>
+                <td>@Html.ValidationMessageFor(m => m.Password)</td>
             </tr>
             <tr>
-                <td>Повторите пароль</td>
+                <td>@Html.LabelFor(m=>m.ConfirmPassword)</td>
                 <td>
-                    @Html.Password("RePass")
+                    @Html.PasswordFor(m=>m.ConfirmPassword)
                 </td>
+                <td>@Html.ValidationMessageFor(m=>m.ConfirmPassword)<td>
             </tr>
             <tr>
                 <td>
@@ -76,11 +80,12 @@
                 </td>
             </tr>
         </table>
+        //@Html.AntiForgeryToken()
     }
 </div>
 </body>
 </html>
 
 @section scripts{
-    @Scripts.Render("~/Scripts/RegisterUser.js");
+    @Scripts.Render("~/Bundles/jqueryval");
 }
