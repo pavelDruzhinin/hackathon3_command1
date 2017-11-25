@@ -170,6 +170,10 @@
     <Compile Include="Migrations\201711251622132_Number.Designer.cs">
       <DependentUpon>201711251622132_Number.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711252137418_BetEventsEdit.cs" />
+    <Compile Include="Migrations\201711252137418_BetEventsEdit.Designer.cs">
+      <DependentUpon>201711252137418_BetEventsEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Championship.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -266,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711251622132_Number.resx">
       <DependentUpon>201711251622132_Number.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711252137418_BetEventsEdit.resx">
+      <DependentUpon>201711252137418_BetEventsEdit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

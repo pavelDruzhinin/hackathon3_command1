@@ -153,13 +153,13 @@ namespace RosBets.Migrations
             #region Чемпионат\Спорт
             Sport sport1 = new Sport { Id = 1, Name = "Футбол" };
             Sport sport2 = new Sport { Id = 2, Name = "Хоккей" };
-            context.Sports.AddRange(new List<Sport> { sport1, sport2 });
+            context.Sports.AddOrUpdate (sport1, sport2);
 
             Championship championship1 = new Championship { Id = 1, Name = "Футбол. Испания. Примера", SportId = 1 };
             Championship championship2 = new Championship { Id = 2, Name = "Футбол. Германия. Бундеслига", SportId = 1 };
             Championship championship3 = new Championship { Id = 3, Name = "Футбол. Англия. Премьер-лига", SportId = 1 };
             Championship championship4 = new Championship { Id = 4, Name = "Хоккей. Национальная Хоккейная Лига", SportId = 2 };
-            context.Championships.AddRange(new List<Championship> { championship1, championship2, championship3,championship4 });
+            context.Championships.AddOrUpdate(championship1, championship2, championship3,championship4);
             #endregion
 
             #region Матчи завершённые
@@ -359,14 +359,13 @@ namespace RosBets.Migrations
                 Finished = false
             };
 
-            context.Matches.AddRange(new List<Match> { match1,match2,match3,match4,match5,match6,match7,match8,match9,match10,match11,match12,match13,match14});
+            context.Matches.AddOrUpdate(match1, match2, match3, match4, match5, match6, match7, match8, match9, match10, match11, match12, match13, match14);
 
 
             #endregion
 
             #region Коэффициенты
-            context.MatchEvents.AddRange(new List<MatchEvent>
-                        {
+            context.MatchEvents.AddOrUpdate(
                             new MatchEvent { MatchId = 1, EventId = 1, EventValue = 2.5f },
                             new MatchEvent { MatchId = 1, EventId = 2, EventValue = 5.6f },
                             new MatchEvent { MatchId = 1, EventId = 3, EventValue = 6.8f },
@@ -382,9 +381,8 @@ namespace RosBets.Migrations
                             new MatchEvent { MatchId = 1, EventId = 13, EventValue = 2.0f},
                             new MatchEvent { MatchId = 1, EventId = 14, EventValue = 9.4f },
                             new MatchEvent { MatchId = 1, EventId = 15, EventValue = 2.6f }
-                        });
-            context.MatchEvents.AddRange(new List<MatchEvent>
-                        {
+                        );
+            context.MatchEvents.AddOrUpdate(
                             new MatchEvent { MatchId = 2, EventId = 1, EventValue = 2.5f },
                             new MatchEvent { MatchId = 2, EventId = 2, EventValue = 3.4f },
                             new MatchEvent { MatchId = 2, EventId = 3, EventValue = 5.1f },
@@ -400,9 +398,8 @@ namespace RosBets.Migrations
                             new MatchEvent { MatchId = 2, EventId = 13, EventValue = 2.0f},
                             new MatchEvent { MatchId = 2, EventId = 14, EventValue = 2.4f },
                             new MatchEvent { MatchId = 2, EventId = 15, EventValue = 1.26f }
-                        });
-            context.MatchEvents.AddRange(new List<MatchEvent>
-                        {
+                        );
+            context.MatchEvents.AddOrUpdate(
                             new MatchEvent { MatchId = 3, EventId = 1, EventValue = 2.5f },
                             new MatchEvent { MatchId = 3, EventId = 2, EventValue = 1.24f },
                             new MatchEvent { MatchId = 3, EventId = 3, EventValue = 6.11f },
@@ -418,9 +415,8 @@ namespace RosBets.Migrations
                             new MatchEvent { MatchId = 3, EventId = 13, EventValue = 2.0f},
                             new MatchEvent { MatchId = 3, EventId = 14, EventValue = 3.2f },
                             new MatchEvent { MatchId = 3, EventId = 15, EventValue = 6.26f }
-                        });
-            context.MatchEvents.AddRange(new List<MatchEvent>
-                        {
+                        );
+            context.MatchEvents.AddOrUpdate(
                             new MatchEvent { MatchId = 4, EventId = 1, EventValue = 3.5f },
                             new MatchEvent { MatchId = 4, EventId = 2, EventValue = 2.32f },
                             new MatchEvent { MatchId = 4, EventId = 3, EventValue = 9.15f },
@@ -436,10 +432,9 @@ namespace RosBets.Migrations
                             new MatchEvent { MatchId = 4, EventId = 13, EventValue = 3.0f},
                             new MatchEvent { MatchId = 4, EventId = 14, EventValue = 3.2f },
                             new MatchEvent { MatchId = 4, EventId = 15, EventValue = 3.3f }
-                        });
+                        );
 
-            context.MatchEvents.AddRange(new List<MatchEvent>
-                        {
+            context.MatchEvents.AddOrUpdate(
                             new MatchEvent { MatchId = 5, EventId = 1, EventValue = 1.5f },
                             new MatchEvent { MatchId = 5, EventId = 2, EventValue = 3.32f },
                             new MatchEvent { MatchId = 5, EventId = 3, EventValue = 6.15f },
@@ -455,10 +450,9 @@ namespace RosBets.Migrations
                             new MatchEvent { MatchId = 5, EventId = 13, EventValue = 2.0f},
                             new MatchEvent { MatchId = 5, EventId = 14, EventValue = 3.2f },
                             new MatchEvent { MatchId = 5, EventId = 15, EventValue = 4.3f }
-                        });
+                        );
 
-            context.MatchEvents.AddRange(new List<MatchEvent>
-                        {
+            context.MatchEvents.AddOrUpdate(
                             new MatchEvent { MatchId = 6, EventId = 1, EventValue = 1.5f },
                             new MatchEvent { MatchId = 6, EventId = 2, EventValue = 6.32f },
                             new MatchEvent { MatchId = 6, EventId = 3, EventValue = 3.15f },
@@ -474,10 +468,9 @@ namespace RosBets.Migrations
                             new MatchEvent { MatchId = 6, EventId = 13, EventValue = 3.0f},
                             new MatchEvent { MatchId = 6, EventId = 14, EventValue = 3.22f },
                             new MatchEvent { MatchId = 6, EventId = 15, EventValue = 3.65f }
-                        });
+                        );
 
-            context.MatchEvents.AddRange(new List<MatchEvent>
-                        {
+            context.MatchEvents.AddOrUpdate(
                             new MatchEvent { MatchId = 7, EventId = 1, EventValue = 1.5f },
                             new MatchEvent { MatchId = 7, EventId = 2, EventValue = 2.12f },
                             new MatchEvent { MatchId = 7, EventId = 3, EventValue = 7.35f },
@@ -493,10 +486,9 @@ namespace RosBets.Migrations
                             new MatchEvent { MatchId = 7, EventId = 13, EventValue = 3.0f},
                             new MatchEvent { MatchId = 7, EventId = 14, EventValue = 2.23f },
                             new MatchEvent { MatchId = 7, EventId = 15, EventValue = 8.65f }
-                        });
+                        );
 
-            context.MatchEvents.AddRange(new List<MatchEvent>
-                        {
+            context.MatchEvents.AddOrUpdate(
                             new MatchEvent { MatchId = 8, EventId = 1, EventValue = 1.5f },
                             new MatchEvent { MatchId = 8, EventId = 2, EventValue = 6.12f },
                             new MatchEvent { MatchId = 8, EventId = 3, EventValue = 2.65f },
@@ -512,10 +504,9 @@ namespace RosBets.Migrations
                             new MatchEvent { MatchId = 8, EventId = 13, EventValue = 3.0f},
                             new MatchEvent { MatchId = 8, EventId = 14, EventValue = 6.23f },
                             new MatchEvent { MatchId = 8, EventId = 15, EventValue = 9.65f }
-                        });
+                        );
 
-            context.MatchEvents.AddRange(new List<MatchEvent>
-                        {
+            context.MatchEvents.AddOrUpdate(
                             new MatchEvent { MatchId = 9, EventId = 1, EventValue = 1.5f },
                             new MatchEvent { MatchId = 9, EventId = 2, EventValue = 3.12f },
                             new MatchEvent { MatchId = 9, EventId = 3, EventValue = 6.65f },
@@ -531,9 +522,8 @@ namespace RosBets.Migrations
                             new MatchEvent { MatchId = 9, EventId = 13, EventValue = 2.0f},
                             new MatchEvent { MatchId = 9, EventId = 14, EventValue = 6.23f },
                             new MatchEvent { MatchId = 9, EventId = 15, EventValue = 9.65f }
-                        });
-            context.MatchEvents.AddRange(new List<MatchEvent>
-                        {
+                        );
+            context.MatchEvents.AddOrUpdate(
                             new MatchEvent { MatchId = 10, EventId = 1, EventValue = 1.5f },
                             new MatchEvent { MatchId = 10, EventId = 2, EventValue = 3.52f },
                             new MatchEvent { MatchId = 10, EventId = 3, EventValue = 3.25f },
@@ -549,9 +539,8 @@ namespace RosBets.Migrations
                             new MatchEvent { MatchId = 10, EventId = 13, EventValue = 1.0f},
                             new MatchEvent { MatchId = 10, EventId = 14, EventValue = 3.13f },
                             new MatchEvent { MatchId = 10, EventId = 15, EventValue = 2.65f }
-                        });
-            context.MatchEvents.AddRange(new List<MatchEvent>
-                        {
+                        );
+            context.MatchEvents.AddOrUpdate(
                             new MatchEvent { MatchId = 11, EventId = 1, EventValue = 1.5f },
                             new MatchEvent { MatchId = 11, EventId = 2, EventValue = 5.52f },
                             new MatchEvent { MatchId = 11, EventId = 3, EventValue = 4.55f },
@@ -567,10 +556,9 @@ namespace RosBets.Migrations
                             new MatchEvent { MatchId = 11, EventId = 13, EventValue = 1.0f},
                             new MatchEvent { MatchId = 11, EventId = 14, EventValue = 9.43f },
                             new MatchEvent { MatchId = 11, EventId = 15, EventValue = 2.45f }
-                        });
+                        );
 
-            context.MatchEvents.AddRange(new List<MatchEvent>
-                        {
+            context.MatchEvents.AddOrUpdate(
                             new MatchEvent { MatchId = 12, EventId = 1, EventValue = 1.5f },
                             new MatchEvent { MatchId = 12, EventId = 2, EventValue = 6.12f },
                             new MatchEvent { MatchId = 12, EventId = 3, EventValue = 1.35f },
@@ -586,9 +574,8 @@ namespace RosBets.Migrations
                             new MatchEvent { MatchId = 12, EventId = 13, EventValue = 1.0f},
                             new MatchEvent { MatchId = 12, EventId = 14, EventValue = 2.13f },
                             new MatchEvent { MatchId = 12, EventId = 15, EventValue = 3.35f }
-                        });
-            context.MatchEvents.AddRange(new List<MatchEvent>
-                        {
+                        );
+            context.MatchEvents.AddOrUpdate(
                             new MatchEvent { MatchId = 13, EventId = 1, EventValue = 1.5f },
                             new MatchEvent { MatchId = 13, EventId = 2, EventValue = 2.12f },
                             new MatchEvent { MatchId = 13, EventId = 3, EventValue = 3.35f },
@@ -604,9 +591,8 @@ namespace RosBets.Migrations
                             new MatchEvent { MatchId = 13, EventId = 13, EventValue = 5.0f},
                             new MatchEvent { MatchId = 13, EventId = 14, EventValue = 3.13f },
                             new MatchEvent { MatchId = 13, EventId = 15, EventValue = 7.35f }
-                        });
-            context.MatchEvents.AddRange(new List<MatchEvent>
-                        {
+                        );
+            context.MatchEvents.AddOrUpdate(
                             new MatchEvent { MatchId = 14, EventId = 1, EventValue = 1.5f },
                             new MatchEvent { MatchId = 14, EventId = 2, EventValue = 3.12f },
                             new MatchEvent { MatchId = 14, EventId = 3, EventValue = 3.35f },
@@ -622,7 +608,7 @@ namespace RosBets.Migrations
                             new MatchEvent { MatchId = 14, EventId = 13, EventValue = 6.0f},
                             new MatchEvent { MatchId = 14, EventId = 14, EventValue = 6.13f },
                             new MatchEvent { MatchId = 14, EventId = 15, EventValue = 3.35f }
-                        });
+                        );
             #endregion
 
             #region Новости
@@ -636,7 +622,7 @@ namespace RosBets.Migrations
 Мнение экспертов БК «Лига Ставок»: «Армейцы» выиграли лишь однажды в последних четырех турах, а потому терять очки им крайне нежелательно — преследователи в лице «Спартака» и «Краснодара» не дремлют. С другой стороны, у ЦСКА немало потерь в составе, но игра с «Бенфикой» показала тактическую гибкость команды, когда роль центрального нападающего отправился исполнять Понтус Вернблум. Удастся ли ему забить в ворота «Рубина»? 
 
 Матч начнется 26 ноября в 14:00 МСК. " };
-            context.News.Add(news);
+            context.News.AddOrUpdate(news);
             #endregion
 
             
