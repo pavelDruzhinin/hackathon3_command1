@@ -32,7 +32,7 @@ textarea {
     max-width: 280px;
 }
 
-
+/*-----------footer start--------------*/
 .icons-conteiner {
     margin: 10px auto;
     overflow: auto;
@@ -79,7 +79,9 @@ textarea {
 .icons:hover {
     opacity: 0.5;
 }
+/*-----------footer end--------------*/
 
+/*-----------left column start--------------*/
 .leftmenu{
     color: #EDF2F4;
     padding: 0px;
@@ -108,3 +110,4 @@ textarea {
 #footer-menu{
     margin-top:40px;
 }
+/*-----------left column end--------------*/
