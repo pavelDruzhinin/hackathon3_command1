@@ -1,0 +1,91 @@
+﻿<!--header-->
+<header class="header">
+    <div class="row">
+        <!--navbar-->
+        <div class="navbar navbar-inverse col-sm-12 col-md-6">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("RosBets", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("АПЛ", "#", "#")</li>
+                    <li>@Html.ActionLink("РФПЛ", "#", "#")</li>
+                    <li>@Html.ActionLink("НХЛ", "#", "#")</li>
+                </ul>
+            </div>
+        </div>
+        <!--/navbar-->
+        <!--userbar-->
+        <div class="user-bar col-sm-12 col-md-6">
+            <div class="container">
+                <div class="row">
+                    
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        
+                        <div class="ol-xs-4 col-sm-4 col-md-4">
+                        </div>
+                        <div class="bar login col-xs-4 col-sm-4 col-md-4">
+                            <div class="round-box">
+                                <a class="circle" href="/Account/Registration">
+                                    <i class="fa fa-sign-in fa-1x"></i>
+                                </a>
+                                <span class="text" href="#">Регистрация</span>
+                            </div>
+                            
+                        </div>
+
+                        <div class="bar login col-xs-4 col-sm-4 col-md-4">
+                            <div class="round-box">
+                                <a class="circle" href="/Account/Login">
+                                    <i class="fa fa-sign-in fa-1x"></i>
+                                </a>
+                                <span class="text" href="#">Вход</span>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="bar user col-xs-4 col-sm-4 col-md-4">
+                            <div class="round-box">
+                                <a class="circle" href="#">
+                                    <i class="fa fa-user fa-1x"></i>
+                                </a>
+                                <span class="text" href="#">@User.Identity.Name</span>
+                            </div>
+                        </div>
+                        <div class="bar money col-xs-4 col-sm-4 col-md-4">
+                            <div class="round-box">
+                                <a class="circle" href="#">
+                                    <i class="fa fa-money fa-1x"></i>
+                                </a>
+                                <span class="text" href="#">0,00 р.</span>
+                            </div>
+                        </div>
+                        <div class="bar login col-xs-4 col-sm-4 col-md-4">
+                            <div class="round-box">
+                                <a class="circle" href="javascript:document.getElementById('logoutForm').submit()">
+                                    <i class="fa fa-sign-out fa-1x"></i>
+                                </a>
+                                <span class="text" href="#">Выход</span>
+                            </div>
+                            @using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+                            }
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <!--/userbar-->
+    </div>
+    <div class="line"></div>
+</header>
+<!--/header-->

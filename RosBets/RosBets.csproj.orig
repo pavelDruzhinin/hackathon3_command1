@@ -157,13 +157,29 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Migrations\201711241800405_FixingMigrations.cs" />
-    <Compile Include="Migrations\201711241800405_FixingMigrations.Designer.cs">
-      <DependentUpon>201711241800405_FixingMigrations.cs</DependentUpon>
+    <Compile Include="Migrations\201711241051562_SmallFixed.cs" />
+    <Compile Include="Migrations\201711241051562_SmallFixed.Designer.cs">
+      <DependentUpon>201711241051562_SmallFixed.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\201711241055507_SmallFixedFixed.cs" />
+    <Compile Include="Migrations\201711241055507_SmallFixedFixed.Designer.cs">
+      <DependentUpon>201711241055507_SmallFixedFixed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Championship.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Migrations\201711240545317_InitialCreate.cs" />
+    <Compile Include="Migrations\201711240545317_InitialCreate.Designer.cs">
+      <DependentUpon>201711240545317_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711240636444_DatabaseRework.cs" />
+    <Compile Include="Migrations\201711240636444_DatabaseRework.Designer.cs">
+      <DependentUpon>201711240636444_DatabaseRework.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711241159102_DataAnnotation.cs" />
+    <Compile Include="Migrations\201711241159102_DataAnnotation.Designer.cs">
+      <DependentUpon>201711241159102_DataAnnotation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BetEvent.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\MatchEvent.cs" />
@@ -174,7 +190,6 @@
     </Compile>
     <Compile Include="Models\Bet.cs" />
     <Compile Include="Models\Match.cs" />
-    <Compile Include="Models\Sport.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Account\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -239,8 +254,22 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711241800405_FixingMigrations.resx">
-      <DependentUpon>201711241800405_FixingMigrations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711240545317_InitialCreate.resx">
+      <DependentUpon>201711240545317_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711240636444_DatabaseRework.resx">
+      <DependentUpon>201711240636444_DatabaseRework.cs</DependentUpon>
+    </EmbeddedResource>
+<<<<<<< HEAD
+    <EmbeddedResource Include="Migrations\201711241051562_SmallFixed.resx">
+      <DependentUpon>201711241051562_SmallFixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711241055507_SmallFixedFixed.resx">
+      <DependentUpon>201711241055507_SmallFixedFixed.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Migrations\201711241159102_DataAnnotation.resx">
+      <DependentUpon>201711241159102_DataAnnotation.cs</DependentUpon>
+>>>>>>> OsipovBranch
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

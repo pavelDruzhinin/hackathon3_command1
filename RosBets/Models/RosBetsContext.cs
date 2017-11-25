@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO.Ports;
 using System.Linq;
 using System.Web;
 
@@ -12,27 +13,25 @@ namespace RosBets.Context
         public RosBetsContext()
             : base("name=RosBetsContext")
         {
+           // Database.SetInitializer<RosBetsContext>(null);
         }
 
         public DbSet<Bet> Bets { get; set; }
 
-        public DbSet<BetsDetail> BetDetails { get; set; }
+        public DbSet<BetEvent> BetEvents { get; set; }
 
-        public DbSet<LineFootball> LinesFootball { get; set; } //LineSFootball 
+        public DbSet<Match> Matches { get; set; }
 
-        public DbSet<Result> Results { get; set; }
+        public DbSet<MatchEvent> MatchEvents { get; set; }
 
-        public DbSet<ResultDetail> ResultDetails { get; set; }
+        public DbSet<Event> Events { get; set; }
 
         public DbSet<User> Users { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<BetsDetail>()
-            .HasKey(bd => new { bd.BetsId, bd.Event });
 
-            modelBuilder.Entity<ResultDetail>()
-            .HasKey(rd => new { rd.ResultId, rd.Event });
+        public DbSet<Championship> Championships { get; set; }
 
-        }
+        public DbSet<Sport> Sports { get; set; }
+
     }
+
 }

@@ -1,0 +1,138 @@
+﻿
+.header {
+    min-height: 70px;
+    background-color: #2b2D42;     
+}
+
+.header .line {
+    height: 3px;
+    width: 100%;
+    background-size: 300% 200%;
+    background-image: linear-gradient(to right, #EF233C 40%, #EDF2F4 10%, #D90429 50%);
+    animation: shift 5s ease infinite;
+}
+
+@keyframes shift {
+    0% {
+        background-position: 0% 46%
+    }
+
+    50% {
+        background-position: 100% 55%
+    }
+
+    100% {
+        background-position: 0% 46%
+    }
+}
+
+
+.header .navbar {
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.header .navbar-header {
+    margin-left: 40px;
+    display: inline-block;
+}
+
+.header .navbar-brand {
+    padding: 0;
+    display: inline-block;
+    color: #EDF2F4;
+    text-align: center;
+    text-decoration: none;
+    font-size: 3em;
+    min-height: 70px;
+    line-height: 70px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.header .navbar-brand:hover {
+    color: #EF233C;
+}
+
+.header .navbar-nav {
+    display: block;
+    margin: 0;
+    margin-left: 40px;
+    padding: 0;
+}
+
+.header .navbar-nav li a {
+    padding: 0;
+    padding-left: 30px;
+    text-align: left;
+    font-size: 1.5em;
+    display: block;
+    text-decoration: none;
+    color: #EDF2F4;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 70px;
+    min-height: 70px;
+}
+
+.header .navbar-nav li a:hover {
+    color: #EF233C;
+}
+
+.header .user-bar {
+    color: #EDF2F4;
+}
+
+.header .user-bar .bar {
+    position: relative;
+    font-size: 1em;
+    color: #EDF2F4;
+    display: block;
+    text-align: center;
+    min-height: 70px;
+}
+
+.header .user-bar .round-box {
+    position: absolute;
+    line-height: 40px;
+    padding-left: 45px;
+    padding-right: 20px;
+    text-align: left;
+    vertical-align: middle;
+    color: #EDF2F4;
+    top: 50%;
+    left: 50%;
+    height: 40px;
+    margin: -20px 0 0 -50px;
+    border-radius: 40px;
+    background: #D90429;
+    box-shadow: 0 8px 18px -8px #D90429;
+}
+
+.header .round-box .circle {
+    background: #EF233C;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    text-decoration: none;
+    color: #EDF2F4;
+    text-align: center;
+}
+
+.header .round-box .text {
+    text-align: right;
+}
+
+.header .icon-bar {
+    margin: 0;
+}
+
+.header .navbar-toggle {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}

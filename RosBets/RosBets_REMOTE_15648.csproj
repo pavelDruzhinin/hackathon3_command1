@@ -157,33 +157,23 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Migrations\201711241800405_FixingMigrations.cs" />
-    <Compile Include="Migrations\201711241800405_FixingMigrations.Designer.cs">
-      <DependentUpon>201711241800405_FixingMigrations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Championship.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Models\BetEvent.cs" />
-    <Compile Include="Models\Event.cs" />
-    <Compile Include="Models\MatchEvent.cs" />
     <Compile Include="Models\RosBetsContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bet.cs" />
-    <Compile Include="Models\Match.cs" />
-    <Compile Include="Models\Sport.cs" />
+    <Compile Include="Models\BetsDetail.cs" />
+    <Compile Include="Models\LineFootball.cs" />
+    <Compile Include="Models\Result.cs" />
+    <Compile Include="Models\ResultDetail.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\Account\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\main.jpg" />
-    <Content Include="Content\_main-page.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -225,7 +215,6 @@
     <Content Include="Views\Account\Registration.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
-    <Content Include="Views\Shared\header.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -237,11 +226,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711241800405_FixingMigrations.resx">
-      <DependentUpon>201711241800405_FixingMigrations.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

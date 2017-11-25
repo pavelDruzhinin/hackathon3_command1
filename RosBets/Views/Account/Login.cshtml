@@ -1,0 +1,48 @@
+﻿
+@{
+    Layout = null;
+}
+@model RosBets.Models.UserLogin
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+<div>
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <table>
+            <tr>
+                <td>Email</td>
+                <td>
+                    @Html.TextBoxFor(m=>m.Login)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.Login)
+                </td>
+            </tr>
+            <tr>
+                <td>Пароль</td>
+                <td>
+                    @Html.PasswordFor(m=>m.Password)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.Password)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" id="Login" name="Login" value="Войти">
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+</body>
+</html>

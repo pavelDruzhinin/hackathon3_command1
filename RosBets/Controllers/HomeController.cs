@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
 using RosBets.Context;
+using RosBets.Models;
 
 namespace RosBets.Controllers
 {
@@ -14,11 +16,12 @@ namespace RosBets.Controllers
 
 
         public ActionResult Index()
-        {   ViewBag.Title="11";
+        {
+            ViewBag.Title="11";
 //заглушка для создания бд
 
            var x =  db.Users.FirstOrDefault();
-            return View();
+           return View();
         }
 
         public ActionResult About()
@@ -33,8 +36,16 @@ namespace RosBets.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }   
+
+        public ActionResult Info()
+        {
+            ViewBag.Message = "Your info page.";
+
+            return View();
         }
     }
+
     // простой комментарий для гита
     //еще комментарий
 }

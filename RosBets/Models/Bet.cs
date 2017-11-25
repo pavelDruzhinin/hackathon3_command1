@@ -11,8 +11,18 @@ namespace RosBets.Models
 
         public int UserId { get; set; }
         public User User { get; set; }
+
+        public int MatchId { get; set; }
+        public Match Match { get; set; }
+
         public DateTime Date { get; set; }
+
         public bool? Success { get; set; }
-        public List<BetsDetail> BetsDetails { get; set; }
+
+        public decimal BetAmount { get; set; }//Сумма ставки
+        public float TotalCoefficient { get; set; }
+        public decimal? Payout { get; set; }//к ваплате
+        
+        public List<BetEvent> BetEvents { get; set; }
     }
 }

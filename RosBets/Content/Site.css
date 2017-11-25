@@ -1,12 +1,21 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
+﻿/**
+    Header Section
+*/
+@import '_header.css';
+@import '_main-page.css';
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+/*
+    main-color: #2b2D42;
+    interactive color: #EF233C;
+    text color: #EDF2F4;
+*/
+
+html {
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -22,3 +31,83 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*-----------footer start--------------*/
+.icons-conteiner {
+    margin: 10px auto;
+    overflow: auto;
+}
+
+.icons {
+    background-image: url(img/icons_sprite.png);
+    width: 50px;
+    height: 50px;
+}
+
+.icon-bar {
+    margin: 50px 0px;
+}
+
+#instagram {
+    background-position-x: 0px;
+}
+
+#skype {
+    background-position-x: -51px;
+}
+
+#linkedin {
+    background-position-x: -102px;
+}
+
+#vkontakte {
+    background-position-x: -153px;
+}
+
+#youtube {
+    background-position-x: -204px;
+}
+
+#github {
+    background-position-x: -255px;
+}
+
+#facebook {
+    background-position-x: -306px;
+}
+
+.icons:hover {
+    opacity: 0.5;
+}
+/*-----------footer end--------------*/
+
+/*-----------left column start--------------*/
+.leftmenu{
+    color: #EDF2F4;
+    padding: 0px;
+}
+
+.leftmenu li {
+    list-style-type:none;
+    padding: 0px;
+    border-bottom: 1px solid #EDF2F4;
+}
+
+.leftmenu a{
+    display:block;
+    text-decoration: none;
+    color: #EDF2F4;
+    font-size:20px;
+    margin:0px;
+    padding:10px 20px;
+    text-align:left;
+}
+    .leftmenu a:hover {
+        color: #D90429;
+        cursor: pointer;
+        background-color: #EDF2F4;
+    }
+#footer-menu{
+    margin-top:40px;
+}
+/*-----------left column end--------------*/
