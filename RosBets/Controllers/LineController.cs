@@ -18,7 +18,7 @@ namespace RosBets.Controllers
         }
         public ActionResult Football()
         {
-            var line = db.Matches.Include(x => x.MatchEvents).ToList();
+            var line = db.Matches.Include(x => x.MatchEvents).Where(m=>m.Date>DateTime.Now).ToList();
             return View(line);
         }
     }
