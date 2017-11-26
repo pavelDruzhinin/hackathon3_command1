@@ -3,6 +3,9 @@
 */
 @import '_header.css';
 @import '_main-page.css';
+@import '_footer.css';
+@import '_left_column';
+@import '_right_column';
 
 /*
     main-color: #2b2D42;
