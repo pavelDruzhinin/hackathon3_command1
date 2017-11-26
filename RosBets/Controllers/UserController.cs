@@ -25,27 +25,27 @@ namespace RosBets.Controllers
         // GET: User/Details/5
 
 
-        public ActionResult Details(int? id)
-        {
-            //if (User.Identity.IsAuthenticated)
-            //{
-            //    return RedirectToAction("Index", "Home");
-            //}
-            //return View();
+        //public ActionResult Details(int? id)
+        //{
+        //    if (User.Identity.IsAuthenticated)
+        //    {
+        //        return RedirectToAction("Index", "Home");
+        //    }
+        //    return View();
 
-            if (id == null)
-            {
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest); - это думаю здесь не нужно, но пока оставил
-                //Если не введени Id пользователя то кидаем на логин ??
-                return View("~/Views/Account/Login.cshtml");
-            }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest); -это думаю здесь не нужно, но пока оставил
+        //        Если не введени Id пользователя то кидаем на логин ??
+        //        return View("~/Views/Account/Login.cshtml");
+        //    }
+        //    User user = db.Users.Find(id);
+        //    if (user == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(user);
+        //}
 
         public ActionResult Story(int? id)
         {

@@ -247,10 +247,10 @@
     <Content Include="Views\Shared\header.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
-    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\User\Story.cshtml" />
     <Content Include="Views\Line\Football.cshtml" />
   </ItemGroup>

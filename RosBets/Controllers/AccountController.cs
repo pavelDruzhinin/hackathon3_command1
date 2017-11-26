@@ -95,5 +95,67 @@ namespace RosBets.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+
+        [HttpGet]
+        public ActionResult Details(int? id)
+        {
+
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
+
+            if(id == existingUser.Id)
+            {
+                return View(existingUser);
+            }
+
+            return View(existingUser);
+        }
+
+        [HttpGet]
+        public ActionResult ChangePassword(int? id)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
+
+            if (id == existingUser.Id)
+            {
+                return View(existingUser);
+            }
+
+            return RedirectToAction("Details", "Account");
+
+
+            //if (id == null)
+            //{
+            //    //return new HttpStatusCodeResult(HttpStatusCode.BadRequest); - это думаю здесь не нужно, но пока оставил
+            //    //Если не введени Id пользователя то кидаем на логин ??
+            //    return ActionResult();
+            //}
+            //User user = db.Users.Find(id);
+            //if (user == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(user);
+
+        }
+
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
     }
 }
