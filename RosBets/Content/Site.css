@@ -82,6 +82,9 @@ textarea {
 /*-----------footer end--------------*/
 
 /*-----------left column start--------------*/
+.bootstrap-cancel {
+    background-color:none;
+}
 .leftmenu{
     color: #EDF2F4;
     padding: 0px;
@@ -110,4 +113,5 @@ textarea {
 #footer-menu{
     margin-top:40px;
 }
+
 /*-----------left column end--------------*/

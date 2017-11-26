@@ -17,7 +17,9 @@ namespace RosBets.Models
         public int EventId { get; set; }
         public Event Event { get; set; }
 
-      
+        [Key, Column(Order = 2)]
+        public int MatchId { get; set; }
+        public Match Match { get; set; }
 
     }
 }
