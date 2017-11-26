@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "View";
 }
 @model  IEnumerable<RosBets.Models.Match>
@@ -18,6 +17,9 @@
                 <td>Команды</td>
                 <td colspan="20">Коэффициенты</td>
             </tr>
+            <tr>
+                <td colspan="2">Исходы</td>
+                </tr>
             @foreach (var match in Model)
             {
                 <tr>
@@ -31,7 +33,7 @@
                         @foreach (var events in @match.MatchEvents)
                         {
                             <td>
-                                @events.EventValue
+                                <a href="#">@events.EventValue</a>
                             </td>
                         }
                 </tr>
