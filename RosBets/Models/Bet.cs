@@ -13,7 +13,6 @@ namespace RosBets.Models
         public User User { get; set; }
 
         public int MatchId { get; set; }
-        public Match Match { get; set; }
 
         public DateTime Date { get; set; }
 

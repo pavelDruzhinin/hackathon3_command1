@@ -157,9 +157,22 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\LineController.cs" />
     <Compile Include="Migrations\201711241800405_FixingMigrations.cs" />
     <Compile Include="Migrations\201711241800405_FixingMigrations.Designer.cs">
       <DependentUpon>201711241800405_FixingMigrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711251559403_News.cs" />
+    <Compile Include="Migrations\201711251559403_News.Designer.cs">
+      <DependentUpon>201711251559403_News.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711251622132_Number.cs" />
+    <Compile Include="Migrations\201711251622132_Number.Designer.cs">
+      <DependentUpon>201711251622132_Number.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711252137418_BetEventsEdit.cs" />
+    <Compile Include="Migrations\201711252137418_BetEventsEdit.Designer.cs">
+      <DependentUpon>201711252137418_BetEventsEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Championship.cs" />
@@ -167,6 +180,8 @@
     <Compile Include="Models\BetEvent.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\MatchEvent.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\News.cs" />
     <Compile Include="Models\RosBetsContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -226,6 +241,14 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Shared\header.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\User\Story.cshtml" />
+    <Content Include="Views\Line\Football.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -241,6 +264,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711241800405_FixingMigrations.resx">
       <DependentUpon>201711241800405_FixingMigrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711251559403_News.resx">
+      <DependentUpon>201711251559403_News.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711251622132_Number.resx">
+      <DependentUpon>201711251622132_Number.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711252137418_BetEventsEdit.resx">
+      <DependentUpon>201711252137418_BetEventsEdit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

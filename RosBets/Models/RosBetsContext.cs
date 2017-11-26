@@ -32,6 +32,8 @@ namespace RosBets.Context
 
         public DbSet<Sport> Sports { get; set; }
 
+        public DbSet<News> News { get; set; }
+
     }
 
 }
