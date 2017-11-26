@@ -121,7 +121,7 @@ namespace RosBets.Controllers
         }
 
         [HttpGet]
-        public ActionResult ChangePassword(int? id)
+        public ActionResult ChangePassword(int id)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -129,33 +129,52 @@ namespace RosBets.Controllers
             }
 
             var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
+            var changePass = new ChangePass { Id = existingUser.Id, Mail = existingUser.Mail };
 
             if (id == existingUser.Id)
             {
-                return View(existingUser);
+                return View(changePass);
             }
 
             return RedirectToAction("Details", "Account");
 
 
-            //if (id == null)
-            //{
-            //    //return new HttpStatusCodeResult(HttpStatusCode.BadRequest); - это думаю здесь не нужно, но пока оставил
-            //    //Если не введени Id пользователя то кидаем на логин ??
-            //    return ActionResult();
-            //}
-            //User user = db.Users.Find(id);
-            //if (user == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(user);
-
         }
 
-        public ActionResult ChangePassword()
+        [HttpPost]
+        public ActionResult ChangePassword(ChangePass changePass)
         {
-            return View();
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            if (ModelState.IsValid)
+            {
+                var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
+                
+                if ((changePass.OldPassword == existingUser.Password) & (changePass.Id == existingUser.Id) & (changePass.Mail== existingUser.Mail))
+                {
+                    /////////////////////////////////////////////////////
+                    /////// Как поменять значения в базе данных ? ///////
+                    /////////////////////////////////////////////////////
+                    db.Users.Remove(existingUser);
+                    existingUser.Password = changePass.NewPassword;
+                    db.Users.Add(existingUser);
+                    db.SaveChanges();
+                    return RedirectToAction("Details", "Account");
+                }
+
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+
+            base.Dispose(disposing);
         }
     }
 }
