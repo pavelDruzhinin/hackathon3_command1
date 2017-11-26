@@ -24,8 +24,11 @@ namespace RosBets
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",                      
+                      "~/Content/bootstrap.css",
                       "~/Content/site.css",
+                      "~/Content/_footer.css",
+                      "~/Content/_left_column.css",
+                      "~/Content/_right_column.css",
                       "~/Content/font-awesome-4.7.0/css/font-awesome.min.css"));
         }
     }
