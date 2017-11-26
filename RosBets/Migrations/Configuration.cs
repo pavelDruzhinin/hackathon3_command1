@@ -625,7 +625,30 @@ namespace RosBets.Migrations
             context.News.AddOrUpdate(news);
             #endregion
 
-            
+            #region Ставки
+
+            context.Bets.AddOrUpdate(
+                new Bet() { Id=1, UserId=1, Date=DateTime.Parse("18.11.2017"), BetAmount = 500, Success = true, TotalCoefficient = 3.3f, Payout = 1650m},
+                new Bet() { Id=2, UserId=1, Date=DateTime.Parse("20.11.2017"), BetAmount = 100, Success = true, TotalCoefficient = 19.21f, Payout = 1921m},
+                new Bet() { Id=3, UserId=1, Date=DateTime.Parse("25.11.2017"), BetAmount = 420, TotalCoefficient = 2.22f, Payout = 932.4m},
+                new Bet() { Id=4, UserId=1, Date=DateTime.Parse("25.11.2017"), BetAmount = 322, TotalCoefficient = 203.4998784f, Payout = 65526.9608448m }
+            );
+
+            context.BetEvents.AddOrUpdate(
+                new BetEvent() { BetId = 1, EventId = 5, MatchId = 1},
+
+                new BetEvent() { BetId = 2, EventId = 2, MatchId = 2 },
+                new BetEvent() { BetId = 2, EventId = 4, MatchId = 2 }, 
+
+                new BetEvent() { BetId = 3, EventId = 6, MatchId = 7 },
+
+                new BetEvent() { BetId = 4, EventId = 5, MatchId = 9 }, //6.33
+                new BetEvent() { BetId = 4, EventId = 2, MatchId = 9 }, //3.12
+                new BetEvent() { BetId = 4, EventId = 8, MatchId = 10 }, //3.2
+                new BetEvent() { BetId = 4, EventId = 4, MatchId = 11 } //3.22
+
+            );
+            #endregion
 
         }
     }
