@@ -17,14 +17,22 @@ namespace RosBets.Controllers
 
         // GET: User
         // Эту штуку можно оставить чтобы админы сайта могли смотреть списки пользователей
-        public ActionResult Index()
-        {
-            return View(db.Users.ToList());
-        }
+        //public ActionResult Index()
+        //{
+        //    return View(db.Users.ToList());
+        //}
 
         // GET: User/Details/5
+
+
         public ActionResult Details(int? id)
         {
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
+            //return View();
+
             if (id == null)
             {
                 //return new HttpStatusCodeResult(HttpStatusCode.BadRequest); - это думаю здесь не нужно, но пока оставил
