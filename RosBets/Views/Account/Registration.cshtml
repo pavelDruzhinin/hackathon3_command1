@@ -1,23 +1,24 @@
 ﻿@{
-    //Layout = null;
+    Layout = null;
 }
 @model RosBets.Models.User
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Регистрация пользователя</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-
-<div>
-    @using (Html.BeginForm("Registration", "Account", FormMethod.Post))
+    @{Html.RenderPartial("header");}
+<div class="registration-box">
+    @using (Html.BeginForm("Registration", "Account", FormMethod.Post, new { @class = "registration-form"}))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
-        <table id="edt">
+        <table id="edt" class="registration-table">
             <tr>
                 <td>@Html.LabelFor(m=>m.FirstName)</td>
                 <td>
@@ -83,6 +84,10 @@
         //@Html.AntiForgeryToken()
     }
 </div>
+
+    @{Html.RenderPartial("footer");}
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
 </body>
 </html>
 
