@@ -16,10 +16,18 @@ namespace RosBets.Controllers
         {
             return View();
         }
-        public ActionResult Football(int ChampId)
+        public ActionResult Football(int? ChampId)
         {
-            var line = db.Matches.Include(x => x.MatchEvents).Where(m=>m.Date>DateTime.Now && m.ChampionshipId==ChampId).ToList();
-            return View(line);
+            if (ChampId == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                var line = db.Matches.Include(x => x.MatchEvents)
+                    .Where(m => m.Date > DateTime.Now && m.ChampionshipId == ChampId).ToList();
+                return View(line);
+            }
         }
     }
 }

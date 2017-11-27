@@ -178,6 +178,10 @@
     <Compile Include="Migrations\201711260812166_BetFix.Designer.cs">
       <DependentUpon>201711260812166_BetFix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711271804360_BetEventSuccess.cs" />
+    <Compile Include="Migrations\201711271804360_BetEventSuccess.Designer.cs">
+      <DependentUpon>201711271804360_BetEventSuccess.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BetSearch.cs" />
     <Compile Include="Models\Championship.cs" />
@@ -294,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711260812166_BetFix.resx">
       <DependentUpon>201711260812166_BetFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271804360_BetEventSuccess.resx">
+      <DependentUpon>201711271804360_BetEventSuccess.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
