@@ -1,88 +1,95 @@
 ﻿@{
-    //Layout = null;
+    Layout = null;
 }
 @model RosBets.Models.User
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Регистрация пользователя</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    @{Html.RenderPartial("header");}
+    <section class="registration-index">
+        <div class="registration-box container">
+            @using (Html.BeginForm("Registration", "Account", FormMethod.Post, new { @class = "registration-form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+               
+                <table id="edt" class="registration-table">
+                    <tr>
+                        <td>@Html.LabelFor(m => m.FirstName)</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-text" })
+                        </td>
+                        <td>@Html.ValidationMessageFor(m => m.FirstName)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.LastName)</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-text" })
+                        </td>
+                        <td>@Html.ValidationMessageFor(m => m.LastName)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.MiddleName)</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.MiddleName, new { @class = "form-text" })
+                        </td>
+                        <td>@Html.ValidationMessageFor(m => m.MiddleName)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.Mail)</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Mail, new { @class = "form-text" })
+                        </td>
+                        <td>@Html.ValidationMessageFor(m => m.Mail)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.Phone)</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Phone, new { @class = "form-text" })
+                        </td>
+                        <td>@Html.ValidationMessageFor(m => m.Phone)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.City)</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.City, new { @class = "form-text" })
+                        </td>
+                        <td>@Html.ValidationMessageFor(m => m.City)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.Password)</td>
+                        <td>
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-text" })
+                        </td>
+                        <td>@Html.ValidationMessageFor(m => m.Password)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.ConfirmPassword)</td>
+                        <td>
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-text" })
+                        </td>
+                        <td>@Html.ValidationMessageFor(m => m.ConfirmPassword)
+                        <td>
+                    </tr>                   
+                       
+                        
+                </table>
+                <input class="form-btn" type="submit" id="Register" name="Register" value="Зарегистрироваться" />
+                //@Html.AntiForgeryToken()
+            }
+        </div>
+    </section>
 
-<div>
-    @using (Html.BeginForm("Registration", "Account", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-        <table id="edt">
-            <tr>
-                <td>@Html.LabelFor(m=>m.FirstName)</td>
-                <td>
-                    @Html.TextBoxFor(m=>m.FirstName)
-                </td>
-                <td>@Html.ValidationMessageFor(m => m.FirstName)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(m => m.LastName)</td>
-                <td>
-                    @Html.TextBoxFor(m=>m.LastName)
-                </td>
-                <td>@Html.ValidationMessageFor(m => m.LastName)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(m => m.MiddleName)</td>
-                <td>
-                    @Html.TextBoxFor(m=>m.MiddleName)
-                </td>
-                <td>@Html.ValidationMessageFor(m => m.MiddleName)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(m => m.Mail)</td>
-                <td>
-                    @Html.TextBoxFor(m=>m.Mail)
-                </td>
-                <td>@Html.ValidationMessageFor(m => m.Mail)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(m => m.Phone)</td>
-                <td>
-                    @Html.TextBoxFor(m=>m.Phone)
-                </td>
-                <td>@Html.ValidationMessageFor(m => m.Phone)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(m => m.City)</td>
-                <td>
-                    @Html.TextBoxFor(m=>m.City)                   
-                </td>
-                <td>@Html.ValidationMessageFor(m => m.City)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(m=>m.Password)</td>
-                <td>
-                    @Html.PasswordFor(m=>m.Password)
-                </td>
-                <td>@Html.ValidationMessageFor(m => m.Password)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(m=>m.ConfirmPassword)</td>
-                <td>
-                    @Html.PasswordFor(m=>m.ConfirmPassword)
-                </td>
-                <td>@Html.ValidationMessageFor(m=>m.ConfirmPassword)<td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" id="Register" name="Register" value="Зарегистрироваться">
-                </td>
-            </tr>
-        </table>
-        //@Html.AntiForgeryToken()
-    }
-</div>
+    @{Html.RenderPartial("footer");}
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
 </body>
 </html>
 

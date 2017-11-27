@@ -206,6 +206,7 @@
     <Content Include="Content\images\main.jpg" />
     <Content Include="Content\img\main.jpg" />
     <Content Include="Content\_left_column.css" />
+    <Content Include="Content\_registration-form.css" />
     <Content Include="Content\_right_column.css" />
     <Content Include="Content\_header.css" />
     <Content Include="Content\_main-page.css" />
