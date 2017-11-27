@@ -1,0 +1,33 @@
+﻿/*-----------left column start--------------*/
+.bootstrap-cancel {
+    background-color: none;
+}
+
+.leftmenu {
+    color: #EDF2F4;
+    padding: 0px;
+}
+
+    .leftmenu li {
+        list-style-type: none;
+        padding: 0px;
+        border-bottom: 1px solid #EDF2F4;
+    }
+
+    .leftmenu a {
+        display: block;
+        text-decoration: none;
+        color: #EDF2F4;
+        font-size: 20px;
+        margin: 0px;
+        padding: 10px 20px;
+        text-align: left;
+    }
+
+        .leftmenu a:hover {
+            color: #D90429;
+            cursor: pointer;
+            background-color: #EDF2F4;
+        }
+
+/*-----------left column end--------------*/

@@ -7,13 +7,13 @@ namespace RosBets.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DatabaseRework : IMigrationMetadata
+    public sealed partial class BetFix : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DatabaseRework));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(BetFix));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711240636444_DatabaseRework"; }
+            get { return "201711260812166_BetFix"; }
         }
         
         string IMigrationMetadata.Source

@@ -7,13 +7,13 @@ namespace RosBets.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class SmallFixed : IMigrationMetadata
+    public sealed partial class Number : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SmallFixed));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Number));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711241051562_SmallFixed"; }
+            get { return "201711251622132_Number"; }
         }
         
         string IMigrationMetadata.Source

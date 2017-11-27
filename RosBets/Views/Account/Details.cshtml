@@ -7,12 +7,14 @@
 @using (Html.BeginForm("Details", "User", FormMethod.Post))
 {
 <h2>Личный кабинет</h2>
-<table>
-    <tr><a href="~/User/Details/@Model.Id">Личная информация  </a></tr>
+@*<table>
+    <tr><a href="~/Account/Details/@Model.Id">Личная информация  </a></tr>
     <tr>     </tr>
-    <tr><a href="~/User/Story/@Model.Id">   История пари</a></tr>
-</table>
+    <tr><a href="~/Account/Story/@Model.Id">   История пари</a></tr>
+</table>*@
 
+<a href="~/Account/Details/@Model.Id">Личная информация  </a>
+<a href="~/Account/Story/@Model.Id">   История пари</a>
 <h4>Личная информация</h4>
 
 <dl class="dl-horizontal">
@@ -26,7 +28,7 @@
     <dd>@Model.Mail</dd>
 
     <dd>
-        <a href="~/User/ChangePassword/@Model.Id">Сменить пароль</a>
+        <a href="~/Account/ChangePassword/@Model.Id">Сменить пароль</a>
     </dd>
 
     <dt>Имя</dt>
@@ -37,7 +39,7 @@
 
     <dd>Сюда вставить дату рождения</dd>*@
 
-    <h3>Контактная информация</h3>
+    <dt>Контактная информация</dt>
 
     <dt>Город проживания</dt>
 

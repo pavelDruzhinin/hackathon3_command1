@@ -7,13 +7,13 @@ namespace RosBets.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class News : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(News));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711240545317_InitialCreate"; }
+            get { return "201711251559403_News"; }
         }
         
         string IMigrationMetadata.Source

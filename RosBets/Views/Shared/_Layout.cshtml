@@ -8,13 +8,15 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @{Html.RenderPartial("header");}    
-    <div class="body-content">
-        @RenderBody()
-        <hr />        
-    </div>
+    @{Html.RenderPartial("header");}
+    <section class="index-page">
+        <div class="row no-gutters">
+            @{Html.RenderPartial("left_column");}              
+            @RenderBody()
+            @{Html.RenderPartial("right_column");}
+        </div>
+    </section>
     @{Html.RenderPartial("footer");}
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

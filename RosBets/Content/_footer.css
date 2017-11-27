@@ -1,0 +1,46 @@
+﻿/*-----------footer start--------------*/
+#footer-main{
+    background-color: #2b2D42;
+    padding-top: 20px;
+}
+
+.footer-text a{
+    color: #EDF2F4;
+    text-decoration:none;
+}
+
+.footer-text a:hover {
+    color: #EF233C;
+}
+
+.footer-text {
+    color: #EDF2F4;
+    font-size: 1.5em;
+}
+
+.icons-conteiner {
+    margin: 10px auto;
+    overflow: auto;
+}
+
+
+.icon-bar {
+    margin: 50px 0px;
+}
+
+.fill-color {
+    fill: #2b2D42;
+}
+
+.fill-background {
+    fill: #EDF2F4;
+}
+
+.fill-svg:hover > .fill-color {
+    fill: #EF233C;
+}
+
+.fill-svg:hover {
+    cursor: pointer;
+}
+/*-----------footer end--------------*/
