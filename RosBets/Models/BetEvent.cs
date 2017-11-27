@@ -21,5 +21,7 @@ namespace RosBets.Models
         public int MatchId { get; set; }
         public Match Match { get; set; }
 
+        public bool? Success { get; set; }
+
     }
 }
