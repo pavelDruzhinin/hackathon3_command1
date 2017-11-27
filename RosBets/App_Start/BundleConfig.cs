@@ -25,6 +25,7 @@ namespace RosBets
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/_readjustment_bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/_footer.css",
                       "~/Content/_left_column.css",
