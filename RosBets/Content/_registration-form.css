@@ -1,0 +1,64 @@
+﻿.registration-index {
+    overflow: hidden;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1em;
+    
+}
+
+.registration-index .registration-box {
+    min-width: 400px;
+    margin-top: 70px;
+    margin-bottom: 100px;
+}
+
+.registration-table td {
+    padding-right: 15px;
+}
+
+.registration-table td span {
+    display: block;    
+    width: 280px;
+    font-weight: 700;
+    color: #EF233C;
+}
+
+.registration-table td:nth-child(2n) {
+    width: 280px;
+}
+
+.registration-table .form-text {    
+    padding-left: 10px;
+    display: inline-block;
+    vertical-align: top;
+    -webkit-border-radius: 13px;
+    border-radius: 13px;
+    margin: 7px 0 7px 0;
+    font-size: 1em;
+    text-decoration: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 45px;    
+    width: 280px;
+    border: 2px solid rgba(0,0,0,0.1);
+    background-color: transparent;
+}
+
+.registration-form .form-btn {
+    margin: 20px 0 0 0;
+    line-height: 40px;
+    font-size: 1em;
+    padding: 0 20px 0 20px;
+    text-align: center;
+    color: #EDF2F4;
+    height: 40px;
+    border-radius: 40px;
+    background: #D90429;
+    border: none;
+    box-sizing: border-box;
+    box-shadow: 0 8px 18px -8px #D90429;
+    transition: all .2s ease-in-out;
+}
+
+.registration-form .form-btn:hover {
+    box-shadow: 0 8px 18px -3px #D90429;
+}
