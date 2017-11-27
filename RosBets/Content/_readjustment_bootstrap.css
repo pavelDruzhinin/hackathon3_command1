@@ -1,0 +1,23 @@
+﻿/* Override the default bootstrap behavior in a row class 
+*/
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+/* Override the default bootstrap border behavior in a panel class 
+*/
+.panel-group .panel {
+    border-radius: 0px;
+}
+.panel {
+    border:none;
+    border-radius: 0px;
+    background: transparent;
+}
+.panel-default .panel-heading {
+    background: transparent;
+}
+.panel-heading{
+    border-radius:0px;
+}

@@ -4,8 +4,8 @@
 @import '_header.css';
 @import '_main-page.css';
 @import '_footer.css';
-@import '_left_column.css';
-@import '_right_column.css';
+@import '_left_column';
+@import '_right_column';
 
 /*
     main-color: #2b2D42;
@@ -33,8 +33,4 @@ input,
 select,
 textarea {
     max-width: 280px;
-}
-
-#back-layer {
-    background-color: #2b2D42;
 }

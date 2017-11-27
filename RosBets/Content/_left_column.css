@@ -3,31 +3,42 @@
     background-color: none;
 }
 
-.leftmenu {
+.left-menu {
     color: #EDF2F4;
     padding: 0px;
 }
 
-    .leftmenu li {
-        list-style-type: none;
-        padding: 0px;
-        border-bottom: 1px solid #EDF2F4;
-    }
+.left-menu-header {
+    margin-bottom: 0px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #EDF2F4;
+    text-align: center;
+}
 
-    .leftmenu a {
-        display: block;
-        text-decoration: none;
-        color: #EDF2F4;
-        font-size: 20px;
-        margin: 0px;
-        padding: 10px 20px;
-        text-align: left;
-    }
+.toggle-list li {
+    list-style-type: none;
+    padding: 0px;
+    border-bottom: 1px solid #EDF2F4;
+    background-color: rgba(255, 255, 255, 0.1);
+}
 
-        .leftmenu a:hover {
-            color: #D90429;
-            cursor: pointer;
-            background-color: #EDF2F4;
-        }
+.left-menu a {
+    display: block;
+    text-decoration: none;
+    color: #EDF2F4;
+    font-size: 20px;
+    margin: 0px;
+    padding: 10px 20px;
+    text-align: left;
+}
+
+.left-menu a:hover {
+    color: #D90429;
+    cursor: pointer;
+}
+
+.toggle-block .toggle-list-header {
+    border-bottom: 1px solid #EDF2F4;
+}
 
 /*-----------left column end--------------*/

@@ -1,5 +1,5 @@
 ﻿
-.header {
+.header {    
     min-height: 70px;
     background-color: #2b2D42;     
 }
@@ -109,8 +109,13 @@
     border-radius: 40px;
     background: #D90429;
     box-shadow: 0 8px 18px -8px #D90429;
+    transition: all .2s ease-out;
 }
 
+.header .user-bar .round-box:hover {
+    box-shadow: 0 8px 18px -4px #D90429;
+}
+    
 .header .round-box .circle {
     background: #EF233C;
     height: 40px;
