@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Web.Security;
 using RosBets.Models;
 using RosBets.Context;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
 
 namespace RosBets.Controllers
 {
@@ -153,19 +155,36 @@ namespace RosBets.Controllers
             {
                 var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
                 
-                if ((changePass.OldPassword == existingUser.Password) & (changePass.Id == existingUser.Id) & (changePass.Mail== existingUser.Mail))
+                if ((changePass.OldPassword == existingUser.Password) & (changePass.Id == existingUser.Id)) //& (changePass.Mail== existingUser.Mail))
                 {
-                    /////////////////////////////////////////////////////
-                    /////// Как поменять значения в базе данных ? ///////
-                    /////////////////////////////////////////////////////
-                    db.Users.Remove(existingUser);
+                    
                     existingUser.Password = changePass.NewPassword;
-                    db.Users.Add(existingUser);
-                    db.SaveChanges();
+                    existingUser.ConfirmPassword = changePass.ConfirmNewPassword;
+                    db.Entry(existingUser).State = EntityState.Modified;
+                    try
+                    {
+
+                        db.SaveChanges();
+                        return RedirectToAction("Details", "Account");
+
+                    }
+                    catch (DbEntityValidationException ex)
+                    {
+                        foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                        {
+                            Response.Write("Object: " + validationError.Entry.Entity.ToString());
+                            Response.Write("    ");
+                            foreach (DbValidationError err in validationError.ValidationErrors)
+                            {
+                                Response.Write(err.ErrorMessage + "    ");
+                            }
+                        }
+                    }
+                    
                     return RedirectToAction("Details", "Account");
                 }
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Details", "Account");
             }
             return RedirectToAction("Index", "Home");
         }
