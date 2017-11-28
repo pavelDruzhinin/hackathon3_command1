@@ -13,9 +13,9 @@ namespace RosBets.Controllers
         // GET: Line
         RosBetsContext db = new RosBetsContext();
         
-        public ActionResult Index(int? ChampId)
+        public ActionResult Index(int? id)
         {
-            if (ChampId == null)
+            if (id == null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -23,7 +23,7 @@ namespace RosBets.Controllers
             {
                 var line = db.Matches
                     .Include(x => x.MatchEvents)
-                    .Where(m => m.Date > DateTime.Now && m.ChampionshipId == ChampId)
+                    .Where(m => m.Date > DateTime.Now && m.ChampionshipId == id)
                     .ToList();
 
                 return View(line);

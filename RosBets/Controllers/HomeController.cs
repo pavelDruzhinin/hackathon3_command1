@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.Mvc;
 using RosBets.Context;
 using RosBets.Models;
-using RosBets.ViewModel;
 using System.Data.Entity;
 
 namespace RosBets.Controllers

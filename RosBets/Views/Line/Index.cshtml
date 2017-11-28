@@ -11,34 +11,32 @@
 </head>
 <body>
     <div>
-        <table border="1">
+        <table>
             <tr>
-                <td align="center">Дата</td>
-                <td align="center">Название матча</td>
-                <td colspan="20" align="center">Коэффициенты</td>
+                <th>Дата</th>
+                <th>Событие</th>
+
+                <th>Т</th>
+                <th>Б</th>
+                <th>М</th>
+
+                <th>П1</th>
+                <th>Х</th>
+                <th>П2</th>
+
+                <th>1Х</th>
+                <th>12</th>
+                <th>Х2</th>
+
+                <th>iT</th>
+                <th>Б</th>
+                <th>М</th>
             </tr>
-            <tr>
-                <td colspan="2" align="center">Исходы</td>
-                </tr>
             @foreach (var match in Model)
             {
-                <tr>
-                    <td>
-                        @match.Date
-                    </td>
-                    <td>
-                        @match.MatchName
-                    </td>
-                        @foreach (var events in @match.MatchEvents)
-                        {
-                            <td>
-                                <a href="#">@events.EventValue</a>
-                            </td>
-                        }
-                </tr>
+                @Html.Partial("_MatchInfo", match)
             }
         </table>
-        }
     </div>
 </body>
 </html>
