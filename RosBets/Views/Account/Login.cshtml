@@ -1,48 +1,51 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 @model RosBets.Models.UserLogin
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-<div>
-    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-        <table>
-            <tr>
-                <td>Email</td>
-                <td>
-                    @Html.TextBoxFor(m=>m.Login)
-                </td>
-                <td>
-                    @Html.ValidationMessageFor(m => m.Login)
-                </td>
-            </tr>
-            <tr>
-                <td>Пароль</td>
-                <td>
-                    @Html.PasswordFor(m=>m.Password)
-                </td>
-                <td>
-                    @Html.ValidationMessageFor(m => m.Password)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" id="Login" name="Login" value="Войти">
-                </td>
-            </tr>
-        </table>
-    }
-</div>
+    @{Html.RenderAction("RenderHeader", "Home");}
+    <section class="login-index">
+        <div class="login-box container">       
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "login-form" }))
+            {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <table class="login-table">
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Login)</td>
+                            <td>
+                                @Html.TextBoxFor(m => m.Login, new { @class = "form-text" })
+                            </td>
+                            <td>
+                                @Html.ValidationMessageFor(m => m.Login)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Password)</td>
+                            <td>
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-text" })
+                            </td>
+                            <td>
+                                @Html.ValidationMessageFor(m => m.Password)
+                            </td>
+                        </tr> 
+                    </table>
+                    <input class="form-btn" type="submit" id="Login" name="Login" value="Войти">
+                }
+            </div>
+</section>
+    @{Html.RenderPartial("footer");}
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Bundles/jqueryval")
 </body>
 </html>

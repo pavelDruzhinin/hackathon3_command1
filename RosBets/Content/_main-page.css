@@ -1,18 +1,20 @@
-﻿
+﻿.main {    
+    min-height: calc(150vh - 70px - 175px);
+}
 
 .main-menu {
     text-align: center;
     color: #EDF2F4;
-    min-height: 500px;
     background: #2b2D42;
-    padding-right:0px;
+    padding-right: 0px;
+    min-height: 0px;    
 }
 
-.cupon-menu {
+.cupon-menu {    
     text-align: center;
-    color: #EDF2F4;
-    min-height: 500px;
+    color: #EDF2F4;    
     background: #2b2D42;
+    min-height: 0px;
 }
 
 .main-image-box {
@@ -21,14 +23,14 @@
     margin-right: -15px;
 }
 
-    .main-image-box .info {
-        text-transform: uppercase;
-        font-family: 'Open Sans';
-        font-size: 3em;
-        font-weight: 800;
-        text-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
-        color: white;
-        position: absolute;
-        top: 10%;
-        left: 10%;
-    }
+.main-image-box .info {
+    text-transform: uppercase;
+    font-family: 'Open Sans';
+    font-size: 3em;
+    font-weight: 800;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
+    color: white;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}

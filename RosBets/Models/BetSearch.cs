@@ -18,7 +18,7 @@ namespace RosBets.Models
         public float TotalCoefficient { get; set; }
     }
 
-    
+
     //Match = match.MatchName,
     //Date = match.Date,
     //Coefficient = _bet.TotalCoefficient,
