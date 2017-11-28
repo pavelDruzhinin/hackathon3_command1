@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using RosBets.Context;
 using RosBets.Models;
+using RosBets.ViewModel;
+using System.Data.Entity;
 
 namespace RosBets.Controllers
 {
@@ -17,11 +19,21 @@ namespace RosBets.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Title="11";
-//заглушка для создания бд
+            /*         ViewBag.Title="11";
+         //заглушка для создания бд
 
-           var x =  db.Users.FirstOrDefault();
-           return View();
+                   var x =  db.Users.FirstOrDefault();*/
+            var news = (from n in db.News
+                        select n).FirstOrDefault();
+
+            var sports = db.Sports.Include(y => y.Championships).ToList();
+            MainViewModel mvm = new MainViewModel
+            {
+                SportList = sports,
+                News = news
+            };
+
+            return View(mvm);
         }
 
         public ActionResult About()
@@ -36,7 +48,7 @@ namespace RosBets.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }   
+        }
 
         public ActionResult Info()
         {
