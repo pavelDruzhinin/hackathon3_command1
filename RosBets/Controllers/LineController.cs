@@ -12,11 +12,8 @@ namespace RosBets.Controllers
     {
         // GET: Line
         RosBetsContext db = new RosBetsContext();
-        public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult Football(int? ChampId)
+        
+        public ActionResult Index(int? ChampId)
         {
             if (ChampId == null)
             {
@@ -24,8 +21,11 @@ namespace RosBets.Controllers
             }
             else
             {
-                var line = db.Matches.Include(x => x.MatchEvents)
-                    .Where(m => m.Date > DateTime.Now && m.ChampionshipId == ChampId).ToList();
+                var line = db.Matches
+                    .Include(x => x.MatchEvents)
+                    .Where(m => m.Date > DateTime.Now && m.ChampionshipId == ChampId)
+                    .ToList();
+
                 return View(line);
             }
         }

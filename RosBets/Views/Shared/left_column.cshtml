@@ -1,10 +1,10 @@
-﻿@model RosBets.ViewModel.MainViewModel
+﻿@model List<RosBets.Models.Sport>
 <div class="left-menu col-md-2 col-xs-12">
     <h2 class="left-menu-header">Линия</h2>
     <!--Championship toggle list start-->
     <div class="panel-group toggle-block">
         <div class="panel panel-default">
-            @foreach (var sport in Model.SportList)
+            @foreach (var sport in Model)
             {
                 <div class="toggle-list-header panel-heading">
                     <h4 class="panel-title">

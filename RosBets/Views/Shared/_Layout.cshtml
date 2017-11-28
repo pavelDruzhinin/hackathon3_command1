@@ -9,10 +9,10 @@
 </head>
 <body>
     <div id="back-layer">
-        @{Html.RenderPartial("header");}
+        @{Html.RenderAction("RenderHeader", "Home");}
         <section class="index-page">
             <div class="row no-gutters">
-                @{Html.RenderPartial("left_column");}              
+                @{Html.RenderAction("RenderLineSelect", "Home");}              
                 @RenderBody()
                 @{Html.RenderPartial("right_column");}
             </div>
