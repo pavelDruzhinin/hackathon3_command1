@@ -12,7 +12,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @{Html.RenderPartial("header");}
+    @{Html.RenderAction("RenderHeader", "Home");}
     <section class="login-index">
         <div class="login-box container">       
                 @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "login-form" }))
