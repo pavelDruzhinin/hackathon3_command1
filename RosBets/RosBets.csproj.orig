@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
@@ -157,32 +157,41 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Migrations\201711241051562_SmallFixed.cs" />
-    <Compile Include="Migrations\201711241051562_SmallFixed.Designer.cs">
-      <DependentUpon>201711241051562_SmallFixed.cs</DependentUpon>
+    <Compile Include="Controllers\LineController.cs" />
+    <Compile Include="Migrations\201711241800405_FixingMigrations.cs" />
+    <Compile Include="Migrations\201711241800405_FixingMigrations.Designer.cs">
+      <DependentUpon>201711241800405_FixingMigrations.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711241055507_SmallFixedFixed.cs" />
-    <Compile Include="Migrations\201711241055507_SmallFixedFixed.Designer.cs">
-      <DependentUpon>201711241055507_SmallFixedFixed.cs</DependentUpon>
+    <Compile Include="Migrations\201711251559403_News.cs" />
+    <Compile Include="Migrations\201711251559403_News.Designer.cs">
+      <DependentUpon>201711251559403_News.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Championship.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Migrations\201711240545317_InitialCreate.cs" />
-    <Compile Include="Migrations\201711240545317_InitialCreate.Designer.cs">
-      <DependentUpon>201711240545317_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201711251622132_Number.cs" />
+    <Compile Include="Migrations\201711251622132_Number.Designer.cs">
+      <DependentUpon>201711251622132_Number.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711240636444_DatabaseRework.cs" />
-    <Compile Include="Migrations\201711240636444_DatabaseRework.Designer.cs">
-      <DependentUpon>201711240636444_DatabaseRework.cs</DependentUpon>
+    <Compile Include="Migrations\201711252137418_BetEventsEdit.cs" />
+    <Compile Include="Migrations\201711252137418_BetEventsEdit.Designer.cs">
+      <DependentUpon>201711252137418_BetEventsEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711241159102_DataAnnotation.cs" />
-    <Compile Include="Migrations\201711241159102_DataAnnotation.Designer.cs">
-      <DependentUpon>201711241159102_DataAnnotation.cs</DependentUpon>
+    <Compile Include="Migrations\201711260812166_BetFix.cs" />
+    <Compile Include="Migrations\201711260812166_BetFix.Designer.cs">
+      <DependentUpon>201711260812166_BetFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711271804360_BetEventSuccess.cs" />
+    <Compile Include="Migrations\201711271804360_BetEventSuccess.Designer.cs">
+      <DependentUpon>201711271804360_BetEventSuccess.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BetSearch.cs" />
+    <Compile Include="Models\Championship.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\BetEvent.cs" />
+    <Compile Include="Models\ChangePass.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\MatchEvent.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\News.cs" />
     <Compile Include="Models\RosBetsContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -190,6 +199,7 @@
     </Compile>
     <Compile Include="Models\Bet.cs" />
     <Compile Include="Models\Match.cs" />
+    <Compile Include="Models\Sport.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Account\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,7 +207,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\_readjustment_bootstrap.css" />
+    <Content Include="Content\_footer.css" />
     <Content Include="Content\images\main.jpg" />
+    <Content Include="Content\img\main.jpg" />
+    <Content Include="Content\_left_column.css" />
+    <Content Include="Content\_registration-form.css" />
+    <Content Include="Content\_right_column.css" />
+    <Content Include="Content\_header.css" />
     <Content Include="Content\_main-page.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -220,6 +237,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SearchHistory.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -241,9 +259,29 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Shared\header.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\User\Story.cshtml" />
+    <Content Include="Views\Line\Index.cshtml" />
+=======
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\Story.cshtml" />
+    <Content Include="Views\Line\Football.cshtml" />
+>>>>>>> KougiaTest
+    <Content Include="Views\Shared\left_column.cshtml" />
+    <Content Include="Views\Shared\right_column.cshtml" />
+    <Content Include="Views\Home\Info.cshtml" />
+    <Content Include="Views\Shared\footer.cshtml" />
+    <Content Include="Views\Shared\_MatchInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -254,22 +292,23 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711240545317_InitialCreate.resx">
-      <DependentUpon>201711240545317_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711241800405_FixingMigrations.resx">
+      <DependentUpon>201711241800405_FixingMigrations.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711240636444_DatabaseRework.resx">
-      <DependentUpon>201711240636444_DatabaseRework.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711251559403_News.resx">
+      <DependentUpon>201711251559403_News.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
-    <EmbeddedResource Include="Migrations\201711241051562_SmallFixed.resx">
-      <DependentUpon>201711241051562_SmallFixed.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711251622132_Number.resx">
+      <DependentUpon>201711251622132_Number.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711241055507_SmallFixedFixed.resx">
-      <DependentUpon>201711241055507_SmallFixedFixed.cs</DependentUpon>
-=======
-    <EmbeddedResource Include="Migrations\201711241159102_DataAnnotation.resx">
-      <DependentUpon>201711241159102_DataAnnotation.cs</DependentUpon>
->>>>>>> OsipovBranch
+    <EmbeddedResource Include="Migrations\201711252137418_BetEventsEdit.resx">
+      <DependentUpon>201711252137418_BetEventsEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711260812166_BetFix.resx">
+      <DependentUpon>201711260812166_BetFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711271804360_BetEventSuccess.resx">
+      <DependentUpon>201711271804360_BetEventSuccess.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
