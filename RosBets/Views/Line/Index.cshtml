@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "View";
+}
+@model  IEnumerable<RosBets.Models.Match>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <th>Дата</th>
+                <th>Событие</th>
+
+                <th>Т</th>
+                <th>Б</th>
+                <th>М</th>
+
+                <th>П1</th>
+                <th>Х</th>
+                <th>П2</th>
+
+                <th>1Х</th>
+                <th>12</th>
+                <th>Х2</th>
+
+                <th>iT</th>
+                <th>Б</th>
+                <th>М</th>
+            </tr>
+            @foreach (var match in Model)
+            {
+                @Html.Partial("_MatchInfo", match)
+            }
+        </table>
+    </div>
+</body>
+</html>
