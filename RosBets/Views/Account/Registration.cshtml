@@ -89,37 +89,6 @@
     @{Html.RenderPartial("footer");}
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(function () {            
-            $("form[name='Reg']").validate({                
-                rules: {                    
-                    FirstName: "required",
-                    LastName: "required",
-                    Email: {
-                        required: true,                       
-                        email: true
-                    },
-                    Password: {
-                        required: true,
-                        minlength: 5
-                    }
-                },                
-                messages: {
-                    FirstName: "Заполните Имя",
-                    LastName: "Заполните Фамилию",
-                    Password: {
-                        required: "Пожалуйста, введите пароль",
-                        minlength: "Пароль должен содержать не менее 5 символов"
-                    },
-                    Email: "Пожалуйста, введите настоящий адрес почты"
-                },                
-                submitHandler: function (form) {
-                    form.submit();
-                }
-            });
-        });
-    </script>
-        
+    @Scripts.Render("~/bundles/jqueryval")            
 </body>
 </html>
