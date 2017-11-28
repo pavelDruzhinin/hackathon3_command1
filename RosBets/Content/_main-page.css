@@ -1,5 +1,5 @@
 ﻿.main {    
-    min-height: calc(100vh - 70px - 175px);
+    min-height: calc(150vh - 70px - 175px);
 }
 
 .main-menu {
@@ -7,14 +7,14 @@
     color: #EDF2F4;
     background: #2b2D42;
     padding-right: 0px;
-    min-height: 700px;    
+    min-height: 0px;    
 }
 
-.cupon-menu {
+.cupon-menu {    
     text-align: center;
     color: #EDF2F4;    
     background: #2b2D42;
-    min-height: 700px;
+    min-height: 0px;
 }
 
 .main-image-box {

@@ -19,8 +19,10 @@
 }
 
 .registration-table td span,
-.login-table td span {
-    display: block;    
+.login-table td span,
+.registration-table .error,
+.login-table .error {
+    display: block;
     width: 280px;
     font-weight: 700;
     color: #EF233C;

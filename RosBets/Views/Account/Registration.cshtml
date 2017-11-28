@@ -25,58 +25,57 @@
                         <td>@Html.LabelFor(m => m.FirstName)</td>
                         <td>
                             @Html.TextBoxFor(m => m.FirstName, new { @class = "form-text" })
-                        </td>
-                        <td>@Html.ValidationMessageFor(m => m.FirstName)</td>
+                            @Html.ValidationMessageFor(m => m.FirstName)
+                        </td>                        
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(m => m.LastName)</td>
                         <td>
                             @Html.TextBoxFor(m => m.LastName, new { @class = "form-text" })
-                        </td>
-                        <td>@Html.ValidationMessageFor(m => m.LastName)</td>
+                            @Html.ValidationMessageFor(m => m.LastName)
+                        </td>                        
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(m => m.MiddleName)</td>
                         <td>
                             @Html.TextBoxFor(m => m.MiddleName, new { @class = "form-text" })
-                        </td>
-                        <td>@Html.ValidationMessageFor(m => m.MiddleName)</td>
+                            @Html.ValidationMessageFor(m => m.MiddleName)
+                        </td>                        
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(m => m.Mail)</td>
                         <td>
                             @Html.TextBoxFor(m => m.Mail, new { @class = "form-text" })
-                        </td>
-                        <td>@Html.ValidationMessageFor(m => m.Mail)</td>
+                            @Html.ValidationMessageFor(m => m.Mail)
+                        </td>                        
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(m => m.Phone)</td>
                         <td>
                             @Html.TextBoxFor(m => m.Phone, new { @class = "form-text" })
-                        </td>
-                        <td>@Html.ValidationMessageFor(m => m.Phone)</td>
+                            @Html.ValidationMessageFor(m => m.Phone)
+                        </td>                        
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(m => m.City)</td>
                         <td>
                             @Html.TextBoxFor(m => m.City, new { @class = "form-text" })
-                        </td>
-                        <td>@Html.ValidationMessageFor(m => m.City)</td>
+                            @Html.ValidationMessageFor(m => m.City)
+                        </td>                        
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(m => m.Password)</td>
                         <td>
                             @Html.PasswordFor(m => m.Password, new { @class = "form-text", id = "Password" })
-                        </td>
-                        <td>@Html.ValidationMessageFor(m => m.Password)</td>
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </td>                        
                     </tr>
                     <tr>
                         <td>@Html.LabelFor(m => m.ConfirmPassword)</td>
                         <td>
                             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-text" })
-                        </td>
-                        <td>@Html.ValidationMessageFor(m => m.ConfirmPassword)
-                        <td>
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                        </td>                        
                     </tr>                   
                        
                         
@@ -90,7 +89,7 @@
     @{Html.RenderPartial("footer");}
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryval")      
+    @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(function () {            
             $("form[name='Reg']").validate({                
@@ -103,17 +102,17 @@
                     },
                     Password: {
                         required: true,
-                        minlength: 4
+                        minlength: 5
                     }
                 },                
                 messages: {
-                    FirstName: "Please enter your firstname",
-                    LastName: "Please enter your lastname",
+                    FirstName: "Заполните Имя",
+                    LastName: "Заполните Фамилию",
                     Password: {
-                        required: "Please provide a password",
-                        minlength: "Your password must be at least 5 characters long"
+                        required: "Пожалуйста, введите пароль",
+                        minlength: "Пароль должен содержать не менее 5 символов"
                     },
-                    Email: "Please enter a valid email address"
+                    Email: "Пожалуйста, введите настоящий адрес почты"
                 },                
                 submitHandler: function (form) {
                     form.submit();
