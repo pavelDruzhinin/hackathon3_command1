@@ -209,33 +209,53 @@ namespace RosBets.Controllers
         public JsonResult CategorySearch(string type, string result)
         {
             var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
-            var betResult = from betEvent in db.BetEvents
-                         join _bet in db.Bets on betEvent.BetId equals _bet.Id
-                         join match in db.Matches on betEvent.MatchId equals match.Id
-                         join user in db.Users on _bet.UserId equals user.Id
-                         select new
-                         {
-                             Match = match.MatchName,
-                             Date = match.Date,
-                             Coefficient = _bet.TotalCoefficient,
-                             Success = _bet.Success,
-                             UserId = user.Id
-                         };
 
-            //if (type == "express") { return new JsonResult { }; }
-
-            List<BetSearch> myListResult = new List<BetSearch>();
-
-            var bet = from b in betResult
-                      where b.UserId == existingUser.Id
-                      select b;
-            foreach (var betRes in bet)
+            if (result == "positive")
             {
-                BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient};
-                myListResult.Add(userSearch);
-            }
 
-            return new JsonResult { Data = myListResult };
+                return new JsonResult { Data = myListResult };
+            }
+            else if (result == "negative")
+            {
+
+                return new JsonResult { Data = myListResult };
+            }
+            else if (result == "awaiting")
+            {
+
+                return new JsonResult { Data = myListResult };
+            }
+            else if (result == "all")
+            {
+
+                var betResult = from betEvent in db.BetEvents
+                                join _bet in db.Bets on betEvent.BetId equals _bet.Id
+                                join match in db.Matches on betEvent.MatchId equals match.Id
+                                join user in db.Users on _bet.UserId equals user.Id
+                                join _event in db.Events on betEvent.EventId equals _event.Id
+                                select new
+                                {
+                                    Match = match.MatchName,
+                                    Date = match.Date,
+                                    Coefficient = _bet.TotalCoefficient,
+                                    Success = _bet.Success,
+                                    UserId = user.Id,
+                                    EventId = _event.Shortname
+                                };
+
+                List<BetSearch> myListResult = new List<BetSearch>();
+
+                var bet = from b in betResult
+                          where b.UserId == existingUser.Id
+                          select b;
+                foreach (var betRes in bet)
+                {
+                    BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient, Shortname = betRes.EventId };
+                    myListResult.Add(userSearch);
+                }
+
+                return new JsonResult { Data = myListResult };
+            }
         }
 
         protected override void Dispose(bool disposing)

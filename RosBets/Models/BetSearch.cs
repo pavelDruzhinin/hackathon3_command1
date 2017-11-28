@@ -16,6 +16,8 @@ namespace RosBets.Models
         public int Id { get; set; }
 
         public float TotalCoefficient { get; set; }
+
+        public string Shortname { get; set; }
     }
 
 
