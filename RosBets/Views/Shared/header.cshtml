@@ -1,4 +1,6 @@
-﻿<!--header-->
+﻿@model string
+
+<!--header-->
 <header class="header">
     <div class="row">
         <!--navbar-->
@@ -13,9 +15,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("АПЛ", "Football", "Line",new { ChampId = 3},null)</li>
-                    <li>@Html.ActionLink("Бундеслига", "Football", "Line",new {ChampId=2},null)</li>
-                    <li>@Html.ActionLink("НХЛ", "Football", "Line",new {ChampId=4 },null)</li>
+                    <li>@Html.ActionLink("АПЛ", "Index", "Line",new { id = 3 },null)</li>
+                    <li>@Html.ActionLink("Бундеслига", "Index", "Line",new { id=2 },null)</li>
+                    <li>@Html.ActionLink("НХЛ", "Index", "Line",new { id=4 },null)</li>
                 </ul>
             </div>
         </div>
@@ -64,7 +66,7 @@
                                 <a class="circle" href="#">
                                     <i class="fa fa-money fa-1x"></i>
                                 </a>
-                                <span class="text" href="#">0,00 р.</span>
+                                <span class="text" href="#">@Model р.</span>
                             </div>
                         </div>
                         <div class="bar login col-xs-4 col-sm-4 col-md-4">

@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.Mvc;
 using RosBets.Context;
 using RosBets.Models;
-using RosBets.ViewModel;
 using System.Data.Entity;
 
 namespace RosBets.Controllers
@@ -19,21 +18,28 @@ namespace RosBets.Controllers
 
         public ActionResult Index()
         {
-            /*         ViewBag.Title="11";
-         //заглушка для создания бд
+            var news = db.News.Max(x => x.Id);
 
-                   var x =  db.Users.FirstOrDefault();*/
-            var news = (from n in db.News
-                        select n).FirstOrDefault();
+            return View(news);
+        }
 
+        [ChildActionOnly]
+        public ActionResult RenderLineSelect()
+        {
             var sports = db.Sports.Include(y => y.Championships).ToList();
-            MainViewModel mvm = new MainViewModel
-            {
-                SportList = sports,
-                News = news
-            };
+            return PartialView("left_column", sports);
+        }
 
-            return View(mvm);
+        [ChildActionOnly]
+        public ActionResult RenderHeader()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return PartialView("Header");
+            }
+            var user = db.Users.FirstOrDefault(x => x.Mail == User.Identity.Name);
+            string money = user.Money.ToString("0.00");
+            return PartialView("Header", money);
         }
 
         public ActionResult About()
@@ -57,7 +63,5 @@ namespace RosBets.Controllers
             return View();
         }
     }
-
-    // простой комментарий для гита
-    //еще комментарий
+    
 }
