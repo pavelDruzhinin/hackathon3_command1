@@ -233,14 +233,17 @@ namespace RosBets.Controllers
                              UserId = user.Id
                          };
 
-            List<object> myListResult = new List<object>();
+            
+
+            List<BetSearch> myListResult = new List<BetSearch>();
 
             var bet = from b in betResult
                       where b.UserId == existingUser.Id
                       select b;
             foreach (var betRes in bet)
             {
-                myListResult.Add(betRes);
+                BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient};
+                myListResult.Add(userSearch);
             }
 
             return new JsonResult { Data = myListResult };
