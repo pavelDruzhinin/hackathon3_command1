@@ -183,6 +183,7 @@
       <DependentUpon>201711271804360_BetEventSuccess.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BetSearch.cs" />
     <Compile Include="Models\Championship.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\BetEvent.cs" />
