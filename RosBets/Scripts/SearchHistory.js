@@ -1,8 +1,6 @@
 ﻿        $(document).ready(function () {
             $('#show').click(function () {
                 var obj = {
-                    //var type = $("#bets").val(),
-                    //var results = $("results").val()
                     type: $("#bets").val(),
                     results: $("#results").val()
                 };
@@ -10,7 +8,6 @@
                     type: 'POST',
                     url: '/Account/CategorySearch',
                     data: JSON.stringify(obj),
-                    //data: type, result,
                     contentType: 'application/json; charset=UTF-8',
                     success: function (response) {
                         console.log(response);

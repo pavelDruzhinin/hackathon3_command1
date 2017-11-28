@@ -202,48 +202,8 @@ namespace RosBets.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            //var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
-            //var betResult = from betEvent in db.BetEvents
-            //                join _bet in db.Bets on betEvent.BetId equals _bet.Id
-            //                join match in db.Matches on betEvent.MatchId equals match.Id
-            //                join user in db.Users on _bet.UserId equals user.Id
-            //                select new
-            //                {
-            //                    Match = match.MatchName,
-            //                    Date = match.Date,
-            //                    Coefficient = _bet.TotalCoefficient,
-            //                    Success = _bet.Success,
-            //                    UserId = user.Id
-            //                };
-
-
-
-            //List<BetSearch> myListResult = new List<BetSearch>();
-
-            //var bet = from b in betResult
-            //          where b.UserId == existingUser.Id
-            //          select b;
-            //foreach (var betRes in bet)
-            //{
-            //    BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient };
-            //    myListResult.Add(userSearch);
-            //}
-
-            //return new JsonResult { Data = myListResult };
-
             return View();
         }
-
-        //[HttpPost]
-        //public JsonResult CreateAjax(string name)
-        //{
-        //    var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
-        //    //var product = new Product { Name = name };
-        //    var product = db.Products.Find(name);
-        //    //db.Products.Add(product);
-        //    //db.SaveChanges();
-        //    return new JsonResult { Data = product.Id };
-        //}
 
         [HttpPost]
         public JsonResult CategorySearch(string type, string result)
@@ -262,7 +222,7 @@ namespace RosBets.Controllers
                              UserId = user.Id
                          };
 
-            if (type == "express") { return new JsonResult { }; }
+            //if (type == "express") { return new JsonResult { }; }
 
             List<BetSearch> myListResult = new List<BetSearch>();
 
@@ -277,16 +237,6 @@ namespace RosBets.Controllers
 
             return new JsonResult { Data = myListResult };
         }
-
-        //public JsonResult CategorySearch(string searchName)
-        //{
-            
-        //    var products = db.Products.Where(x => x.Category.Contains(searchName)).ToList();
-        //    return new JsonResult { Data = products };
-        //}
-
-
-
 
         protected override void Dispose(bool disposing)
         {
