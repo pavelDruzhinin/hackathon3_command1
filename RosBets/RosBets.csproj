@@ -183,11 +183,9 @@
       <DependentUpon>201711271804360_BetEventSuccess.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\BetSearch.cs" />
     <Compile Include="Models\Championship.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\BetEvent.cs" />
-    <Compile Include="Models\ChangePass.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\MatchEvent.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -203,7 +201,6 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Account\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -238,7 +235,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\SearchHistory.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -262,19 +258,21 @@
     <Content Include="Views\Shared\header.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
-    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\Account\ChangePassword.cshtml" />
-    <Content Include="Views\Account\Story.cshtml" />
-    <Content Include="Views\Line\Football.cshtml" />
+    <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\User\Story.cshtml" />
+    <Content Include="Views\Line\Index.cshtml" />
     <Content Include="Views\Shared\left_column.cshtml" />
     <Content Include="Views\Shared\right_column.cshtml" />
     <Content Include="Views\Home\Info.cshtml" />
     <Content Include="Views\Shared\footer.cshtml" />
+    <Content Include="Views\Shared\_MatchInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
