@@ -1,13 +1,16 @@
 ﻿        $(document).ready(function () {
             $('#show').click(function () {
                 var obj = {
-                    searchName: $(this).val(),
-                    //searchSurname: $(this).val('#results')
+                    //var type = $("#bets").val(),
+                    //var results = $("results").val()
+                    type: $("#bets").val(),
+                    results: $("#results").val()
                 };
                 $.ajax({
                     type: 'POST',
                     url: '/Account/CategorySearch',
                     data: JSON.stringify(obj),
+                    //data: type, result,
                     contentType: 'application/json; charset=UTF-8',
                     success: function (response) {
                         console.log(response);

@@ -262,7 +262,7 @@ namespace RosBets.Controllers
                              UserId = user.Id
                          };
 
-            
+            if (type == "express") { return new JsonResult { }; }
 
             List<BetSearch> myListResult = new List<BetSearch>();
 
