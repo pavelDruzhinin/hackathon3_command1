@@ -15,7 +15,7 @@
     @{Html.RenderPartial("header");}
     <section class="registration-index">
         <div class="registration-box container">
-            @using (Html.BeginForm("Registration", "Account", FormMethod.Post, new { @class = "registration-form" }))
+            @using (Html.BeginForm("Registration", "Account", FormMethod.Post, new { @class = "registration-form", name = "Reg" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
@@ -66,7 +66,7 @@
                     <tr>
                         <td>@Html.LabelFor(m => m.Password)</td>
                         <td>
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-text" })
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-text", id = "Password" })
                         </td>
                         <td>@Html.ValidationMessageFor(m => m.Password)</td>
                     </tr>
@@ -90,9 +90,37 @@
     @{Html.RenderPartial("footer");}
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")      
+    <script>
+        $(function () {            
+            $("form[name='Reg']").validate({                
+                rules: {                    
+                    FirstName: "required",
+                    LastName: "required",
+                    Email: {
+                        required: true,                       
+                        email: true
+                    },
+                    Password: {
+                        required: true,
+                        minlength: 4
+                    }
+                },                
+                messages: {
+                    FirstName: "Please enter your firstname",
+                    LastName: "Please enter your lastname",
+                    Password: {
+                        required: "Please provide a password",
+                        minlength: "Your password must be at least 5 characters long"
+                    },
+                    Email: "Please enter a valid email address"
+                },                
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
+        
 </body>
 </html>
-
-@section scripts{
-    @Scripts.Render("~/Bundles/jqueryval");
-}

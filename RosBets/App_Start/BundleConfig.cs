@@ -12,7 +12,7 @@ namespace RosBets
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+                        "~/Scripts/jquery.validate.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -25,10 +25,7 @@ namespace RosBets
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/_footer.css",
-                      "~/Content/_left_column.css",
-                      "~/Content/_right_column.css",
+                      "~/Content/site.css",                      
                       "~/Content/font-awesome-4.7.0/css/font-awesome.min.css"));
         }
     }

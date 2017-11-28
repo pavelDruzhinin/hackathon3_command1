@@ -1,32 +1,38 @@
-﻿.registration-index {
+﻿.registration-index,
+.login-index {
     overflow: hidden;
     font-family: "Open Sans", sans-serif;
-    font-size: 1em;
-    
+    font-size: 1em;    
+    min-height: calc(100vh - 70px - 175px);
 }
 
-.registration-index .registration-box {
+.registration-index .registration-box,
+.login-index .login-box {
     min-width: 400px;
     margin-top: 70px;
     margin-bottom: 100px;
 }
 
-.registration-table td {
+.registration-table td,
+.login-table td {
     padding-right: 15px;
 }
 
-.registration-table td span {
+.registration-table td span,
+.login-table td span {
     display: block;    
     width: 280px;
     font-weight: 700;
     color: #EF233C;
 }
 
-.registration-table td:nth-child(2n) {
+.registration-table td:nth-child(2n),
+.login-table td:nth-child(2n) {
     width: 280px;
 }
 
-.registration-table .form-text {    
+.registration-table .form-text,
+.login-table .form-text {
     padding-left: 10px;
     display: inline-block;
     vertical-align: top;
@@ -37,13 +43,14 @@
     text-decoration: none;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    height: 45px;    
+    height: 45px;
     width: 280px;
     border: 2px solid rgba(0,0,0,0.1);
     background-color: transparent;
 }
 
-.registration-form .form-btn {
+.registration-form .form-btn,
+.login-form .form-btn {
     margin: 20px 0 0 0;
     line-height: 40px;
     font-size: 1em;
@@ -59,6 +66,7 @@
     transition: all .2s ease-in-out;
 }
 
-.registration-form .form-btn:hover {
+.registration-form .form-btn:hover,
+.login-form .form-btn:hover {
     box-shadow: 0 8px 18px -3px #D90429;
 }
