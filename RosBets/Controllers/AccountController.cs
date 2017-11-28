@@ -202,6 +202,35 @@ namespace RosBets.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            //var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
+            //var betResult = from betEvent in db.BetEvents
+            //                join _bet in db.Bets on betEvent.BetId equals _bet.Id
+            //                join match in db.Matches on betEvent.MatchId equals match.Id
+            //                join user in db.Users on _bet.UserId equals user.Id
+            //                select new
+            //                {
+            //                    Match = match.MatchName,
+            //                    Date = match.Date,
+            //                    Coefficient = _bet.TotalCoefficient,
+            //                    Success = _bet.Success,
+            //                    UserId = user.Id
+            //                };
+
+
+
+            //List<BetSearch> myListResult = new List<BetSearch>();
+
+            //var bet = from b in betResult
+            //          where b.UserId == existingUser.Id
+            //          select b;
+            //foreach (var betRes in bet)
+            //{
+            //    BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient };
+            //    myListResult.Add(userSearch);
+            //}
+
+            //return new JsonResult { Data = myListResult };
+
             return View();
         }
 

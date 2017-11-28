@@ -1,14 +1,29 @@
 ﻿
-@{
+@*@{
     ViewBag.Title = "История пари";
 }
+@model RosBets.Models.BetSearch*@
+
+@{
+    Layout = null;
+}
 @model RosBets.Models.BetSearch
+@*@model System.Collections.Generic.List<RosBets.Models.BetSearch>*@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>История пари</title>
+    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+
 <body>
     <h2>История пари</h2>
 
     <div>
         Тип пари:
-        <select name="bets" id = "bets">
+        <select name="bets" id="bets">
             <option value="all" selected>Все</option>
             <option value="ordinary">Ординары</option>
             <option value="express">Экспрессы</option>
@@ -24,16 +39,19 @@
         <button name="show" id="show">показать</button>
     </div>
 
-    <tbody class="table" id="ourtable">
+    @*<tbody class="table" id="ourtable">*@
 
-        <tbody class="table">
-        
-            <table class="table" id="ourtable">
+    @*<tbody class="table">*@
 
-            </table>
-        </tbody>
-    </tbody>
+        <table class="table" id="ourtable">
+            <tbody class="tbody" id="ourtable">
+
+            </tbody>
+        </table>
+    @*</tbody>*@
+    @*</tbody>*@
+
+ 
+    @Scripts.Render("~/Scripts/SearchHistory.js")
 </body>
-@section scripts{
-    @Scripts.Render("~/Scripts/SearchHistory.js");
-}
+</html>

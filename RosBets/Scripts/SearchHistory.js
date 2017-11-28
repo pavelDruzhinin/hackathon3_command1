@@ -1,8 +1,8 @@
 ﻿        $(document).ready(function () {
             $('#show').click(function () {
                 var obj = {
-                    searchName: $(this).val('#bets'),
-                    searchSurname: $(this).val('#results')
+                    searchName: $(this).val(),
+                    //searchSurname: $(this).val('#results')
                 };
                 $.ajax({
                     type: 'POST',
@@ -28,8 +28,8 @@
 
             function createPr(bet) {
                 return '<tr><th>' +
-                    bet.Date + '</th><th>' + bet.Success + '</th><th>' + bet.TotalCoefficient + '</th><td>' +
-                    '</th><th>' + bet.Amount + '</th>';
+                    bet.MatchName + '</th><th>' + bet.Success + '</th><th>' + bet.TotalCoefficient + '</th><td>' +
+                    '</th><th>' + bet.Success + '</th></tr>';
             }
 
 

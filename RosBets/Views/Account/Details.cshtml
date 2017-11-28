@@ -1,58 +1,75 @@
-﻿@model RosBets.Models.User
+﻿@{
+    Layout = null;
+}
+@model RosBets.Models.User
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Личный кабинет</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+
+
+@*@model RosBets.Models.User
 
 @{
     ViewBag.Title = "Личный кабинет";
-}
+}*@
+<body>
+    @using (Html.BeginForm("Details", "User", FormMethod.Post))
+    {
+        <h2>Личный кабинет</h2>
+        @*<table>
+                <tr><a href="~/Account/Details/@Model.Id">Личная информация  </a></tr>
+                <tr>     </tr>
+                <tr><a href="~/Account/Story/@Model.Id">   История пари</a></tr>
+            </table>*@
 
-@using (Html.BeginForm("Details", "User", FormMethod.Post))
-{
-<h2>Личный кабинет</h2>
-@*<table>
-    <tr><a href="~/Account/Details/@Model.Id">Личная информация  </a></tr>
-    <tr>     </tr>
-    <tr><a href="~/Account/Story/@Model.Id">   История пари</a></tr>
-</table>*@
+        <a href="~/Account/Details/@Model.Id">Личная информация  </a>
+        <a href="~/Account/Story/@Model.Id">   История пари</a>
+        <h4>Личная информация</h4>
 
-<a href="~/Account/Details/@Model.Id">Личная информация  </a>
-<a href="~/Account/Story/@Model.Id">   История пари</a>
-<h4>Личная информация</h4>
+        <dl class="dl-horizontal">
 
-<dl class="dl-horizontal">
-    
-    <dt>Адрес электронной почты</dt>
+            <dt>Адрес электронной почты</dt>
 
-    <dd>@Model.Mail</dd>
+            <dd>@Model.Mail</dd>
 
-    <dt>Пароль</dt>
+            <dt>Пароль</dt>
 
-    <dd>@Model.Mail</dd>
+            <dd>@Model.Mail</dd>
 
-    <dd>
-        <a href="~/Account/ChangePassword/@Model.Id">Сменить пароль</a>
-    </dd>
+            <dd>
+                <a href="~/Account/ChangePassword/@Model.Id">Сменить пароль</a>
+            </dd>
 
-    <dt>Имя</dt>
+            <dt>Имя</dt>
 
-    <dd>@Model.FirstName @Model.MiddleName @Model.LastName</dd>
+            <dd>@Model.FirstName @Model.MiddleName @Model.LastName</dd>
 
-    @*<dt>Дата рождения</dt>
+            @*<dt>Дата рождения</dt>
 
-    <dd>Сюда вставить дату рождения</dd>*@
+                <dd>Сюда вставить дату рождения</dd>*@
 
-    <dt>Контактная информация</dt>
+            <dt>Контактная информация</dt>
 
-    <dt>Город проживания</dt>
+            <dt>Город проживания</dt>
 
-    <dd>@Model.City</dd>
+            <dd>@Model.City</dd>
 
-    <dt>Мобильный телефон</dt>
+            <dt>Мобильный телефон</dt>
 
-    <dd>@Model.Phone</dd>
+            <dd>@Model.Phone</dd>
 
- </dl>
+        </dl>
 
-   
-    <p>
-        <a href="~/Home/Index">На главную</a>
-    </p>
-}
+
+        <p>
+            <a href="~/Home/Index">На главную</a>
+        </p>
+    }
+</body>
+</html>

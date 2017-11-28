@@ -19,7 +19,7 @@
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
-               
+
                 <table id="edt" class="registration-table">
                     <tr>
                         <td>@Html.LabelFor(m => m.FirstName)</td>
@@ -77,9 +77,9 @@
                         </td>
                         <td>@Html.ValidationMessageFor(m => m.ConfirmPassword)
                         <td>
-                    </tr>                   
-                       
-                        
+                    </tr>
+
+
                 </table>
                 <input class="form-btn" type="submit" id="Register" name="Register" value="Зарегистрироваться" />
                 //@Html.AntiForgeryToken()
@@ -91,8 +91,10 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 </body>
-</html>
+
 
 @section scripts{
     @Scripts.Render("~/Bundles/jqueryval");
 }
+
+</html>
