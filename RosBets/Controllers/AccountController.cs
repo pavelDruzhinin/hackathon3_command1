@@ -138,7 +138,7 @@ namespace RosBets.Controllers
                 return View(changePass);
             }
 
-            else if (id == null) { return RedirectToAction("Login", "Account") }
+            else if (id == null) { return RedirectToAction("Login", "Account"); }
 
             return RedirectToAction("Details", "Account");
 
