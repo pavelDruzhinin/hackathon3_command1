@@ -1,0 +1,14 @@
+﻿.table-line {
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+.table-line > tbody > tr > td {
+    line-height: 1.2em;
+    vertical-align: middle;
+}
+
+.table-td:hover {
+    color: #ffffff;
+    cursor: pointer;
+    background-color:#2b2D42;
+}
