@@ -1,8 +1,23 @@
-﻿$(".table-td").click(function () {
-    $(this).toggleClass("clicked")
-    var tags = $("[class=clicked]")
-    console.log(tags[0])       
-    
-    //$.post("demo_test_post.asp",{name: "Donald Duck",city: "Duckburg"},function (data, status) {alert("Data: " + data + "\nStatus: " + status);});
+﻿$(document).ready(function () {
 
- });
+    $(".table-td").click(function () {
+        $(this).toggleClass("clicked");
+        var ids = [];
+        $(".clicked").each(function () {
+            ids.push(this.id);
+        });
+
+        $.ajax({
+            url: "/Bet/GetCoupon",
+            type: "POST",
+            dataType: "html",
+            contentType: "application/json",
+            data: JSON.stringify(ids),
+            success: function (data) {
+                $('.cupon-menu').html(data);
+            }
+        });
+
+    });
+
+});

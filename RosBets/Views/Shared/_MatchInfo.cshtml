@@ -5,26 +5,41 @@
     <td>@Model.Team1Name</td>
 
     <td rowspan="2">@Model.MatchEvents.Where(x=>x.EventId == 1 && x.MatchId==Model.Id).Select(e=>e.EventValue).SingleOrDefault()</td>
+<<<<<<< HEAD
     <td rowspan="2" class="table-td">@Model.MatchEvents.Where(x => x.EventId == 2 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
     <td rowspan="2" class="table-td">@Model.MatchEvents.Where(x => x.EventId == 3 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+=======
+    <td rowspan="2" class="table-td" id="2_@Model.Id">@Model.MatchEvents.Where(x => x.EventId == 2 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+    <td rowspan="2" class="table-td" id="3_@Model.Id">@Model.MatchEvents.Where(x => x.EventId == 3 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+>>>>>>> 3d737059ba1ef13cc541b205eeb12ca4302262ff
     
-    <td rowspan="2" class="table-td">@Model.MatchEvents.Where(x => x.EventId == 4 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
-    <td rowspan="2" class="table-td">@Model.MatchEvents.Where(x => x.EventId == 5 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
-    <td rowspan="2" class="table-td">@Model.MatchEvents.Where(x => x.EventId == 6 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+    <td rowspan="2" class="table-td" id="4_@Model.Id">@Model.MatchEvents.Where(x => x.EventId == 4 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+    <td rowspan="2" class="table-td" id="5_@Model.Id">@Model.MatchEvents.Where(x => x.EventId == 5 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+    <td rowspan="2" class="table-td" id="6_@Model.Id">@Model.MatchEvents.Where(x => x.EventId == 6 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
     
-    <td rowspan="2" class="table-td">@Model.MatchEvents.Where(x => x.EventId == 7 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
-    <td rowspan="2" class="table-td">@Model.MatchEvents.Where(x => x.EventId == 8 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
-    <td rowspan="2" class="table-td">@Model.MatchEvents.Where(x => x.EventId == 9 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+    <td rowspan="2" class="table-td" id="7_@Model.Id">@Model.MatchEvents.Where(x => x.EventId == 7 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+    <td rowspan="2" class="table-td" id="8_@Model.Id">@Model.MatchEvents.Where(x => x.EventId == 8 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+    <td rowspan="2" class="table-td" id="9_@Model.Id">@Model.MatchEvents.Where(x => x.EventId == 9 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
 
     <td>@Model.MatchEvents.Where(x => x.EventId == 10 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+<<<<<<< HEAD
     <td class="table-td">@Model.MatchEvents.Where(x => x.EventId == 11 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
     <td class="table-td">@Model.MatchEvents.Where(x => x.EventId == 12 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+=======
+    <td class="table-td" id="11_@Model.Id">@Model.MatchEvents.Where(x => x.EventId == 11 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+    <td class="table-td" id="12_@Model.Id">@Model.MatchEvents.Where(x => x.EventId == 12 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+>>>>>>> 3d737059ba1ef13cc541b205eeb12ca4302262ff
 </tr>
 <tr>
     <td>@($"{Model.Date:hh:mm}")</td>
     <td>@Model.Team2Name</td>
 
     <td>@Model.MatchEvents.Where(x => x.EventId == 13 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+<<<<<<< HEAD
     <td class="table-td">@Model.MatchEvents.Where(x => x.EventId == 14 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
     <td class="table-td">@Model.MatchEvents.Where(x => x.EventId == 15 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+=======
+    <td class="table-td" id="14_@Model.Id">@Model.MatchEvents.Where(x => x.EventId == 14 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+    <td class="table-td" id="15_@Model.Id">@Model.MatchEvents.Where(x => x.EventId == 15 && x.MatchId == Model.Id).Select(e => e.EventValue).SingleOrDefault()</td>
+>>>>>>> 3d737059ba1ef13cc541b205eeb12ca4302262ff
 </tr>
