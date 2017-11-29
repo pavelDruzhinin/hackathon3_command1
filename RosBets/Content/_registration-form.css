@@ -7,48 +7,46 @@
 }
 
 .registration-index .registration-box,
-.login-index .login-box {
-    min-width: 400px;
-    margin-top: 70px;
+.login-index .login-box {    
+    margin-top: 100px;
     margin-bottom: 100px;
 }
 
-.registration-table td,
-.login-table td {
-    padding-right: 15px;
+.registration-form, 
+.login-form {
+    max-width: 500px;
+    margin: 0 auto;
 }
 
-.registration-table td span,
-.login-table td span,
-.registration-table .error,
-.login-table .error {
-    display: block;
-    width: 280px;
+
+.registration-form span,
+.login-form .error {    
     font-weight: 700;
     color: #EF233C;
 }
 
-.registration-table td:nth-child(2n),
-.login-table td:nth-child(2n) {
-    width: 280px;
+.registration-form .form-label,
+.login-form .form-label {
+    vertical-align: middle;
+    height: 50px;
+    line-height: 50px;
 }
 
-.registration-table .form-text,
-.login-table .form-text {
-    padding-left: 10px;
-    display: inline-block;
-    vertical-align: top;
+.registration-form .form-text,
+.login-form .form-text {
+    padding: 10px;    
+    width: 100%;
     -webkit-border-radius: 13px;
-    border-radius: 13px;
-    margin: 7px 0 7px 0;
+    border-radius: 13px;    
     font-size: 1em;
-    text-decoration: none;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    height: 45px;
-    width: 280px;
+    text-decoration: none;    
     border: 2px solid rgba(0,0,0,0.1);
     background-color: transparent;
+}
+
+.registration-form .form-input, 
+.login-form .form-input {
+    text-align: center;
 }
 
 .registration-form .form-btn,
