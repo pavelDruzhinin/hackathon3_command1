@@ -26,10 +26,16 @@
 
 
 
-function createPr(bet) {
+function createPr(bet)
+{
+    var tempSuccess;
+    if (bet.Success === true) { tempSuccess = 'выигрыш'; }
+    else if (bet.Success === false) { tempSuccess = 'проигрыш'; }
+    else { tempSuccess = 'не определено'; }
+
     return '<tr><th>' +
-        bet.MatchName + '</th><th>' + bet.Success + '</th><th>' + bet.TotalCoefficient + '</th><td>' +
-        '</th><th>' + bet.Shortname + '</th></tr>';
+        bet.MatchName + '</th><th>' + tempSuccess + '</th><th>' + bet.TotalCoefficient + '</th><td>' +
+        '</th><th>' + bet.Shortname + '</th><th>' + bet.MyDate +  '</th></tr>';
 }
 
 
