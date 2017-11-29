@@ -12,3 +12,7 @@
     cursor: pointer;
     background-color:#2b2D42;
 }
+.clicked {
+    color: #ffffff;
+    background-color: #2b2D42;
+}
