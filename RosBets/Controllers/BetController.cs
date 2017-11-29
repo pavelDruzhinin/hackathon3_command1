@@ -12,8 +12,10 @@ namespace RosBets.Controllers
         public ActionResult GetCoupon(params string[] selectedIds)
         {
             var ids = new List<string>();
-
-            ids.AddRange(selectedIds);
+            if (selectedIds != null)
+            {
+                ids.AddRange(selectedIds);
+            }
 
             return PartialView("right_column", ids);
         }

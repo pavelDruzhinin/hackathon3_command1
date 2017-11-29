@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BetController.cs" />
     <Compile Include="Controllers\LineController.cs" />
+    <Compile Include="Controllers\MoneyController.cs" />
     <Compile Include="Migrations\201711241800405_FixingMigrations.cs" />
     <Compile Include="Migrations\201711241800405_FixingMigrations.Designer.cs">
       <DependentUpon>201711241800405_FixingMigrations.cs</DependentUpon>
@@ -183,7 +184,13 @@
     <Compile Include="Migrations\201711271804360_BetEventSuccess.Designer.cs">
       <DependentUpon>201711271804360_BetEventSuccess.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711291739414_betEventStatus.cs" />
+    <Compile Include="Migrations\201711291739414_betEventStatus.Designer.cs">
+      <DependentUpon>201711291739414_betEventStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Account\RegUser.cs" />
+    <Compile Include="Models\BetEventStatus.cs" />
     <Compile Include="Models\BetSearch.cs" />
     <Compile Include="Models\Championship.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -273,6 +280,8 @@
     <Content Include="Views\Shared\footer.cshtml" />
     <Content Include="Views\Shared\_MatchInfo.cshtml" />
     <Content Include="Views\Line\Index.cshtml" />
+    <Content Include="Views\Money\WorkWithMoney.cshtml" />
+    <Content Include="Scripts\_ros.bets.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711271804360_BetEventSuccess.resx">
       <DependentUpon>201711271804360_BetEventSuccess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711291739414_betEventStatus.resx">
+      <DependentUpon>201711291739414_betEventStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

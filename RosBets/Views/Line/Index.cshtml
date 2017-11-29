@@ -3,68 +3,33 @@
 }
 @model  IEnumerable<RosBets.Models.Match>
 
+        <table class="table table-bordered table-line">
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Событие</th>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-</head>
-<body>
-<div>
-    <table class="matchtable">
-        <tr>
-            <th>Дата</th>
-            <th>Событие</th>
+                    <th>Т</th>
+                    <th>Б</th>
+                    <th>М</th>
 
-            <th>Т</th>
-            <th>Б</th>
-            <th>М</th>
+                    <th>П1</th>
+                    <th>Х</th>
+                    <th>П2</th>
 
-            <th>П1</th>
-            <th>Х</th>
-            <th>П2</th>
+                    <th>1Х</th>
+                    <th>12</th>
+                    <th>Х2</th>
 
-            <th>1Х</th>
-            <th>12</th>
-            <th>Х2</th>
-
-            <th>iT</th>
-            <th>Б</th>
-            <th>М</th>
-        </tr>
-        @foreach (var match in Model)
-        {
-            @Html.Partial("_MatchInfo", match)
-        }
-    </table>
-</div>
-    
-    @section scripts {
-        <script>
-            $(document).ready(function () {
-                
-                $(".selectable").click(function(){
-                    $(this).toggleClass("selectedevent");
-                    var ids = [];
-                    $(".selectedevent").each(function () {
-                        ids.push(this.id);
-                    });
-
-                    $.ajax({
-                        url: "/Bet/GetCoupon",
-                        type: "POST",
-                        dataType: "html",
-                        contentType: "application/json",
-                        data: JSON.stringify(ids),
-                        success: function(data){
-                            $('.cupon-menu').html(data);
-                        }
-                    });
-
-                });
-
-            });
-        </script>
-    }
-</body>
-</html>
+                    <th>iT</th>
+                    <th>Б</th>
+                    <th>М</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var match in Model)
+                {
+                    @Html.Partial("_MatchInfo", match)
+                }
+            </tbody>
+        </table>

@@ -12,40 +12,45 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @{Html.RenderAction("RenderHeader", "Home");}
-    <section class="login-index">
-        <div class="login-box container">       
-                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "login-form" }))
+    <div id="back-layer">
+        @{Html.RenderAction("RenderHeader", "Home");}
+        <section class="login-index background-main">
+            <div class="login-box container">
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal login-form" }))
             {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
-                    <table class="login-table">
-                        <tr>
-                            <td>@Html.LabelFor(m => m.Login)</td>
-                            <td>
-                                @Html.TextBoxFor(m => m.Login, new { @class = "form-text" })
-                            </td>
-                            <td>
-                                @Html.ValidationMessageFor(m => m.Login)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(m => m.Password)</td>
-                            <td>
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-text" })
-                            </td>
-                            <td>
-                                @Html.ValidationMessageFor(m => m.Password)
-                            </td>
-                        </tr> 
-                    </table>
-                    <input class="form-btn" type="submit" id="Login" name="Login" value="Войти">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Login, new { @class = "col-sm-4 form-label" })
+                        <div class="col-sm-8">
+                            @Html.TextBoxFor(m => m.Login, new { @class = "form-text" })
+                        </div>
+                        <div class="col-sm-offset-4 col-sm-8">
+                            @Html.ValidationMessageFor(m => m.Login)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-sm-4 form-label" })
+                        <div class="col-sm-8">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-text" })
+                        </div>
+                        <div class="col-sm-offset-4 col-sm-8">
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12 form-input">
+                            <input class="form-btn" type="submit" id="Login" name="Login" value="Войти" />
+                        </div>
+                    </div>
                 }
             </div>
-</section>
-    @{Html.RenderPartial("footer");}
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Bundles/jqueryval")
+        </section>
+        @{Html.RenderPartial("footer");}
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/Bundles/jqueryval")
+    </div>
 </body>
 </html>
