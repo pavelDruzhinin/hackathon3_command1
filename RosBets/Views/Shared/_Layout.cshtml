@@ -12,9 +12,15 @@
         @{Html.RenderAction("RenderHeader", "Home");}
         <section class="index-page">
             <div class="row no-gutters">
-                @{Html.RenderAction("RenderLineSelect", "Home");}              
+                <div class="left-menu col-md-2 col-xs-12">
+                    @{Html.RenderAction("RenderLineSelect", "Home");}
+                </div>
+            <div class="main col-md-8 col-xs-12">
                 @RenderBody()
-                @{Html.RenderPartial("right_column");}
+            </div>
+                <div class="cupon-menu col-md-2 col-xs-12">
+                    @{Html.RenderAction("RenderCoupon", "Home");}
+                </div>
             </div>
         </section>
         @{Html.RenderPartial("footer");}

@@ -30,6 +30,7 @@ namespace RosBets
                       "~/Content/_footer.css",
                       "~/Content/_left_column.css",
                       "~/Content/_right_column.css",
+                      "~/Content/_line.css",
                       "~/Content/font-awesome-4.7.0/css/font-awesome.min.css"));
         }
     }

@@ -157,6 +157,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BetController.cs" />
     <Compile Include="Controllers\LineController.cs" />
     <Compile Include="Migrations\201711241800405_FixingMigrations.cs" />
     <Compile Include="Migrations\201711241800405_FixingMigrations.Designer.cs">
@@ -207,6 +208,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\_line.css" />
     <Content Include="Content\_readjustment_bootstrap.css" />
     <Content Include="Content\_footer.css" />
     <Content Include="Content\img\main.jpg" />
@@ -275,6 +277,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\Bet\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

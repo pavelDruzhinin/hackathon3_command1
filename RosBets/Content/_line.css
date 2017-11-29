@@ -1,0 +1,11 @@
+﻿.selectedevent {
+    background-color: #008000;
+}
+
+.selectable:hover {
+    background-color: #008000;
+}
+
+.matchtable {
+    background-color: #FFFFFF;
+}
