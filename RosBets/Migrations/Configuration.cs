@@ -244,9 +244,6 @@ namespace RosBets.Migrations
                 Team2Score = 2,
                 Finished = true
             };
-            #endregion
-
-            #region Матчи незавершённые
             Match match7 = new Match
             {
                 Id = 7,
@@ -256,10 +253,14 @@ namespace RosBets.Migrations
                 Team2Name = "Севилья",
                 MatchName = "Мальорка - Севилья",
                 MatchNumber = "6894",
-                Team1Score = null,
-                Team2Score = null,
-                Finished = false
+                Team1Score = 2,
+                Team2Score = 1,
+                Finished = true
             };
+            #endregion
+
+            #region Матчи незавершённые
+
 
             Match match8 = new Match
             {
@@ -628,24 +629,35 @@ namespace RosBets.Migrations
             context.Bets.AddOrUpdate(
                 new Bet() { Id=1, UserId=1, Date=DateTime.Parse("18.11.2017"), BetAmount = 500, Success = true, TotalCoefficient = 3.3f, Payout = 1650m},
                 new Bet() { Id=2, UserId=1, Date=DateTime.Parse("20.11.2017"), BetAmount = 100, Success = true, TotalCoefficient = 19.21f, Payout = 1921m},
-                new Bet() { Id=3, UserId=1, Date=DateTime.Parse("25.11.2017"), BetAmount = 420, TotalCoefficient = 2.22f, Payout = 932.4m},
-                new Bet() { Id=4, UserId=1, Date=DateTime.Parse("25.11.2017"), BetAmount = 322, TotalCoefficient = 203.4998784f, Payout = 65526.9608448m }
+                new Bet() { Id = 3, UserId = 1, Date = DateTime.Parse("25.11.2017"), BetAmount = 420, Success = false,TotalCoefficient = 2.22f, Payout = 0 }, //932.4m},
+                new Bet() { Id = 4, UserId = 1, Date = DateTime.Parse("25.11.2017"), BetAmount = 322, TotalCoefficient = 203.4998784f, Payout = null } //65526.9608448m }
             );
 
             context.BetEvents.AddOrUpdate(
-                new BetEvent() { BetId = 1, EventId = 5, MatchId = 1},
+                new BetEvent() { BetId = 1, EventId = 5, MatchId = 1,BetEventStatusId = 1},
 
-                new BetEvent() { BetId = 2, EventId = 2, MatchId = 2 },
-                new BetEvent() { BetId = 2, EventId = 4, MatchId = 2 }, 
+                new BetEvent() { BetId = 2, EventId = 2, MatchId = 2, BetEventStatusId = 1 },
+                new BetEvent() { BetId = 2, EventId = 4, MatchId = 2, BetEventStatusId = 1 }, 
 
-                new BetEvent() { BetId = 3, EventId = 6, MatchId = 7 },
+                new BetEvent() { BetId = 3, EventId = 6, MatchId = 7, BetEventStatusId = 2 },
 
-                new BetEvent() { BetId = 4, EventId = 5, MatchId = 9 }, //6.33
-                new BetEvent() { BetId = 4, EventId = 2, MatchId = 9 }, //3.12
-                new BetEvent() { BetId = 4, EventId = 8, MatchId = 10 }, //3.2
-                new BetEvent() { BetId = 4, EventId = 4, MatchId = 11 } //3.22
+                new BetEvent() { BetId = 4, EventId = 5, MatchId = 9, BetEventStatusId = 4 }, //6.33
+                new BetEvent() { BetId = 4, EventId = 2, MatchId = 9, BetEventStatusId = 1 }, //3.12
+                new BetEvent() { BetId = 4, EventId = 8, MatchId = 10, BetEventStatusId = 1 }, //3.2
+                new BetEvent() { BetId = 4, EventId = 4, MatchId = 11, BetEventStatusId = 4 } //3.22
 
             );
+            #endregion
+
+            #region Статусы ставок
+            context.BetEventsStatus.AddOrUpdate
+                (
+                new BetEventStatus { Id = 1, Status = "Выигрыш" },
+                new BetEventStatus { Id = 2, Status = "Проигрыш" },
+                new BetEventStatus { Id = 3, Status = "Возврат" },
+                new BetEventStatus { Id = 4, Status = "Не рассчитан" }
+                );
+
             #endregion
 
         }

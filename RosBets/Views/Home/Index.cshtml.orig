@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "RosBets";
+}
+<<<<<<< HEAD
+
+<div class="main-image-box">
+    <div class="info">
+        <p>RosBets is a free web platform for making money online</p>
+    </div>
+    <div class="main-image">
+        <img class="img-responsive" src="~/Content/img/main.jpg"/>
+    </div>
+</div>
+
+=======
+            <div class="background-main main col-md-8 col-xs-12">
+                <div class="main-image-box">
+                    <div class="info">
+                        <p>RosBets is a free web platform for making money online</p>
+                    </div>
+                    <div class="main-image">
+                        <img class="img-responsive" src="~/Content/img/main.jpg" />
+                    </div>
+                </div>
+            </div>
+>>>>>>> master
+            
+        

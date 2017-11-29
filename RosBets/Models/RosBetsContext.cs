@@ -33,6 +33,7 @@ namespace RosBets.Context
         public DbSet<Sport> Sports { get; set; }
 
         public DbSet<News> News { get; set; }
+        public DbSet<BetEventStatus> BetEventsStatus { get; set; }
 
     }
 }

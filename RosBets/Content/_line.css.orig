@@ -1,4 +1,16 @@
-.table-line {
+<<<<<<< HEAD
+﻿.selectedevent {
+    background-color: #008000;
+}
+
+.selectable:hover {
+    background-color: #008000;
+}
+
+.matchtable {
+    background-color: #FFFFFF;
+=======
+﻿.table-line {
     margin-top: 15px;
     font-size: 0.9em;
 }
@@ -15,4 +27,5 @@
 .clicked {
     color: #ffffff;
     background-color: #2b2D42;
+>>>>>>> master
 }
