@@ -1,5 +1,8 @@
-﻿.main {    
+﻿.main {
     min-height: calc(150vh - 70px - 175px);
+}
+.background-main {
+    background-color: white;
 }
 
 .main-menu {
@@ -12,8 +15,7 @@
 
 .cupon-menu {    
     text-align: center;
-    color: #EDF2F4;    
-    background: #2b2D42;
+    color: #EDF2F4;
     min-height: 0px;
 }
 

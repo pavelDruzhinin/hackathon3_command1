@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "WorkWithMoney";
+}
+@using System.Web.UI.WebControls
+@model RosBets.Models.User
+
+<h2>WorkWithMoney</h2>
+
+<html>
+<body>
+@using (Html.BeginForm("WorkWithMoney", "Money")) { 
+    <div>
+        @Html.ValidationSummary(true)
+        @Html.TextBox("Money")
+        <button type="submit" id="put" name="action" value="put">Положить</button>
+        <button type="submit" id="pick" name="action" value="pick">Получить</button>
+    </div>
+}
+</body>
+</html>
