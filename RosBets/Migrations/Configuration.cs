@@ -30,7 +30,6 @@ namespace RosBets.Migrations
                     Phone = "+79000000000",
                     Mail = "test@mail.ru",
                     Password = "123456",
-                    ConfirmPassword = "123456",
                     Money = 1500
 
                 },
@@ -44,7 +43,6 @@ namespace RosBets.Migrations
                     Phone = "+79111111111",
                     Mail = "primer@mail.ru",
                     Password = "789102",
-                    ConfirmPassword = "789102",
                     Money = 3000
                 }
             );

@@ -143,8 +143,9 @@ namespace RosBets.Controllers
 
         }
 
+        //Временно внесено в комментарии
         [HttpPost]
-        public ActionResult ChangePassword(ChangePass changePass)
+        /*public ActionResult ChangePassword(ChangePass changePass)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -187,7 +188,7 @@ namespace RosBets.Controllers
                 return RedirectToAction("Details", "Account");
             }
             return RedirectToAction("Index", "Home");
-        }
+        }*/
 
 
         public ActionResult Story(int? id)
