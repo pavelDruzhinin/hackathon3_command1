@@ -18,6 +18,8 @@ namespace RosBets.Models
         public float TotalCoefficient { get; set; }
 
         public string Shortname { get; set; }
+
+        public List<BetEvent> BetEvents { get; set; }
     }
 
 

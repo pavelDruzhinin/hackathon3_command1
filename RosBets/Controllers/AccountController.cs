@@ -208,29 +208,189 @@ namespace RosBets.Controllers
         [HttpPost]
         public JsonResult CategorySearch(string type, string results)
         {
+
             var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
 
-            if (results == "positive")
+            var betResult = from betEvent in db.BetEvents
+                            join _bet in db.Bets on betEvent.BetId equals _bet.Id
+                            join match in db.Matches on betEvent.MatchId equals match.Id
+                            join user in db.Users on _bet.UserId equals user.Id
+                            join _event in db.Events on betEvent.EventId equals _event.Id
+                            select new
+                            {
+                                Match = match.MatchName,
+                                Date = match.Date,
+                                Coefficient = _bet.TotalCoefficient,
+                                Success = _bet.Success,
+                                UserId = user.Id,
+                                EventId = _event.Shortname,
+                                BetEvents = _bet.BetEvents
+                            };
+
+            List<BetSearch> myListResult = new List<BetSearch>();
+
+            if (results != "all")
             {
-                var betResult = from betEvent in db.BetEvents
-                                join _bet in db.Bets on betEvent.BetId equals _bet.Id
-                                join match in db.Matches on betEvent.MatchId equals match.Id
-                                join user in db.Users on _bet.UserId equals user.Id
-                                join _event in db.Events on betEvent.EventId equals _event.Id
-                                select new
-                                {
-                                    Match = match.MatchName,
-                                    Date = match.Date,
-                                    Coefficient = _bet.TotalCoefficient,
-                                    Success = _bet.Success,
-                                    UserId = user.Id,
-                                    EventId = _event.Shortname
-                                };
+                if (type == "all" && results == "positive")
+                {
+                    
+                    var bet = from b in betResult
+                              where b.UserId == existingUser.Id && b.Success == true && b.BetEvents.Count >= 1
+                              select b;
+                    foreach (var betRes in bet)
+                    {
+                        BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient, Shortname = betRes.EventId };
+                        myListResult.Add(userSearch);
+                    }
 
-                List<BetSearch> myListResult = new List<BetSearch>();
+                    return new JsonResult { Data = myListResult };
+                }
 
+                else if (type == "all" && results == "negative")
+                {
+                    var bet = from b in betResult
+                              where b.UserId == existingUser.Id && b.Success == false && b.BetEvents.Count >= 1
+                              select b;
+                    foreach (var betRes in bet)
+                    {
+                        BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient, Shortname = betRes.EventId };
+                        myListResult.Add(userSearch);
+                    }
+
+                    return new JsonResult { Data = myListResult };
+                }
+
+                else if (type == "all" && results == "awaiting")
+                {
+                  
+                    var bet = from b in betResult
+                              where b.UserId == existingUser.Id && b.Success == null && b.BetEvents.Count >= 1
+                              select b;
+                    foreach (var betRes in bet)
+                    {
+                        BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient, Shortname = betRes.EventId };
+                        myListResult.Add(userSearch);
+                    }
+
+                    return new JsonResult { Data = myListResult };
+                }
+
+                else if (type == "express" && results == "all")
+                {
+                    var bet = from b in betResult
+                              where b.UserId == existingUser.Id &&  b.BetEvents.Count > 1
+                              select b;
+                    foreach (var betRes in bet)
+                    {
+                        BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient, Shortname = betRes.EventId };
+                        myListResult.Add(userSearch);
+                    }
+
+                    return new JsonResult { Data = myListResult };
+                }
+
+                else if (type == "express" && results == "positive")
+                {
+                    var bet = from b in betResult
+                              where b.UserId == existingUser.Id && b.BetEvents.Count > 1 && b.Success == true
+                              select b;
+                    foreach (var betRes in bet)
+                    {
+                        BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient, Shortname = betRes.EventId };
+                        myListResult.Add(userSearch);
+                    }
+
+                    return new JsonResult { Data = myListResult };
+                }
+
+                else if (type == "express" && results == "negative")
+                {
+                    var bet = from b in betResult
+                              where b.UserId == existingUser.Id && b.BetEvents.Count > 1 && b.Success == false
+                              select b;
+                    foreach (var betRes in bet)
+                    {
+                        BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient, Shortname = betRes.EventId };
+                        myListResult.Add(userSearch);
+                    }
+
+                    return new JsonResult { Data = myListResult };
+                }
+
+                else if (type == "express" && results == "awaiting")
+                {
+                    var bet = from b in betResult
+                              where b.UserId == existingUser.Id && b.BetEvents.Count > 1 && b.Success == null
+                              select b;
+                    foreach (var betRes in bet)
+                    {
+                        BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient, Shortname = betRes.EventId };
+                        myListResult.Add(userSearch);
+                    }
+
+                    return new JsonResult { Data = myListResult };
+                }
+
+                else if (type == "ordinary" && results == "all")
+                {
+                   var bet = from b in betResult
+                              where b.UserId == existingUser.Id && b.BetEvents.Count == 1
+                              select b;
+                    foreach (var betRes in bet)
+                    {
+                        BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient, Shortname = betRes.EventId };
+                        myListResult.Add(userSearch);
+                    }
+
+                    return new JsonResult { Data = myListResult };
+                }
+
+                else if (type == "ordinary" && results == "positive")
+                {
+                    var bet = from b in betResult
+                              where b.UserId == existingUser.Id && b.BetEvents.Count == 1 && b.Success == true
+                              select b;
+                    foreach (var betRes in bet)
+                    {
+                        BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient, Shortname = betRes.EventId };
+                        myListResult.Add(userSearch);
+                    }
+
+                    return new JsonResult { Data = myListResult };
+                }
+
+                else if (type == "ordinary" && results == "negative")
+                {
+                    var bet = from b in betResult
+                              where b.UserId == existingUser.Id && b.BetEvents.Count == 1 && b.Success == false
+                              select b;
+                    foreach (var betRes in bet)
+                    {
+                        BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient, Shortname = betRes.EventId };
+                        myListResult.Add(userSearch);
+                    }
+
+                    return new JsonResult { Data = myListResult };
+                }
+
+                else //if (type == "ordinary" && results == "awaiting")
+                {
+                    var bet = from b in betResult
+                              where b.UserId == existingUser.Id && b.BetEvents.Count == 1 && b.Success == null
+                              select b;
+                    foreach (var betRes in bet)
+                    {
+                        BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient, Shortname = betRes.EventId };
+                        myListResult.Add(userSearch);
+                    }
+
+                    return new JsonResult { Data = myListResult };
+                }
+            }
+            else if (results == "all" && type == "all")
+            {
                 var bet = from b in betResult
-                          where b.UserId == existingUser.Id && b.Success == true 
+                          where b.UserId == existingUser.Id && b.BetEvents.Count >= 1 
                           select b;
                 foreach (var betRes in bet)
                 {
@@ -240,27 +400,11 @@ namespace RosBets.Controllers
 
                 return new JsonResult { Data = myListResult };
             }
-            else if (results == "negative")
+
+            else if (results == "all" && type == "ordinary")
             {
-                var betResult = from betEvent in db.BetEvents
-                                join _bet in db.Bets on betEvent.BetId equals _bet.Id
-                                join match in db.Matches on betEvent.MatchId equals match.Id
-                                join user in db.Users on _bet.UserId equals user.Id
-                                join _event in db.Events on betEvent.EventId equals _event.Id
-                                select new
-                                {
-                                    Match = match.MatchName,
-                                    Date = match.Date,
-                                    Coefficient = _bet.TotalCoefficient,
-                                    Success = _bet.Success,
-                                    UserId = user.Id,
-                                    EventId = _event.Shortname
-                                };
-
-                List<BetSearch> myListResult = new List<BetSearch>();
-
                 var bet = from b in betResult
-                          where b.UserId == existingUser.Id && b.Success == false
+                          where b.UserId == existingUser.Id && b.BetEvents.Count == 1
                           select b;
                 foreach (var betRes in bet)
                 {
@@ -270,27 +414,12 @@ namespace RosBets.Controllers
 
                 return new JsonResult { Data = myListResult };
             }
-            else if (results == "awaiting")
-            {
-                var betResult = from betEvent in db.BetEvents
-                                join _bet in db.Bets on betEvent.BetId equals _bet.Id
-                                join match in db.Matches on betEvent.MatchId equals match.Id
-                                join user in db.Users on _bet.UserId equals user.Id
-                                join _event in db.Events on betEvent.EventId equals _event.Id
-                                select new
-                                {
-                                    Match = match.MatchName,
-                                    Date = match.Date,
-                                    Coefficient = _bet.TotalCoefficient,
-                                    Success = _bet.Success,
-                                    UserId = user.Id,
-                                    EventId = _event.Shortname
-                                };
 
-                List<BetSearch> myListResult = new List<BetSearch>();
+            else if (results == "all" && type == "express")
+            {
 
                 var bet = from b in betResult
-                          where b.UserId == existingUser.Id && b.Success == null
+                          where b.UserId == existingUser.Id && b.BetEvents.Count > 1
                           select b;
                 foreach (var betRes in bet)
                 {
@@ -300,58 +429,11 @@ namespace RosBets.Controllers
 
                 return new JsonResult { Data = myListResult };
             }
-            else if (results == "all")
-            {
 
-                var betResult = from betEvent in db.BetEvents
-                                join _bet in db.Bets on betEvent.BetId equals _bet.Id
-                                join match in db.Matches on betEvent.MatchId equals match.Id
-                                join user in db.Users on _bet.UserId equals user.Id
-                                join _event in db.Events on betEvent.EventId equals _event.Id
-                                select new
-                                {
-                                    Match = match.MatchName,
-                                    Date = match.Date,
-                                    Coefficient = _bet.TotalCoefficient,
-                                    Success = _bet.Success,
-                                    UserId = user.Id,
-                                    EventId = _event.Shortname
-                                };
-
-                List<BetSearch> myListResult = new List<BetSearch>();
-
-                var bet = from b in betResult
-                          where b.UserId == existingUser.Id
-                          select b;
-                foreach (var betRes in bet)
-                {
-                    BetSearch userSearch = new BetSearch { Id = betRes.UserId, Date = betRes.Date, Success = betRes.Success, MatchName = betRes.Match, TotalCoefficient = betRes.Coefficient, Shortname = betRes.EventId };
-                    myListResult.Add(userSearch);
-                }
-
-                return new JsonResult { Data = myListResult };
-            }
             else
             {
-                var betResult = from betEvent in db.BetEvents
-                                join _bet in db.Bets on betEvent.BetId equals _bet.Id
-                                join match in db.Matches on betEvent.MatchId equals match.Id
-                                join user in db.Users on _bet.UserId equals user.Id
-                                join _event in db.Events on betEvent.EventId equals _event.Id
-                                select new
-                                {
-                                    Match = match.MatchName,
-                                    Date = match.Date,
-                                    Coefficient = _bet.TotalCoefficient,
-                                    Success = _bet.Success,
-                                    UserId = user.Id,
-                                    EventId = _event.Shortname
-                                };
-
-                List<BetSearch> myListResult = new List<BetSearch>();
-
                 var bet = from b in betResult
-                          where b.UserId == existingUser.Id
+                          where b.UserId == existingUser.Id && b.BetEvents.Count >= 1
                           select b;
                 foreach (var betRes in bet)
                 {
