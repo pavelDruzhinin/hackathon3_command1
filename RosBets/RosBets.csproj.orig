@@ -157,7 +157,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BetController.cs" />
     <Compile Include="Controllers\LineController.cs" />
+    <Compile Include="Controllers\MoneyController.cs" />
     <Compile Include="Migrations\201711241800405_FixingMigrations.cs" />
     <Compile Include="Migrations\201711241800405_FixingMigrations.Designer.cs">
       <DependentUpon>201711241800405_FixingMigrations.cs</DependentUpon>
@@ -182,14 +184,20 @@
     <Compile Include="Migrations\201711271804360_BetEventSuccess.Designer.cs">
       <DependentUpon>201711271804360_BetEventSuccess.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711291739414_betEventStatus.cs" />
+    <Compile Include="Migrations\201711291739414_betEventStatus.Designer.cs">
+      <DependentUpon>201711291739414_betEventStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Account\RegUser.cs" />
+    <Compile Include="Models\BetEventStatus.cs" />
     <Compile Include="Models\BetSearch.cs" />
     <Compile Include="Models\Championship.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\BetEvent.cs" />
+    <Compile Include="Models\ChangePass.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\MatchEvent.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\RosBetsContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -202,14 +210,13 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Account\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\_line.css" />
     <Content Include="Content\_readjustment_bootstrap.css" />
     <Content Include="Content\_footer.css" />
-    <Content Include="Content\images\main.jpg" />
     <Content Include="Content\img\main.jpg" />
     <Content Include="Content\_left_column.css" />
     <Content Include="Content\_registration-form.css" />
@@ -226,6 +233,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\ChangePass.js" />
     <Content Include="Scripts\RegisterUser.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -237,6 +245,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SearchHistory.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -258,28 +267,25 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Shared\header.cshtml" />
-    <Content Include="Views\User\Create.cshtml" />
-    <Content Include="Views\User\Delete.cshtml" />
-    <Content Include="Views\User\Details.cshtml" />
-    <Content Include="Views\User\Edit.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
-<<<<<<< HEAD
-    <Content Include="Views\User\ChangePassword.cshtml" />
-    <Content Include="Views\User\Story.cshtml" />
-    <Content Include="Views\Line\Index.cshtml" />
-=======
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Account\Story.cshtml" />
-    <Content Include="Views\Line\Football.cshtml" />
->>>>>>> KougiaTest
     <Content Include="Views\Shared\left_column.cshtml" />
     <Content Include="Views\Shared\right_column.cshtml" />
     <Content Include="Views\Home\Info.cshtml" />
     <Content Include="Views\Shared\footer.cshtml" />
     <Content Include="Views\Shared\_MatchInfo.cshtml" />
+    <Content Include="Views\Line\Index.cshtml" />
+    <Content Include="Views\Money\WorkWithMoney.cshtml" />
+    <Content Include="Scripts\_ros.bets.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ViewModels\" />
+<<<<<<< HEAD
+    <Folder Include="Views\User\" />
+=======
+    <Folder Include="Views\Bet\" />
+>>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -307,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711271804360_BetEventSuccess.resx">
       <DependentUpon>201711271804360_BetEventSuccess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711291739414_betEventStatus.resx">
+      <DependentUpon>201711291739414_betEventStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
