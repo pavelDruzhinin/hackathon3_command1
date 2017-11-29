@@ -35,5 +35,4 @@ namespace RosBets.Context
         public DbSet<News> News { get; set; }
 
     }
-
 }

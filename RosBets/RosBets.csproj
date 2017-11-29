@@ -158,6 +158,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\LineController.cs" />
+    <Compile Include="Controllers\MoneyController.cs" />
     <Compile Include="Migrations\201711241800405_FixingMigrations.cs" />
     <Compile Include="Migrations\201711241800405_FixingMigrations.Designer.cs">
       <DependentUpon>201711241800405_FixingMigrations.cs</DependentUpon>
@@ -183,6 +184,7 @@
       <DependentUpon>201711271804360_BetEventSuccess.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Account\RegUser.cs" />
     <Compile Include="Models\BetSearch.cs" />
     <Compile Include="Models\Championship.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -271,6 +273,7 @@
     <Content Include="Views\Shared\footer.cshtml" />
     <Content Include="Views\Shared\_MatchInfo.cshtml" />
     <Content Include="Views\Line\Index.cshtml" />
+    <Content Include="Views\Money\WorkWithMoney.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
