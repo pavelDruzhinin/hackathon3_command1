@@ -183,8 +183,13 @@
     <Compile Include="Migrations\201711271804360_BetEventSuccess.Designer.cs">
       <DependentUpon>201711271804360_BetEventSuccess.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711291739414_betEventStatus.cs" />
+    <Compile Include="Migrations\201711291739414_betEventStatus.Designer.cs">
+      <DependentUpon>201711291739414_betEventStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\RegUser.cs" />
+    <Compile Include="Models\BetEventStatus.cs" />
     <Compile Include="Models\BetSearch.cs" />
     <Compile Include="Models\Championship.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -306,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711271804360_BetEventSuccess.resx">
       <DependentUpon>201711271804360_BetEventSuccess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711291739414_betEventStatus.resx">
+      <DependentUpon>201711291739414_betEventStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
