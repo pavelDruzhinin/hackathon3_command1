@@ -230,7 +230,7 @@ namespace RosBets.Controllers
                 List<BetSearch> myListResult = new List<BetSearch>();
 
                 var bet = from b in betResult
-                          where b.UserId == existingUser.Id
+                          where b.UserId == existingUser.Id && b.Success == true 
                           select b;
                 foreach (var betRes in bet)
                 {
@@ -260,7 +260,7 @@ namespace RosBets.Controllers
                 List<BetSearch> myListResult = new List<BetSearch>();
 
                 var bet = from b in betResult
-                          where b.UserId == existingUser.Id
+                          where b.UserId == existingUser.Id && b.Success == false
                           select b;
                 foreach (var betRes in bet)
                 {
@@ -290,7 +290,7 @@ namespace RosBets.Controllers
                 List<BetSearch> myListResult = new List<BetSearch>();
 
                 var bet = from b in betResult
-                          where b.UserId == existingUser.Id
+                          where b.UserId == existingUser.Id && b.Success == null
                           select b;
                 foreach (var betRes in bet)
                 {

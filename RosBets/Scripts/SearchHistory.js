@@ -29,7 +29,7 @@
 function createPr(bet) {
     return '<tr><th>' +
         bet.MatchName + '</th><th>' + bet.Success + '</th><th>' + bet.TotalCoefficient + '</th><td>' +
-        '</th><th>' + bet.Success + '</th></tr>';
+        '</th><th>' + bet.Shortname + '</th></tr>';
 }
 
 

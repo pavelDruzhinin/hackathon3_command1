@@ -21,10 +21,5 @@ namespace RosBets.Models
     }
 
 
-    //Match = match.MatchName,
-    //Date = match.Date,
-    //Coefficient = _bet.TotalCoefficient,
-    //Success = _bet.Success,
-    //UserId = user.Id
 
 }

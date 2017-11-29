@@ -190,7 +190,6 @@
     <Compile Include="Models\ChangePass.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\MatchEvent.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\RosBetsContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -258,11 +257,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Shared\header.cshtml" />
-    <Content Include="Views\User\Create.cshtml" />
-    <Content Include="Views\User\Delete.cshtml" />
-    <Content Include="Views\User\Details.cshtml" />
-    <Content Include="Views\User\Edit.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Account\Story.cshtml" />
     <Content Include="Views\Shared\left_column.cshtml" />
@@ -275,6 +269,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
