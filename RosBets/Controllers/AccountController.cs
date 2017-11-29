@@ -123,7 +123,7 @@ namespace RosBets.Controllers
         }
 
         [HttpGet]
-        public ActionResult ChangePassword(int id)
+        public ActionResult ChangePassword(int? id)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -138,6 +138,8 @@ namespace RosBets.Controllers
                 return View(changePass);
             }
 
+            else if (id == null) { return RedirectToAction("Login", "Account") }
+
             return RedirectToAction("Details", "Account");
 
 
@@ -145,7 +147,7 @@ namespace RosBets.Controllers
 
         //Временно внесено в комментарии
         [HttpPost]
-        /*public ActionResult ChangePassword(ChangePass changePass)
+        public ActionResult ChangePassword(ChangePass changePass)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -156,11 +158,10 @@ namespace RosBets.Controllers
             {
                 var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
                 
-                if ((changePass.OldPassword == existingUser.Password) & (changePass.Id == existingUser.Id)) //& (changePass.Mail== existingUser.Mail))
+                if ((changePass.OldPassword == existingUser.Password) & (changePass.Id == existingUser.Id)) 
                 {
                     
                     existingUser.Password = changePass.NewPassword;
-                    existingUser.ConfirmPassword = changePass.ConfirmNewPassword;
                     db.Entry(existingUser).State = EntityState.Modified;
                     try
                     {
@@ -188,7 +189,7 @@ namespace RosBets.Controllers
                 return RedirectToAction("Details", "Account");
             }
             return RedirectToAction("Index", "Home");
-        }*/
+        }
 
 
         public ActionResult Story(int? id)
