@@ -12,9 +12,10 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @{Html.RenderAction("RenderHeader", "Home");}
-    <section class="login-index">
-        <div class="login-box container">       
+    <div id="back-layer">
+        @{Html.RenderAction("RenderHeader", "Home");}
+        <section class="login-index background-main">
+            <div class="login-box container">
                 @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal login-form" }))
             {
                     @Html.AntiForgeryToken()
@@ -42,13 +43,14 @@
                         <div class="col-sm-12 form-input">
                             <input class="form-btn" type="submit" id="Login" name="Login" value="Войти" />
                         </div>
-                    </div>                    
+                    </div>
                 }
             </div>
-</section>
-    @{Html.RenderPartial("footer");}
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Bundles/jqueryval")
+        </section>
+        @{Html.RenderPartial("footer");}
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/Bundles/jqueryval")
+    </div>
 </body>
 </html>
