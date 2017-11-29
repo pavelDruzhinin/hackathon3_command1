@@ -209,7 +209,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\_readjustment_bootstrap.css" />
     <Content Include="Content\_footer.css" />
-    <Content Include="Content\images\main.jpg" />
     <Content Include="Content\img\main.jpg" />
     <Content Include="Content\_left_column.css" />
     <Content Include="Content\_registration-form.css" />
@@ -266,12 +265,12 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Account\Story.cshtml" />
-    <Content Include="Views\Line\Football.cshtml" />
     <Content Include="Views\Shared\left_column.cshtml" />
     <Content Include="Views\Shared\right_column.cshtml" />
     <Content Include="Views\Home\Info.cshtml" />
     <Content Include="Views\Shared\footer.cshtml" />
     <Content Include="Views\Shared\_MatchInfo.cshtml" />
+    <Content Include="Views\Line\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
