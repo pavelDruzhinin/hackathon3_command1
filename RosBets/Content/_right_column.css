@@ -1,1 +1,45 @@
-﻿
+﻿.coupon {
+    position: relative;
+    padding: 15px 0px 10px 0px;
+    max-width: 200px;
+    margin: 0px auto;
+    border-bottom: 1px solid #EDF2F4;
+}
+.coupon-span {
+    text-align:left;
+    margin:5px;
+    display:block;
+}
+.float-span-left{
+    float:left;
+}
+.float-span-right {
+    float: right;
+}
+
+.right-menu-header {
+    margin-bottom: 0px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #EDF2F4;
+    text-align: center;
+}
+
+/*.coupon-championship{
+
+}
+.coupon-bet{
+
+}
+.coupon-somethihg{
+
+}*/
+.fa-coupon {
+    position: absolute;
+    right: 10px;
+    top:10px;
+}
+
+.fa-coupon:hover {
+    color: #D90429;
+    cursor: pointer;
+}
