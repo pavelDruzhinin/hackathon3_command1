@@ -1,14 +1,11 @@
 ﻿$(document).ready(function () {
     var ids = [];
-    $(".table-td").click(toggleClick);
+    $(".table-td").click(postCoupon);
               
 });
-function toggleClick() {
-    $(this).toggleClass("clicked");
-    postCoupon();
-}
 
-function postCoupon() {   
+function postCoupon() {  
+    $(this).toggleClass("clicked")
     ids = [];
     $(".clicked").each(function () {
         ids.push(this.id);
@@ -23,13 +20,13 @@ function postCoupon() {
         success: function (data) {
             $('.cupon-menu').html(data);
             console.log(JSON.stringify(ids));
-            $(".fa-coupon").click(toggleTd);
+            $(".fa-coupon").click(deleteCoupon);
         }
     });
 
 } 
 
-function toggleTd() {
+function deleteCoupon() {
     console.log(this.dataset.bindId);
     $("#" + this.dataset.bindId).toggleClass("clicked");
     postCoupon();
