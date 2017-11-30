@@ -28,13 +28,14 @@
             <div class="login-box container">
                 <h2>История пари</h2>
 
-                <div class="changepass-box container" id="back-layer">
-                    Тип пари:
-                    <select name="bets" id="bets">
-                        <option value="all" selected>Все</option>
-                        <option value="ordinary">Ординары</option>
-                        <option value="express">Экспрессы</option>
-                    </select>
+                <div class="changepass-box container" id="back-layer" color="white">
+                        Тип пари:
+                        <select name="bets" id="bets">
+                            <option value="all" selected>Все</option>
+                            <option value="ordinary">Ординары</option>
+                            <option value="express">Экспрессы</option>
+                        </select>
+                    
                     Результаты:
                     <select name="results" id="results">
                         <option value="all" selected>Все</option>
@@ -50,15 +51,15 @@
                     <table class="table table-bordered table-line" id="ourtable">
                         <thead>
                             <tr>
-                                <td rowspan="2" class="table-td">Матч</td>
-                                <td rowspan="2" class="table-td">Дата</td>
-                                <td rowspan="2" class="table-td">Статус</td>
-                                <td rowspan="2" class="table-td">Тип</td>
-                                <td rowspan="2" class="table-td">Коэффициент</td>
+                                <td rowspan="1" class="table-td">Матч</td>
+                                <td rowspan="1" class="table-td">Дата</td>
+                                <td rowspan="1" class="table-td">Статус</td>
+                                <td rowspan="1" class="table-td">Тип</td>
+                                <td rowspan="1" class="table-td">Коэффициент</td>
 
                             </tr>
                         </thead>
-                        <tbody class="tbody" id="ourtable"></tbody>
+                        <tbody class="tbody" id="ourtable"><tr></tr></tbody>
                     </table>
                 </div>
             </div>
