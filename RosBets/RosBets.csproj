@@ -277,6 +277,7 @@
     <Content Include="Views\Line\Index.cshtml" />
     <Content Include="Views\Money\WorkWithMoney.cshtml" />
     <Content Include="Scripts\_ros.bets.js" />
+    <Content Include="Views\Account\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

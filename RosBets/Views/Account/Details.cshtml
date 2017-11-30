@@ -5,75 +5,86 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <title>Личный кабинет</title>
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Личный кабинет</title>
+    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/SearchHistory.js")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/_registration-form.css")
+            <style>
+            a.ChangePass {
+                margin: 20px 0 0 0;
+                line-height: 40px;
+                font-size: 1em;
+                padding: 0 20px 0 20px;
+                text-align: center;
+                color: #EDF2F4;
+                height: 40px;
+                border-radius: 40px;
+                background: #D90429;
+                border: none;
+                box-sizing: border-box;
+                box-shadow: 0 8px 18px -8px #D90429;
+                transition: all .2s ease-in-out;
+                align-self:center
+            }
 
-
-@*@model RosBets.Models.User
-
-@{
-    ViewBag.Title = "Личный кабинет";
-}*@
-<body>
-    <div id="back-layer">
-        <div class="background-main"></div>
-            @using (Html.BeginForm("Details", "User", FormMethod.Post))
-            {
-                <h2>Личный кабинет</h2>
-                @*<table>
-                        <tr><a href="~/Account/Details/@Model.Id">Личная информация  </a></tr>
-                        <tr>     </tr>
-                        <tr><a href="~/Account/Story/@Model.Id">   История пари</a></tr>
-                    </table>*@
-
-                <a href="~/Account/Details/@Model.Id">Личная информация  </a>
-                <a href="~/Account/Story/@Model.Id">   История пари</a>
-                <h4>Личная информация</h4>
-
-                <dl class="dl-horizontal">
-
-                    <dt>Адрес электронной почты</dt>
-
-                    <dd>@Model.Mail</dd>
-
-                    <dt>Пароль</dt>
-
-                    <dd>@Model.Mail</dd>
-
-                    <dd>
-                        <a href="~/Account/ChangePassword/@Model.Id">Сменить пароль</a>
-                    </dd>
-
-                    <dt>Имя</dt>
-
-                    <dd>@Model.FirstName @Model.MiddleName @Model.LastName</dd>
-
-                    @*<dt>Дата рождения</dt>
-
-                        <dd>Сюда вставить дату рождения</dd>*@
-
-                    <dt>Контактная информация</dt>
-
-                    <dt>Город проживания</dt>
-
-                    <dd>@Model.City</dd>
-
-                    <dt>Мобильный телефон</dt>
-
-                    <dd>@Model.Phone</dd>
-
-                </dl>
-
-
-                <p>
-                    <a href="~/Home/Index">На главную</a>
-                </p>
+                a.ChangePass:hover {
+                    box-shadow: 0 8px 18px -3px #D90429;
                 }
-        </div>
+
+                /*a.ChangePass:active {
+                    background: rgb(33,147,90);
+                    box-shadow: 0 3px rgb(33,147,90) inset;
+                }*/
+        </style>
+</head>
+
+<body>
+    <div class="changepass-box container" id="back-layer">
+        @{Html.RenderAction("RenderHeader", "Home");}
+        <section class="login-index background-main">
+            <table class="table table-bordered table-line" id="ourtable">
+                <tr>
+                    <td rowspan="1" class="table-td">@Html.LabelFor(m => m.FirstName)</td>
+                    <td rowspan="1" class="table-td">@Model.FirstName</td>
+                </tr>
+                <tr>
+                    <td rowspan="1" class="table-td">@Html.LabelFor(m => m.LastName)</td>
+                    <td rowspan="1" class="table-td">@Model.LastName</td>
+                </tr>
+                <tr>
+                    <td rowspan="1" class="table-td">@Html.LabelFor(m => m.MiddleName)</td>
+                    <td rowspan="1" class="table-td">@Model.MiddleName</td>
+                </tr>
+                <tr>
+                    <td rowspan="1" class="table-td">@Html.LabelFor(m => m.Mail)</td>
+                    <td rowspan="1" class="table-td">@Model.Mail</td>
+                </tr>
+                <tr>
+                    <td rowspan="1" class="table-td">@Html.LabelFor(m => m.City)</td>
+                    <td rowspan="1" class="table-td">@Model.City</td>
+                </tr>
+                <tr>
+                    <td rowspan="1" class="table-td">@Html.LabelFor(m => m.Phone)</td>
+                    <td rowspan="1" class="table-td">@Model.Phone</td>
+                </tr>
+
+
+            </table>
+            </section>
     </div>
+    <div>
+        <a href="~/Account/ChangePassword/@Model.Id" class="ChangePass"> Изменить пароль </a>
+    </div>
+
+ 
+    @{Html.RenderPartial("footer");}
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval");
 </body>
 </html>
