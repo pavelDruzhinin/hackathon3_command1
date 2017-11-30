@@ -33,9 +33,12 @@ function createPr(bet)
     else if (bet.Success === false) { tempSuccess = 'проигрыш'; }
     else { tempSuccess = 'не определено'; }
 
-    return '<tr><th>' +
-        bet.MatchName + '</th><th>' + tempSuccess + '</th><th>' + bet.TotalCoefficient + '</th><td>' +
-        '</th><th>' + bet.Shortname + '</th><th>' + bet.MyDate +  '</th></tr>';
+    return '<tr><td rowspan="2" class="table-td">' +
+        bet.MatchName + '</td><td rowspan="2" class="table-td">' + bet.MyDate + '</td><td rowspan="2" class="table-td">' + tempSuccess + '</td><td rowspan="2" class="table-td">' +
+        '</td><td rowspan="2" class="table-td">' + bet.Shortname + '</td><td rowspan="2" class="table-td">' + bet.TotalCoefficient +  '</td></tr>';
 }
 
 
+//return '<tr><th>' +
+//    bet.MatchName + '</th><th>' + bet.MyDate + '</th><th>' + tempSuccess + '</th><td>' +
+//    '</th><th>' + bet.Shortname + '</th><th>' + bet.TotalCoefficient + '</th></tr>';
