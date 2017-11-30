@@ -15,7 +15,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/_registration-form.css")
             <style>
-            a.ChangePass {
+            a.MyButtoms {
                 margin: 20px 0 0 0;
                 line-height: 40px;
                 font-size: 1em;
@@ -32,11 +32,11 @@
                 align-self:center
             }
 
-                a.ChangePass:hover {
+                a.MyButtoms:hover {
                     box-shadow: 0 8px 18px -3px #D90429;
                 }
 
-                /*a.ChangePass:active {
+                /*a.MyButtoms:active {
                     background: rgb(33,147,90);
                     box-shadow: 0 3px rgb(33,147,90) inset;
                 }*/
@@ -74,12 +74,17 @@
                 </tr>
 
 
+
             </table>
+            <div>
+                <a href="~/Account/ChangePassword/@Model.Id" class="MyButtoms"> Изменить пароль </a>
+            </div>
+            <div>
+                <a href="~/Account/Story/@Model.Id" class="MyButtoms"> История пари </a>
+            </div>
             </section>
     </div>
-    <div>
-        <a href="~/Account/ChangePassword/@Model.Id" class="ChangePass"> Изменить пароль </a>
-    </div>
+   
 
  
     @{Html.RenderPartial("footer");}
