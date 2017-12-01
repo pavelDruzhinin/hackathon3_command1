@@ -50,7 +50,8 @@
 }
 
 .registration-form .form-btn,
-.login-form .form-btn {
+.login-form .form-btn,
+.account-box .btn {
     margin: 20px 0 0 0;
     line-height: 40px;
     font-size: 1em;
@@ -67,6 +68,7 @@
 }
 
 .registration-form .form-btn:hover,
-.login-form .form-btn:hover {
+.login-form .form-btn:hover,
+.account-box .btn:hover {
     box-shadow: 0 8px 18px -3px #D90429;
 }
