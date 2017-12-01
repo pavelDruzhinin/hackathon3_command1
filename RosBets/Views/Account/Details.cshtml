@@ -1,52 +1,19 @@
-﻿@{
-    Layout = null;
-}
-@model RosBets.Models.User
+﻿@model RosBets.Models.User
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Личный кабинет</title>
-    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Scripts/SearchHistory.js")
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/_registration-form.css")
-            <style>
-            a.MyButtoms {
-                margin: 20px 0 0 0;
-                line-height: 40px;
-                font-size: 1em;
-                padding: 0 20px 0 20px;
-                text-align: center;
-                color: #EDF2F4;
-                height: 40px;
-                border-radius: 40px;
-                background: #D90429;
-                border: none;
-                box-sizing: border-box;
-                box-shadow: 0 8px 18px -8px #D90429;
-                transition: all .2s ease-in-out;
-                align-self:center
-            }
-
-                a.MyButtoms:hover {
-                    box-shadow: 0 8px 18px -3px #D90429;
-                }
-
-                /*a.MyButtoms:active {
-                    background: rgb(33,147,90);
-                    box-shadow: 0 3px rgb(33,147,90) inset;
-                }*/
-        </style>
-</head>
-
-<body>
-    <div class="changepass-box container" id="back-layer">
-        @{Html.RenderAction("RenderHeader", "Home");}
-        <section class="login-index background-main">
+<section class="account-index background-main" ng-app="details" ng-init="tab = 1" ng-controller="PanelController as panel">
+    <div class="account-box container">
+        <h2>Личный кабинет</h2>
+        <div class="nav nav-pills">
+            <ul class="row">
+                <li ng-class="{active: panel.isSelected(1)}" class="col-md-6">
+                    <a ng-click="panel.selectTab(1)">Личная информация</a>
+                </li>
+                <li ng-class="{active: panel.isSelected(2)}" class="col-md-6">
+                    <a ng-click="panel.selectTab(2)">История ставок</a>
+                </li>
+            </ul>
+        </div>
+        <div ng-show="panel.isSelected(1)">
             <table class="table table-bordered table-line" id="ourtable">
                 <tr>
                     <td rowspan="1" class="table-td">@Html.LabelFor(m => m.FirstName)</td>
@@ -72,24 +39,16 @@
                     <td rowspan="1" class="table-td">@Html.LabelFor(m => m.Phone)</td>
                     <td rowspan="1" class="table-td">@Model.Phone</td>
                 </tr>
-
-
-
             </table>
-            <div>
-                <a href="~/Account/ChangePassword/@Model.Id" class="MyButtoms"> Изменить пароль </a>
+            <div class="account-buttons">
+                <a href="~/Account/ChangePassword/@Model.Id" class="btn col-md-6 col-sm-12">Изменить пароль</a>
+                <a href="~/Account/Story/@Model.Id" class="btn col-md-6 col-sm-12">История пари</a>
             </div>
-            <div>
-                <a href="~/Account/Story/@Model.Id" class="MyButtoms"> История пари </a>
-            </div>
-            </section>
+        </div>
+        <div ng-show="panel.isSelected(2)">
+            <p>История ставок</p>
+        </div>
     </div>
-   
-
- 
-    @{Html.RenderPartial("footer");}
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryval");
-</body>
-</html>
+</section>
+@Scripts.Render("~/Scripts/angular.min.js")
+@Scripts.Render("~/Scripts/details-ang.js")
