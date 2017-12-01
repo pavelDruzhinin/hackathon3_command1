@@ -35,5 +35,7 @@ namespace RosBets.Context
         public DbSet<News> News { get; set; }
         public DbSet<BetEventStatus> BetEventsStatus { get; set; }
 
+        public DbSet<CouponEvent> CouponEvents { get; set; }
+
     }
 }

@@ -196,6 +196,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\BetEvent.cs" />
     <Compile Include="Models\ChangePass.cs" />
+    <Compile Include="Models\Coupon.cs" />
+    <Compile Include="Models\CouponEvent.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\MatchEvent.cs" />
     <Compile Include="Models\News.cs" />
