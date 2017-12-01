@@ -140,6 +140,8 @@ namespace RosBets.Controllers
 
             else if (id == null) { return RedirectToAction("Login", "Account"); }
 
+            else { RedirectToAction("Index", "Home"); }
+
             return RedirectToAction("Details", "Account");
 
 
