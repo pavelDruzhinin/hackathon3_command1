@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RosBets.Context;
+using System.Security;
 
 namespace RosBets.Models
 {
@@ -35,7 +36,7 @@ namespace RosBets.Models
 
             if (couponEvent == null)
             {
-                couponEvent = new CouponEvent()
+                couponEvent = new CouponEvent
                 {
                     EventId = matchEvent.EventId,
                     MatchId = matchEvent.MatchId,
@@ -80,10 +81,12 @@ namespace RosBets.Models
         
         public float? GetCoefficient()
         {
-            float? totalCoefficient = db.CouponEvents
+            var coefficients = db.CouponEvents
                 .Where(c => c.Coupon == CouponId)
-                .Select(c =>c.Coefficient)
-                .Aggregate(1f, (a, b) => a * b);
+                .Select(c => c.Coefficient).ToArray();
+
+            float? totalCoefficient = coefficients.Aggregate(1f, (a, b) => a * b);
+
 
             return totalCoefficient;
 
@@ -93,14 +96,13 @@ namespace RosBets.Models
         {
             var couponEvents = GetCouponEvents();
             float totalCoefficient = 1f;
-
             foreach (var couponEvent in couponEvents)
             {
                 var betEvent = new BetEvent
                 {
                     BetId = bet.Id,
-                    EventId = couponEvent.EventId,
-                    MatchId = couponEvent.MatchId,
+                    EventId = (int)couponEvent.EventId,
+                    MatchId = (int)couponEvent.MatchId,
                     Coefficient = couponEvent.Coefficient,
                     BetEventStatusId = 4
                 };
@@ -109,6 +111,7 @@ namespace RosBets.Models
                 db.BetEvents.Add(betEvent);
             }
             bet.TotalCoefficient = totalCoefficient;
+            bet.Payout = bet.BetAmount * (decimal)totalCoefficient;
             db.SaveChanges();
             ClearCoupon();
 
@@ -125,7 +128,7 @@ namespace RosBets.Models
                 }
                 else
                 {
-                    Guid couponId = Guid.NewGuid();
+                    var couponId = Guid.NewGuid();
                     context.Session[SessionKey] = couponId.ToString();
                 }
             }

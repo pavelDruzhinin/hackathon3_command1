@@ -31,13 +31,6 @@ namespace RosBets.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult RenderCoupon()
-        {
-            var list = new List<string>();
-            return PartialView("right_column", list);
-        }
-
-        [ChildActionOnly]
         public ActionResult RenderHeader()
         {
             if (!User.Identity.IsAuthenticated)

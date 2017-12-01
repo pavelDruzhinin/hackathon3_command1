@@ -1,19 +1,20 @@
-﻿@model List<string>
+﻿@model RosBets.ViewModels.CouponViewModel
 
 <div class="right-menu-header">
     <h2>Купон</h2>
 </div>
 
-@if (Model.Count > 0)
+@if (Model.CouponEvents.Count > 0)
 {
-    foreach (var id in Model)
+    foreach (var couponEvent in Model.CouponEvents)
     {
         <div class="col coupon">
-            <i class="fa fa-times fa-coupon" aria-hidden="true" data-bind-id = "@id"></i>
-            <span class="championship-name coupon-span">Championship</span>
+            <i class="fa fa-times fa-coupon" aria-hidden="true" data-bind-id = "@($"{couponEvent.EventId}_{couponEvent.MatchId}")" data-event-id ="@couponEvent.Id"></i>
+@*            <span class="championship-name coupon-span">Championship</span>*@
             <span class="coefficient-name coupon-span float-span-left">Coefficient</span>
-            <span class="coefficient coupon-span float-span-right">0.00</span>
+            <span class="coefficient coupon-span float-span-right">@Model.TotalCoefficient</span>
             <span class="coupon-span clearfix"></span>            
         </div>
     }
+
 }

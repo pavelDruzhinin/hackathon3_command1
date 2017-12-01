@@ -13,11 +13,11 @@ namespace RosBets.Models
         public string Coupon { get; set; }
         
         [ForeignKey("MatchEvent"), Column(Order = 0)]
-        public int MatchId { get; set; }
+        public int? MatchId { get; set; }
         public Match Match { get; set; }
 
         [ForeignKey("MatchEvent"), Column(Order = 1)]
-        public int EventId { get; set; }
+        public int? EventId { get; set; }
         public Event Event { get; set; }
 
         public MatchEvent MatchEvent { get; set; }
