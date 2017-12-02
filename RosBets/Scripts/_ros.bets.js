@@ -6,7 +6,7 @@
     $("#" + ids.join(",#")).addClass("clicked");
 
     $(".table-td").click(addEvent);
-    $(".fa-coupon").click(removeEvent);
+    $(document).on("click", ".fa-coupon", removeEvent);
 });
 
 function addEvent() {
@@ -17,7 +17,7 @@ function addEvent() {
         type: "POST",
         dataType: "html",
         contentType: "application/json",
-        data: JSON.stringify({id}),
+        data: JSON.stringify({ id }),
         success: function (data) {
             $('.cupon-menu').html(data);
         }
@@ -26,13 +26,15 @@ function addEvent() {
 }
 
 function removeEvent() {
-    var id = this.dataset.eventId;
+    $("#" + $(this).attr("data-bind-id")).removeClass("clicked");
+    var id = $(this).attr("id");
+    console.log(id);
     $.ajax({
         url: "/Bet/RemoveFromCoupon",
         type: "POST",
         dataType: "html",
         contentType: "application/json",
-        data: JSON.stringify(id),
+        data: JSON.stringify({ id }),
         success: function (data) {
             $('.cupon-menu').html(data);
         }

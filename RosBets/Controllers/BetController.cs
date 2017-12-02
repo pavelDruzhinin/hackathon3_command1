@@ -46,12 +46,11 @@ namespace RosBets.Controllers
         }
 
         [HttpPost]
-        [ChildActionOnly]
-        public ActionResult RemoveFromCoupon(string id)
+        public ActionResult RemoveFromCoupon(int id)
         {
-            var couponEventId = int.Parse(id);
+//            var couponEventId = int.Parse(id);
             var coupon = Coupon.GetCoupon(HttpContext);
-            coupon.RemoveFromCoupon(couponEventId);
+            coupon.RemoveFromCoupon(id);
             var viewmodel = new CouponViewModel
             {
                 CouponEvents = coupon.GetCouponEvents(),

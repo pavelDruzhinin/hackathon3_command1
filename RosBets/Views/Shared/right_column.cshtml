@@ -9,12 +9,22 @@
     foreach (var couponEvent in Model.CouponEvents)
     {
         <div class="col coupon">
-            <i class="fa fa-times fa-coupon" aria-hidden="true" data-bind-id = "@($"{couponEvent.EventId}_{couponEvent.MatchId}")" data-event-id ="@couponEvent.Id"></i>
-@*            <span class="championship-name coupon-span">Championship</span>*@
-            <span class="coefficient-name coupon-span float-span-left">Coefficient</span>
-            <span class="coefficient coupon-span float-span-right">@Model.TotalCoefficient</span>
-            <span class="coupon-span clearfix"></span>            
+            <i class="fa fa-times fa-coupon" aria-hidden="true" data-bind-id = "@($"{couponEvent.EventId}_{couponEvent.MatchId}")" id ="@couponEvent.Id"></i>
+@*            $1$            <span class="championship-name coupon-span">Championship</span>#1#*@
+@*            <span class="coefficient-name coupon-span float-span-left">Коэффицент</span>*@
+@*            <span class="coefficient coupon-span float-span-right">0.00</span>*@
+            @*            <span class="coupon-span clearfix"></span>            *@
+            
+            @couponEvent.Match.MatchName <br/>
+            @couponEvent.Match.Date <br/>
+            @couponEvent.Event.FullName @couponEvent.Coefficient<br/>
+            
+
         </div>
     }
-
+    <div class="coupon-summary">
+        <hr/>
+        Общий коэффицент: @Model.TotalCoefficient
+    </div>
+    
 }

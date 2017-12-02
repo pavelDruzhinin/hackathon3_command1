@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -76,7 +77,11 @@ namespace RosBets.Models
 
         public List<CouponEvent> GetCouponEvents()
         {
-            return db.CouponEvents.Where(c => c.Coupon == CouponId).ToList();
+            return db.CouponEvents
+                .Where(c => c.Coupon == CouponId)
+                .Include(c=>c.Match)
+                .Include(c=>c.Event)
+                .ToList();
         }
         
         public float? GetCoefficient()
