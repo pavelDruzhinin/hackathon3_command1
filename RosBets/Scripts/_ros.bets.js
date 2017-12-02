@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿// coupon action start
+$(document).ready(function () {
     var ids = [];
     $(".fa-coupon").each(function () {
         ids.push(this.dataset.bindId);
@@ -40,3 +41,17 @@ function removeEvent() {
         }
     });
 }
+// coupon action end
+
+
+//fixed header action start
+
+$(window).load(function () { headerFix() });
+$(window).resize(function () { headerFix() });
+
+function headerFix() {
+    var headerHeight = $("#header").outerHeight() + "px";
+    $("section").css({ "padding-top": headerHeight });
+    console.log(headerHeight);
+};
+//fixed header action end
