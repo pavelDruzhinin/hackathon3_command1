@@ -99,7 +99,7 @@ namespace RosBets.Controllers
 
 
         [HttpGet]
-        public ActionResult Details(int? id)
+        public ActionResult Details()
         {
 
             if (!User.Identity.IsAuthenticated)
@@ -107,19 +107,13 @@ namespace RosBets.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            if (id == null)
+            var user = db.Users.FirstOrDefault(x => x.Mail == User.Identity.Name);
+            if (user == null)
             {
                 return RedirectToAction("Index", "Home");
             }
-
-            var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
-
-            if(id == existingUser.Id)
-            {
-                return View(existingUser);
-            }
-
-            return View(existingUser);
+           
+            return View(user);
         }
 
         [HttpGet]
