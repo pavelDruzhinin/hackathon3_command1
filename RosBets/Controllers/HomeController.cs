@@ -18,7 +18,8 @@ namespace RosBets.Controllers
 
         public ActionResult Index()
         {
-            var news = db.News.Max(x => x.Id);
+            News news = (from x in db.News
+                         select x).ToList().LastOrDefault();
 
             return View(news);
         }

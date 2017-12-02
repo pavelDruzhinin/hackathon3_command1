@@ -192,6 +192,10 @@
     <Compile Include="Migrations\201712012202422_BetEventCoeff.Designer.cs">
       <DependentUpon>201712012202422_BetEventCoeff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712021336119_NewsCaption.cs" />
+    <Compile Include="Migrations\201712021336119_NewsCaption.Designer.cs">
+      <DependentUpon>201712021336119_NewsCaption.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\RegUser.cs" />
     <Compile Include="Models\BetEventStatus.cs" />
@@ -329,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712012202422_BetEventCoeff.resx">
       <DependentUpon>201712012202422_BetEventCoeff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712021336119_NewsCaption.resx">
+      <DependentUpon>201712021336119_NewsCaption.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
