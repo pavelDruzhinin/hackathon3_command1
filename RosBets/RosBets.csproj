@@ -188,6 +188,10 @@
     <Compile Include="Migrations\201711291739414_betEventStatus.Designer.cs">
       <DependentUpon>201711291739414_betEventStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712012202422_BetEventCoeff.cs" />
+    <Compile Include="Migrations\201712012202422_BetEventCoeff.Designer.cs">
+      <DependentUpon>201712012202422_BetEventCoeff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\RegUser.cs" />
     <Compile Include="Models\BetEventStatus.cs" />
@@ -196,6 +200,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\BetEvent.cs" />
     <Compile Include="Models\ChangePass.cs" />
+    <Compile Include="Models\Coupon.cs" />
+    <Compile Include="Models\CouponEvent.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\MatchEvent.cs" />
     <Compile Include="Models\News.cs" />
@@ -210,6 +216,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Account\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CouponViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -287,7 +294,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\Bet\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
@@ -320,6 +326,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711291739414_betEventStatus.resx">
       <DependentUpon>201711291739414_betEventStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712012202422_BetEventCoeff.resx">
+      <DependentUpon>201712012202422_BetEventCoeff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
