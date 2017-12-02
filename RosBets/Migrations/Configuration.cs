@@ -633,17 +633,17 @@ namespace RosBets.Migrations
             );
 
             context.BetEvents.AddOrUpdate(
-                new BetEvent() { BetId = 1, EventId = 5, MatchId = 1,BetEventStatusId = 1},
+                new BetEvent() { BetId = 1, EventId = 5, MatchId = 1,BetEventStatusId = 1, Coefficient = 3.3f },
 
-                new BetEvent() { BetId = 2, EventId = 2, MatchId = 2, BetEventStatusId = 1 },
-                new BetEvent() { BetId = 2, EventId = 4, MatchId = 2, BetEventStatusId = 1 }, 
+                new BetEvent() { BetId = 2, EventId = 2, MatchId = 2, BetEventStatusId = 1, Coefficient = 3.4f,Total = 2.5f },
+                new BetEvent() { BetId = 2, EventId = 4, MatchId = 2, BetEventStatusId = 1, Coefficient = 5.65f }, 
 
-                new BetEvent() { BetId = 3, EventId = 6, MatchId = 7, BetEventStatusId = 2 },
+                new BetEvent() { BetId = 3, EventId = 6, MatchId = 7, BetEventStatusId = 2, Coefficient = 2.22f },
 
-                new BetEvent() { BetId = 4, EventId = 5, MatchId = 9, BetEventStatusId = 4 }, //6.33
-                new BetEvent() { BetId = 4, EventId = 2, MatchId = 9, BetEventStatusId = 1 }, //3.12
-                new BetEvent() { BetId = 4, EventId = 8, MatchId = 10, BetEventStatusId = 1 }, //3.2
-                new BetEvent() { BetId = 4, EventId = 4, MatchId = 11, BetEventStatusId = 4 } //3.22
+                new BetEvent() { BetId = 4, EventId = 5, MatchId = 9, BetEventStatusId = 4, Coefficient = 6.33f }, //6.33
+                new BetEvent() { BetId = 4, EventId = 2, MatchId = 9, BetEventStatusId = 1, Coefficient = 3.12f, Total = 1.5f }, //3.12
+                new BetEvent() { BetId = 4, EventId = 8, MatchId = 10, BetEventStatusId = 1, Coefficient = 3.2f, }, //3.2
+                new BetEvent() { BetId = 4, EventId = 4, MatchId = 11, BetEventStatusId = 4 , Coefficient = 3.22f } //3.22
 
             );
             #endregion

@@ -26,6 +26,7 @@ namespace RosBets.Models
         public int? BetEventStatusId { get; set; }
 
         public float Coefficient { get; set; }
+        public float? Total { get; set; }
 
     }
 }
