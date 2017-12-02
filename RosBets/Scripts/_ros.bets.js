@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿// coupon action start
+$(document).ready(function () {
     var ids = [];
     $(".table-td").click(postCoupon);
               
@@ -31,3 +32,17 @@ function deleteCoupon() {
     $("#" + this.dataset.bindId).toggleClass("clicked");
     postCoupon();
 }
+// coupon action end
+
+
+//fixed header action start
+
+$(window).load(function () { headerFix() });
+$(window).resize(function () { headerFix() });
+
+function headerFix() {
+    var headerHeight = $("#header").outerHeight() + "px";
+    $("section").css({ "padding-top": headerHeight });
+    console.log(headerHeight);
+};
+//fixed header action end

@@ -1,6 +1,7 @@
 ﻿
-.header {       
-    min-height: 70px;   
+.header {
+    min-height: 70px;
+    background-color: #2b2D42;
 }
 
 .header .line {
@@ -139,4 +140,12 @@
     position: absolute;
     top: 10px;
     right: 20px;
+}
+
+.fixedPosition {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 1000;
+    background-color: #2b2D42;
 }
