@@ -203,7 +203,6 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\RegUser.cs" />
     <Compile Include="Models\BetEventStatus.cs" />
-    <Compile Include="Models\BetSearch.cs" />
     <Compile Include="Models\Championship.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\BetEvent.cs" />
@@ -299,6 +298,7 @@
     <Content Include="Views\Money\Index.cshtml" />
     <Content Include="Scripts\_ros.bets.js" />
     <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Shared\_HistoryTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

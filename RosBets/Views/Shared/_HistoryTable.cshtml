@@ -1,0 +1,49 @@
+﻿@model List<RosBets.Models.Bet>
+
+@foreach (var bet in Model)
+{
+    <div class="toggle-list-header panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" href="#colapse_@bet.Id">
+            @if(bet.BetEvents.Count ==1 ){<span>Ординар</span>}else{<span>Экспресс</span> }
+                <span>от @bet.Date</span>
+                @if (bet.Success == null){<span>Не расчитано</span>}else if (bet.Success == true){<span>Успех</span>}else{<span>Провал</span>}
+                <span>@bet.BetAmount р.</span>
+                <span>Коэффицент: @bet.TotalCoefficient</span>
+                @if (bet.Success == true)
+                {
+                    <span>Выигрыш: @bet.Payout р.</span>
+                }
+            </a>
+        </h4>
+    </div>
+    <div id="colapse_@bet.Id" class="panel-collapse collapse toggle-list">
+        <ul class="list-group">
+            
+                <li class="list-group-item">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Матч</th>
+                            <th>Событие</th>
+                            <th>Результат</th>
+                            <th>Коэффицент</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var betEvent in bet.BetEvents)
+                        {
+                            <tr>
+                                <td>@betEvent.Match.MatchName</td>
+                                <td>@betEvent.Event.FullName</td>
+                                <td>@betEvent.BetEventStatus.Status</td>
+                                <td>@betEvent.Coefficient</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </li>
+            
+        </ul>
+    </div>
+}
