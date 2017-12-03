@@ -27,6 +27,7 @@
                             <th>Матч</th>
                             <th>Событие</th>
                             <th>Результат</th>
+                            <th>Успешность</th>
                             <th>Коэффицент</th>
                         </tr>
                         </thead>
@@ -37,6 +38,7 @@
                                 <td>@betEvent.Match.Championship.Name</td>
                                 <td>@betEvent.Match.MatchName</td>
                                 <td>@betEvent.Event.FullName @betEvent.Total</td>
+                                <td>@betEvent.Match.Team1Score - @betEvent.Match.Team2Score</td>
                                 <td>@betEvent.BetEventStatus.Status</td>
                                 <td>@betEvent.Coefficient</td>
                             </tr>
