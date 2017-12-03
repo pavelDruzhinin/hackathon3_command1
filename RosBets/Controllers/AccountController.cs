@@ -62,7 +62,7 @@ namespace RosBets.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Registration(User user)
+        public ActionResult Registration(RegUser user)
         {
             if (ModelState.IsValid)
             {
