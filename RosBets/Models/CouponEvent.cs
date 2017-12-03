@@ -23,6 +23,7 @@ namespace RosBets.Models
         public MatchEvent MatchEvent { get; set; }
 
         public float Coefficient { get; set; }
+        public float? Total { get; set; }
 
     }
 }

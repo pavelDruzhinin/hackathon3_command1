@@ -1,13 +1,8 @@
 ﻿
-@*@{
-    ViewBag.Title = "История пари";
-}
-@model RosBets.Models.BetSearch*@
 
 @{
     Layout = null;
 }
-@model RosBets.Models.BetSearch
 
 <!DOCTYPE html>
 <html>
@@ -27,14 +22,14 @@
         <section class="login-index background-main">
             <div class="login-box container">
                 <h2>История пари</h2>
-
+                
                 <div class="changepass-box container" id="back-layer" color="white">
-                        Тип пари:
-                        <select name="bets" id="bets">
-                            <option value="all" selected>Все</option>
-                            <option value="ordinary">Ординары</option>
-                            <option value="express">Экспрессы</option>
-                        </select>
+                    Тип пари:
+                    <select name="bets" id="bets">
+                        <option value="all" selected>Все</option>
+                        <option value="ordinary">Ординары</option>
+                        <option value="express">Экспрессы</option>
+                    </select>
                     
                     Результаты:
                     <select name="results" id="results">
@@ -46,6 +41,14 @@
 
                     <button name="show" id="show">показать</button>
                 </div>
+
+                <div class="panel-group toggle-block">
+                    <div id="historyTable" class="panel panel-default">
+                        @Html.Action("CategorySearch", "Account")
+                    </div>
+                </div>
+
+                <!--
 
                 <div>
                     <table class="table table-bordered table-line" id="ourtable">
@@ -59,9 +62,9 @@
 
                             </tr>
                         </thead>
-                        <tbody class="tbody" id="ourtable"><tr></tr></tbody>
+                        <tbody class="tbody" id="ourtable">@Html.Action("CategorySearch", "Account")></tbody>
                     </table>
-                </div>
+                </div>-->
             </div>
         </section>
     </div>

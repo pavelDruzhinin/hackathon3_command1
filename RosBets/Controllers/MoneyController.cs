@@ -17,40 +17,42 @@ namespace RosBets.Controllers
 
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult WorkWithMoney()
-        {
             if (!User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Account");
             }
             return View();
         }
 
         [HttpPost]
-        public ActionResult WorkWithMoney(decimal Money,string action)
-        {
+        public ActionResult Index(decimal? Money,string action)
+        { 
             var user = db.Users.Where(u => u.Mail == User.Identity.Name).FirstOrDefault();
-            if (ModelState.IsValid)
+            if (Money != null)
             {
-                if (action == "put")
-                {
-                    user.Money += Money;
-                    db.SaveChanges();
+                if (Money > 0) {
+                    if (ModelState.IsValid)
+                    {
+                        if (action == "put")
+                        {
+                            user.Money += (decimal)Money;
+                            db.SaveChanges();
+                        }
+                        else
+                        if (Money <= user.Money && action == "pick")
+                        {
+                            user.Money -= (decimal)Money;
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Неверная сумма для вывода");
+                        }
+                    }
                 }
-                else
-                if (Money <= user.Money && action == "pick")
-                {
-                    user.Money -= Money;
-                    db.SaveChanges();
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Неверная сумма для вывода");
-                }
+                else { ModelState.AddModelError("", "Введено отрицательное число"); }
             }
+            else { ModelState.AddModelError("", "Введены некорректные символы"); }
             return View(user);
         } 
     }

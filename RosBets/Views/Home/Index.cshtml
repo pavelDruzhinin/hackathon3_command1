@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "RosBets";    
 }
+@model RosBets.Models.News
 
 <div class="main-image-box">
     <div class="info">
@@ -9,6 +10,12 @@
     <div class="main-image">
         <img class="img-responsive" src="~/Content/img/main.jpg"/>
     </div>
+    <div class="current-news">
+        <p><strong>ПАРИ ДНЯ</strong></p>
+        <p>@Model.Caption</p>
+        <p>@Html.Raw(Model.Text)</p>
+    </div>
+
 </div>
 
             
