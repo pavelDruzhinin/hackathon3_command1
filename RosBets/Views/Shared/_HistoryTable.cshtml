@@ -10,10 +10,9 @@
                 @if (bet.Success == null){<span>Не расчитано</span>}else if (bet.Success == true){<span>Успех</span>}else{<span>Провал</span>}
                 <span>@bet.BetAmount р.</span>
                 <span>Коэффицент: @bet.TotalCoefficient</span>
-                @if (bet.Success == true)
-                {
+                
                     <span>Выигрыш: @bet.Payout р.</span>
-                }
+                
             </a>
         </h4>
     </div>
@@ -24,6 +23,7 @@
                     <table class="table">
                         <thead>
                         <tr>
+                            <th>Чемпионат</th>
                             <th>Матч</th>
                             <th>Событие</th>
                             <th>Результат</th>
@@ -34,8 +34,9 @@
                         @foreach (var betEvent in bet.BetEvents)
                         {
                             <tr>
+                                <td>@betEvent.Match.Championship.Name</td>
                                 <td>@betEvent.Match.MatchName</td>
-                                <td>@betEvent.Event.FullName</td>
+                                <td>@betEvent.Event.FullName @betEvent.Total</td>
                                 <td>@betEvent.BetEventStatus.Status</td>
                                 <td>@betEvent.Coefficient</td>
                             </tr>

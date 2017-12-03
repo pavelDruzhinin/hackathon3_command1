@@ -214,6 +214,7 @@ namespace RosBets.Controllers
                 .Include(x=>x.BetEvents.Select(e=>e.BetEventStatus))
                 .Include(x=>x.BetEvents.Select(e=>e.Event))
                 .Include(x=>x.BetEvents.Select((b=>b.Match)))
+                .Include(x=>x.BetEvents.Select(v=>v.Match.Championship))
                 .ToList();
             switch (type)
             {
