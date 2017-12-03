@@ -44,7 +44,7 @@ function removeEvent() {
 // coupon action end
 
 
-//fixed header action start
+//fixed header start
 
 $(window).load(function () { headerFix() });
 $(window).resize(function () { headerFix() });
@@ -52,6 +52,5 @@ $(window).resize(function () { headerFix() });
 function headerFix() {
     var headerHeight = $("#header").outerHeight() + "px";
     $("section").css({ "padding-top": headerHeight });
-    console.log(headerHeight);
 };
-//fixed header action end
+//fixed header end
