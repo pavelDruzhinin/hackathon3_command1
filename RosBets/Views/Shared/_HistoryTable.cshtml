@@ -1,0 +1,11 @@
+﻿@model List<RosBets.Models.Bet>
+    
+@foreach (var bet in Model)
+{
+    <tr>
+        <td>@bet.Date</td>
+        <td>@bet.Success</td>
+        <td>@bet.TotalCoefficient</td>
+        <td>@bet.BetAmount</td>
+    </tr>
+}
