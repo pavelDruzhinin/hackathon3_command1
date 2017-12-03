@@ -24,19 +24,10 @@
     text-align: center;
 }
 
-/*.coupon-championship{
-
-}
-.coupon-bet{
-
-}
-.coupon-somethihg{
-
-}*/
 .fa-coupon {
     position: absolute;
-    right: 10px;
-    top:10px;
+    right: 6px;
+    top:6px;
 }
 
 .fa-coupon:hover {
