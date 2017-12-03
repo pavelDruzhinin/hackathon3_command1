@@ -27,65 +27,14 @@
         <section class="login-index background-main">
             <div class="login-box container">
                 <h2>История пари</h2>
-
-                <div class="panel-group toggle-block">
-                    <div class="panel panel-default">
-                        @*@foreach (var sport in Model){*@
-                            <div class="toggle-list-header panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#colapse1">Ординар</a><!--kind of bet-->
-                                </h4>
-                            </div>
-                            <div id="colapse1" class="panel-collapse collapse toggle-list">
-                                <ul class="list-group">
-                                    <!--Bets list-->
-                                    @*@foreach (var championship in sport.Championships){*@
-                                        <li class="list-group-item">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Тип</th>
-                                                        <th>Матч</th>
-                                                        <th>Ставка</th>
-                                                        <th>Дата</th>
-                                                        <th>Результат</th>
-                                                        <th>Выигрыш</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Ординар</td>
-                                                        <td>Петрозаводск - Реал Мадрид</td>
-                                                        <td>5000000руб</td>
-                                                        <td>1.04.2018</td>
-                                                        <td>П1</td>
-                                                        <td>10000000000$</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Ординар</td>
-                                                        <td>Петрозаводск - Реал Мадрид</td>
-                                                        <td>5000000руб</td>
-                                                        <td>1.04.2018</td>
-                                                        <td>П1</td>
-                                                        <td>10000000000$</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </li>
-                                    @*}*@
-                                </ul>
-                            </div>
-                       @* }*@
-                    </div>
-                </div>
-
-                <!--<div class="changepass-box container" id="back-layer" color="white">
-                        Тип пари:
-                        <select name="bets" id="bets">
-                            <option value="all" selected>Все</option>
-                            <option value="ordinary">Ординары</option>
-                            <option value="express">Экспрессы</option>
-                        </select>
+                
+                <div class="changepass-box container" id="back-layer" color="white">
+                    Тип пари:
+                    <select name="bets" id="bets">
+                        <option value="all" selected>Все</option>
+                        <option value="ordinary">Ординары</option>
+                        <option value="express">Экспрессы</option>
+                    </select>
                     
                     Результаты:
                     <select name="results" id="results">
@@ -97,6 +46,14 @@
 
                     <button name="show" id="show">показать</button>
                 </div>
+
+                <div class="panel-group toggle-block">
+                    <div id="historyTable" class="panel panel-default">
+                        @Html.Action("CategorySearch", "Account")
+                    </div>
+                </div>
+
+                <!--
 
                 <div>
                     <table class="table table-bordered table-line" id="ourtable">
