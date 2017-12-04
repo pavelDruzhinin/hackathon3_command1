@@ -37,6 +37,11 @@ namespace RosBets.Models
 
             if (couponEvent == null)
             {
+                var sameMatchEvents = db.CouponEvents.Where(x => x.MatchId == matchEvent.MatchId);
+                if (sameMatchEvents.Any())
+                {
+                    db.CouponEvents.RemoveRange(sameMatchEvents);
+                }
                 couponEvent = new CouponEvent
                 {
                     EventId = matchEvent.EventId,
