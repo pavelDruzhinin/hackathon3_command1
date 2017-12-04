@@ -42,13 +42,14 @@
             </table>
             <div class="account-buttons">
                 <a href="~/Account/ChangePassword/@Model.Id" class="btn col-md-6 col-sm-12">Изменить пароль</a>
-                <a href="~/Account/Story/@Model.Id" class="btn col-md-6 col-sm-12">История пари</a>
+                <!--<a href="~/Account/Story/@Model.Id" class="btn col-md-6 col-sm-12">История пари</a>-->
             </div>
         </div>
-        <div ng-show="panel.isSelected(2)">
-            <p>История ставок</p>
+        <div ng-show="panel.isSelected(2)">            
+            @{Html.RenderPartial("story");}
         </div>
     </div>
 </section>
 @Scripts.Render("~/Scripts/angular.min.js")
 @Scripts.Render("~/Scripts/details-ang.js")
+@Scripts.Render("~/Scripts/SearchHistory.js")
