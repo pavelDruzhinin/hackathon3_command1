@@ -8,6 +8,8 @@ $(document).ready(function () {
 
     $(".table-td").click(addEvent);
     $(document).on("click", ".fa-coupon", removeEvent);
+    $(document).on("click", ".submitExpress", createExpress);
+    $(document).on("click", ".submitOrdinary", createOrdinary);
 });
 
 function addEvent() {
@@ -37,6 +39,35 @@ function removeEvent() {
         dataType: "html",
         contentType: "application/json",
         data: JSON.stringify({ id }),
+        success: function (data) {
+            $('.cupon-menu').html(data);
+        }
+    });
+}
+
+function createExpress() {
+    var value = $("#expressBetValue").serialize();
+    console.log(value);
+    $.ajax({
+        url: "/Bet/CreateBet",
+        type: "POST",
+        dataType: "html",
+        data: value,
+        success: function (data) {
+            $('.cupon-menu').html(data);
+        }
+    });
+}
+
+function createOrdinary() {
+    var eventId = $(this).attr("data-id");
+    var values = $("#value_" + eventId).serialize() + "&couponEventId=" + eventId;
+    console.log(values);
+    $.ajax({
+        url: "/Bet/CreateBet",
+        type: "POST",
+        dataType: "html",
+        data: values,
         success: function (data) {
             $('.cupon-menu').html(data);
         }

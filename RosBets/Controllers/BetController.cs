@@ -48,9 +48,33 @@ namespace RosBets.Controllers
         [HttpPost]
         public ActionResult RemoveFromCoupon(int id)
         {
-//            var couponEventId = int.Parse(id);
             var coupon = Coupon.GetCoupon(HttpContext);
             coupon.RemoveFromCoupon(id);
+            var viewmodel = new CouponViewModel
+            {
+                CouponEvents = coupon.GetCouponEvents(),
+                TotalCoefficient = coupon.GetCoefficient()
+            };
+            return PartialView("right_column", viewmodel);
+        }
+
+        [HttpPost]
+        public ActionResult CreateBet(decimal amount, int? couponEventId)
+        {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
+
+            var coupon = Coupon.GetCoupon(HttpContext);
+            var user = db.Users.FirstOrDefault(x => x.Mail == User.Identity.Name);
+            var bet = new Bet
+            {
+                UserId = user.Id,
+                BetAmount = amount,
+                Date = DateTime.Now
+            };
+            db.Bets.Add(bet);
+            db.SaveChanges();
+            coupon.CreateBet(bet, couponEventId);
             var viewmodel = new CouponViewModel
             {
                 CouponEvents = coupon.GetCouponEvents(),
