@@ -1,0 +1,61 @@
+﻿.result-story {
+    margin-top: 5px;
+    margin-bottom: 50px;
+}
+
+.result-story .story-panel {  
+    border: 1px solid #ddd;
+    border-left: 10px solid #2B2D42;       
+    margin-top: 10px;    
+    color: #2B2D42;    
+}
+
+.result-story .story-panel .panel-body {
+    padding: 0;
+    border: none;   
+}
+
+.result-story .story-panel .panel-heading {
+    padding-left: 15px;
+    border: none;
+}
+.result-story .story-panel .panel-body .table {
+    padding: 0;  
+    margin: 0;
+}
+
+.result-story .story-panel .panel-body .table td,
+.result-story .story-panel .panel-body .table th {
+    border: 1px solid #ddd;
+}
+
+.result-story .story-panel .panel-body .table th:nth-of-type(1),
+.result-story .story-panel .panel-body .table td:nth-of-type(1) {
+    padding-left: 15px;    
+}
+
+.result-story .story-panel a {
+    color: #2B2D42;
+    font-size: .9em;  
+    text-decoration: none;    
+}
+
+.result-story .story-panel.success {
+    border-left: 10px solid #00B221;        
+}
+
+.result-story .story-panel span.success {
+    color: #00B221;        
+}
+
+.result-story .story-panel.defeat {    
+    border-left: 10px solid #D90429;
+}
+
+.result-story .story-panel span.defeat {
+    color: #D90429;        
+}
+
+.result-story .story-panel span.null {
+    color: #2B2D42;        
+}
