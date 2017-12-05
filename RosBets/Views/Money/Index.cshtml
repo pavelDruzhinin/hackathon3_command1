@@ -64,20 +64,20 @@
     </style>
 </head>
 <body>
-@using (Html.BeginForm("", "Money"))
+@using (Html.BeginForm("", "Money",FormMethod.Post,new{id="MoneyForm"}))
 {
     <div>
         @Html.ValidationSummary(true)
         @Html.TextBox("Money")
-        <input type="button" value="Внести" id="button1" onclick="checkTextBox(); modal1();"/>
-        <input type="button" value="Вывести" id="button2" onclick="checkTextBox(); modal2();" />
+        <input type="button" value="Внести" id="button1" onclick="checkTextBox(1);"/>
+        <input type="button" value="Вывести" id="button2" onclick="checkTextBox(2);" />
     </div>
     <div id="openModal" class="modalDialog">
         <div>
             <header>
                 <h2>Ввод денежных средств</h2>
             </header>
-            <a href="#close" title="Закрыть" class="close">X</a>
+            <a href="#close" title="Закрыть" class="close" onclick="checkTextBox()">X</a>
             <p>Вы уверены что хотите внести <span class="MoneyOut"></span> р. ?
             </p>
             <p><button type="submit" id="" name="action" value="put">Внести</button>
@@ -89,7 +89,7 @@
             <header>
                 <h2>Вывод денежных средств</h2>
             </header>
-            <a href="#close" title="Закрыть" class="close">X</a>
+            <a href="#close" title="Закрыть" class="close" onclick="checkTextBox()">X</a>
             <p>Вы уверены что хотите вывести <span class="MoneyOut"></span> р. ?
             </p>
             <p><button type="submit" id="pick" name="action" value="pick">Вывести</button>
@@ -101,21 +101,29 @@
 </html>
 @section Scripts{
     <script>
-        function checkTextBox() {
+        function checkTextBox(modal) {
             if ($('#Money').val() == '') {
                 alert('Введите сумму');
                 return false;
+            } else {
+                switch (modal) {
+                case 1:
+                {
+                    parent.location = '#openModal';
+                    break;
+                }
+                case 2:
+                {
+                    parent.location = '#openModal2';
+                    break;
+                }
+                }
             }
-        }
-
-        function modal1() {
-            parent.location = '#openModal';
             $('.MoneyOut').html($("#Money").val());
         }
 
-        function modal2() {
-            parent.location = '#openModal2';
-            $('.MoneyOut').html($("#Money").val());
+        window.onhashchange = function() {
+            history.pushState('', document.title, window.location.pathname);
         }
     </script>
 }
