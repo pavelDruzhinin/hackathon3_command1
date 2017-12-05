@@ -12,6 +12,7 @@ $(document).ready(function () {
 
 function addEvent() {
     $(this).toggleClass("clicked");
+    $(this).siblings().removeClass("clicked");
     var id = $(this).attr("id");
     $.ajax({
         url: "/Bet/AddToCoupon",
