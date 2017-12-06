@@ -3,7 +3,7 @@
 }
 @model  IEnumerable<RosBets.Models.Match>
 
-        <table class="table table-bordered table-line">
+        <table class="table table-line">
             <thead>
                 <tr>
                     <th>Дата</th>
@@ -26,7 +26,7 @@
                     <th>М</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="tbody-line">
                 @foreach (var match in Model)
                 {
                     @Html.Partial("_MatchInfo", match)

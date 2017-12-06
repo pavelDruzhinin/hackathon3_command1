@@ -45,6 +45,6 @@ namespace RosBets.Models
 
         public decimal Money { get; set; }
 
-        List<Bet> Bets { get; set; }
+        public List<Bet> Bets { get; set; }
     }
 }
