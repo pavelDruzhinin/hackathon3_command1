@@ -64,7 +64,7 @@
     </style>
 </head>
 <body>
-@using (Html.BeginForm("", "Money",FormMethod.Post,new{id="MoneyForm"}))
+@using (Html.BeginForm("", "Money",FormMethod.Post))
 {
     <div>
         @Html.ValidationSummary(true)
