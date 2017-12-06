@@ -32,9 +32,10 @@ namespace RosBets.Controllers
                         .ToList();
                     break;
                 case 3:
+                    DateTime currentTime = DateTime.Now.AddHours(1);
                     matches=db.Matches
                         .Include(x => x.MatchEvents)
-                        .Where(x => x.Date >= Convert.ToDateTime(DateTime.Now.ToString("HH:mm:ss tt zz")) && x.Date==DateTime.Today)
+                        .Where(x => x.Date >= currentTime && x.Date==DateTime.Today)
                         .ToList();
                     break;
             }
