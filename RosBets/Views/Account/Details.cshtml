@@ -14,41 +14,43 @@
             </ul>
         </div>
         <div ng-show="panel.isSelected(1)">
-            <table class="table table-bordered table-line" id="ourtable">
+            <table class="table table-bordered table-line" id="urtable">
                 <tr>
-                    <td rowspan="1" class="table-td">@Html.LabelFor(m => m.FirstName)</td>
-                    <td rowspan="1" class="table-td">@Model.FirstName</td>
+                    <td rowspan="1">@Html.LabelFor(m => m.FirstName)</td>
+                    <td rowspan="1"> Model.FirstName</td>
                 </tr>
                 <tr>
-                    <td rowspan="1" class="table-td">@Html.LabelFor(m => m.LastName)</td>
-                    <td rowspan="1" class="table-td">@Model.LastName</td>
+                    <td rowspan="1">@Html.LabelFor(m => m.LastName)</td>
+                    <td rowspan="1">@Model.LastName</td>
                 </tr>
                 <tr>
-                    <td rowspan="1" class="table-td">@Html.LabelFor(m => m.MiddleName)</td>
-                    <td rowspan="1" class="table-td">@Model.MiddleName</td>
+                    <td rowspan="1">@Html.LabelFor(m => m.MiddleName)</td>
+                    <td rowspan="1">@Model.MiddleName</td>
                 </tr>
                 <tr>
-                    <td rowspan="1" class="table-td">@Html.LabelFor(m => m.Mail)</td>
-                    <td rowspan="1" class="table-td">@Model.Mail</td>
+                    <td rowspan="1">@Html.LabelFor(m => m.Mail)</td>
+                    <td rowspan="1">@Model.Mail</td>
                 </tr>
                 <tr>
-                    <td rowspan="1" class="table-td">@Html.LabelFor(m => m.City)</td>
-                    <td rowspan="1" class="table-td">@Model.City</td>
+                    <td rowspan="1">@Html.LabelFor(m => m.City)</td>
+                    <td rowspan="1">@Model.City</td>
                 </tr>
                 <tr>
-                    <td rowspan="1" class="table-td">@Html.LabelFor(m => m.Phone)</td>
-                    <td rowspan="1" class="table-td">@Model.Phone</td>
+                    <td rowspan="1">@Html.LabelFor(m => m.Phone)</td>
+                    <td rowspan="1">@Model.Phone</td>
                 </tr>
             </table>
             <div class="account-buttons">
                 <a href="~/Account/ChangePassword/@Model.Id" class="btn col-md-6 col-sm-12">Изменить пароль</a>
-                <a href="~/Account/Story/@Model.Id" class="btn col-md-6 col-sm-12">История пари</a>
+                <!--<a href="~/Account/Story/@Model.Id" class="btn col-md-6 col-sm-12">История пари</a>-->
             </div>
         </div>
-        <div ng-show="panel.isSelected(2)">
-            <p>История ставок</p>
+        <div ng-show="panel.isSelected(2)">            
+            @{Html.RenderPartial("story");}
         </div>
     </div>
 </section>
+@Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/Scripts/angular.min.js")
 @Scripts.Render("~/Scripts/details-ang.js")
+@Scripts.Render("~/Scripts/SearchHistory.js")

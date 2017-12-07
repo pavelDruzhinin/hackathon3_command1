@@ -2,51 +2,60 @@
 
 @foreach (var bet in Model)
 {
-    <div class="toggle-list-header panel-heading">
-        <h4 class="panel-title">
-            <a data-toggle="collapse" href="#colapse_@bet.Id">
-            @if(bet.BetEvents.Count ==1 ){<span>Ординар</span>}else{<span>Экспресс</span> }
-                <span>от @bet.Date</span>
-                @if (bet.Success == null){<span>Не расчитано</span>}else if (bet.Success == true){<span>Успех</span>}else{<span>Провал</span>}
-                <span>@bet.BetAmount р.</span>
-                <span>Коэффицент: @bet.TotalCoefficient</span>
-                
-                    <span>Выигрыш: @bet.Payout р.</span>
-                
-            </a>
-        </h4>
-    </div>
-    <div id="colapse_@bet.Id" class="panel-collapse collapse toggle-list">
-        <ul class="list-group">
-            
-                <li class="list-group-item">
-                    <table class="table">
+    var cl = (bet.Success == true && bet.Success != null) ? "success" : "defeat";
+    if (bet.Success == null) { cl = "null"; }
+    <div class="panel-group story-panel @cl">
+        <div id="historyTable" class="panel panel-default">
+            <div class="toggle-list-header panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#colapse_@bet.Id">
+                        @if (bet.BetEvents.Count == 1)
+                {<span>Ординар</span>}
+                else
+                {<span>Экспресс</span> }
+                        <span>от @bet.Date</span>
+                        @* @if (bet.Success == null)
+                            {<span class="null">Не расчитано</span>}
+                            else if (bet.Success == true)
+                            {<span class="success">Успех</span>}
+                            else
+                            {<span class="defeat">Провал</span>}
+                                    <span>@bet.BetAmount р.</span>
+                                    <span>Коэффицент: @bet.TotalCoefficient</span>
+                        *@
+                        <span>Выигрыш: @bet.Payout р.</span>
+                    </a>
+                </h4>
+            </div>
+            <div id="colapse_@bet.Id" class="panel-collapse collapse toggle-list">
+                <div class="panel-body">
+                    <table class="table" id="ourtable">
                         <thead>
-                        <tr>
-                            <th>Чемпионат</th>
-                            <th>Матч</th>
-                            <th>Событие</th>
-                            <th>Результат</th>
-                            <th>Успешность</th>
-                            <th>Коэффицент</th>
-                        </tr>
+                            <tr>
+                                <th>Чемпионат</th>
+                                <th>Матч</th>
+                                <th>Событие</th>
+                                <th>Результат</th>
+                                <th>Успешность</th>
+                                <th>Коэффицент</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        @foreach (var betEvent in bet.BetEvents)
-                        {
-                            <tr>
-                                <td>@betEvent.Match.Championship.Name</td>
-                                <td>@betEvent.Match.MatchName</td>
-                                <td>@betEvent.Event.FullName @betEvent.Total</td>
-                                <td>@betEvent.Match.Team1Score - @betEvent.Match.Team2Score</td>
-                                <td>@betEvent.BetEventStatus.Status</td>
-                                <td>@betEvent.Coefficient</td>
-                            </tr>
-                        }
+                            @foreach (var betEvent in bet.BetEvents)
+                            {
+                                <tr>
+                                    <td>@betEvent.Match.Championship.Name</td>
+                                    <td>@betEvent.Match.MatchName</td>
+                                    <td>@betEvent.Event.FullName @betEvent.Total</td>
+                                    <td>@betEvent.Match.Team1Score - @betEvent.Match.Team2Score</td>
+                                    <td>@betEvent.BetEventStatus.Status</td>
+                                    <td>@betEvent.Coefficient</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
-                </li>
-            
-        </ul>
+                </div>
+            </div>
+        </div>
     </div>
 }

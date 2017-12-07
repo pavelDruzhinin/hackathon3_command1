@@ -1,78 +1,26 @@
 ﻿
-
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>История пари</title>
-    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Scripts/SearchHistory.js")
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-
-<body>
-    <div class="changepass-box container" id="back-layer">
-        @{Html.RenderAction("RenderHeader", "Home");}
-        <section class="login-index background-main">
-            <div class="login-box container">
-                <h2>История пари</h2>
-                
-                <div class="changepass-box container" id="back-layer" color="white">
-                    Тип пари:
-                    <select name="bets" id="bets">
-                        <option value="all" selected>Все</option>
-                        <option value="ordinary">Ординары</option>
-                        <option value="express">Экспрессы</option>
-                    </select>
-                    
-                    Результаты:
-                    <select name="results" id="results">
-                        <option value="all" selected>Все</option>
-                        <option value="positive">Положительные</option>
-                        <option value="negative">Отрицательные</option>
-                        <option value="awaiting">Ожидающие ответа</option>
-                    </select>
-
-                    <button name="show" id="show">показать</button>
-                </div>
-
-                <div class="panel-group toggle-block">
-                    <div id="historyTable" class="panel panel-default">
-                        @Html.Action("CategorySearch", "Account")
-                    </div>
-                </div>
-
-                <!--
-
-                <div>
-                    <table class="table table-bordered table-line" id="ourtable">
-                        <thead>
-                            <tr>
-                                <td rowspan="1" class="table-td">Матч</td>
-                                <td rowspan="1" class="table-td">Дата</td>
-                                <td rowspan="1" class="table-td">Статус</td>
-                                <td rowspan="1" class="table-td">Тип</td>
-                                <td rowspan="1" class="table-td">Коэффициент</td>
-
-                            </tr>
-                        </thead>
-                        <tbody class="tbody" id="ourtable">@Html.Action("CategorySearch", "Account")></tbody>
-                    </table>
-                </div>-->
-            </div>
-        </section>
+<div class="filter-box container">
+    <div class="bar col-md-4">
+        <label for="bets">Тип пари:</label>
+        <select name="bets" id="bets">
+            <option value="all" selected>Все</option>
+            <option value="ordinary">Ординары</option>
+            <option value="express">Экспрессы</option>
+        </select>
     </div>
-
-    @{Html.RenderPartial("footer");}
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryval");
-  
-</body>
-</html>
+    <div class="bar col-md-4">
+        <label for="results">Результаты:</label>
+        <select name="results" id="results">
+            <option value="all" selected>Все</option>
+            <option value="positive">Положительные</option>
+            <option value="negative">Отрицательные</option>
+            <option value="awaiting">Ожидающие ответа</option>
+        </select>
+    </div>
+    <div class="bar col-md-4">
+        <button class="btn-filter" name="show" id="show">показать</button>
+    </div>
+</div>
+<div class="result-story" id="result-story">
+    @Html.Action("CategorySearch", "Account")
+</div>
