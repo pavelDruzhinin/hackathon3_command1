@@ -79,11 +79,29 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -160,6 +178,10 @@
     <Compile Include="Controllers\BetController.cs" />
     <Compile Include="Controllers\LineController.cs" />
     <Compile Include="Controllers\MoneyController.cs" />
+    <Compile Include="Hubs\CouponHub.cs" />
+    <Compile Include="Hubs\EventsHub.cs" />
+    <Compile Include="Hubs\LineHub.cs" />
+    <Compile Include="Hubs\MatchesHub.cs" />
     <Compile Include="Migrations\201711241800405_FixingMigrations.cs" />
     <Compile Include="Migrations\201711241800405_FixingMigrations.Designer.cs">
       <DependentUpon>201711241800405_FixingMigrations.cs</DependentUpon>
@@ -209,9 +231,12 @@
     <Compile Include="Models\ChangePass.cs" />
     <Compile Include="Models\Coupon.cs" />
     <Compile Include="Models\CouponEvent.cs" />
+    <Compile Include="Models\DbContextExtensions.cs" />
+    <Compile Include="Models\EntityBase.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\MatchEvent.cs" />
     <Compile Include="Models\News.cs" />
+    <Compile Include="Models\ObjectQueryExtensions.cs" />
     <Compile Include="Models\RosBetsContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -223,6 +248,12 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Account\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerNotifier\NotifierEntity.cs" />
+    <Compile Include="SqlServerNotifier\NotifierEntityExtentions.cs" />
+    <Compile Include="SqlServerNotifier\PushSqlDependency.cs" />
+    <Compile Include="SqlServerNotifier\SqlDependencyRegister.cs" />
+    <Compile Include="SqlServerNotifier\SqlNotificationEventHandler.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CouponViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -254,6 +285,8 @@
     <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ChangePass.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
     <Content Include="Scripts\RegisterUser.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -299,6 +332,7 @@
     <Content Include="Scripts\_ros.bets.js" />
     <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Shared\_HistoryTable.cshtml" />
+    <Content Include="Views\Line\_LineTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
