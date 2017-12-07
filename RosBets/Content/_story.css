@@ -1,4 +1,52 @@
-﻿.result-story {
+﻿.filter-box {
+    margin-top: 20px;
+}
+
+.filter-box.container {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.filter-box .bar {
+    height: 60px;
+    background: transparent;       
+}
+
+.filter-box label {
+    //color: #EDF2F4;
+    display: block;
+    //height: 20px;
+}
+
+.filter-box select {
+    border: 1px solid #ddd;
+    height: 30px;
+}
+
+.filter-box .btn-filter {
+    text-align: center;
+    display: inline-block;
+    line-height: 40px;
+    vertical-align: middle;
+    font-weight: 500;
+    color: #EDF2F4;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    height: 60px;
+    background: transparent;
+    background: #EF233C;
+    border: none;
+    border-left: 1px solid #EDF2F4;
+    border-right: 1px solid #EDF2F4;
+    width: 100%;
+}
+
+.filter-box .btn-filter:hover {
+    background: #2B2D42;
+}
+
+.result-story {
     margin-top: 5px;
     margin-bottom: 50px;
 }

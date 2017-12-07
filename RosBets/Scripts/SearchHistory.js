@@ -14,7 +14,7 @@
                 var newHtml = response.map(function (el) {
                     return createPr(el);
                 }).join("");
-                $('#ourtable tbody').html(newHtml);
+                $('#ourtable tbody').html(newHtml);                
             },
             error: function (response) {
                 console.log(response);
@@ -33,8 +33,8 @@ function createPr(bet)
     else if (bet.Success === false) { tempSuccess = 'проигрыш'; }
     else { tempSuccess = 'не определено'; }
 
-    return '<tr><td rowspan="1" class="table-td">' +
-        bet.MatchName + '</td><td rowspan="1" class="table-td">' + bet.MyDate + '</td><td rowspan="1" class="table-td">' + tempSuccess + 
-        '</td><td rowspan="1" class="table-td">' + bet.Shortname + '</td><td rowspan="1" class="table-td">' + bet.TotalCoefficient +  '</td></tr>';
+    return '<tr><td rowspan="1">' +
+        bet.MatchName + '</td><td rowspan="1">' + bet.MyDate + '</td><td rowspan="1">' + tempSuccess + 
+        '</td><td rowspan="1">' + bet.Shortname + '</td><td>' + bet.TotalCoefficient +  '</td></tr>';
 }
 
