@@ -240,6 +240,7 @@
     <Content Include="Content\_right_column.css" />
     <Content Include="Content\_header.css" />
     <Content Include="Content\_main-page.css" />
+    <Content Include="Content\_story.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

@@ -28,16 +28,18 @@ namespace RosBets.Controllers
                 case 2:
                     matches = db.Matches
                         .Include(x => x.MatchEvents)
-                        .Where(x => x.Date == DateTime.Now)
+                        .Where(x => x.Date == DateTime.Today)
                         .ToList();
                     break;
                 case 3:
-                    DateTime currentTime = DateTime.Now.AddHours(1);
+                    DateTime NextHour = DateTime.Now.AddHours(1);
                     matches=db.Matches
                         .Include(x => x.MatchEvents)
-                        .Where(x => x.Date >= currentTime && x.Date==DateTime.Today)
+                        .Where(x => x.Date >= DateTime.Now && x.Date<=NextHour)
                         .ToList();
                     break;
+                default:
+                    return RedirectToAction("Index", "Home");
             }
             var sports = db.Sports
                 .Include(x => x.Championships)
