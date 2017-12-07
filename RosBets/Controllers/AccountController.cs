@@ -183,7 +183,9 @@ namespace RosBets.Controllers
                     return RedirectToAction("Details", "Account");
                 }
 
-                return RedirectToAction("Details", "Account");
+                ModelState.AddModelError("", "Неверный пароль");
+                return View();
+
             }
             return RedirectToAction("Index", "Home");
         }

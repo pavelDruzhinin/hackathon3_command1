@@ -34,7 +34,25 @@ namespace RosBets.Models
             var couponEvent = db.CouponEvents.SingleOrDefault(c => c.Coupon == CouponId
                      && c.MatchId == matchEvent.MatchId
                      && c.EventId == matchEvent.EventId);
-
+            float? totalValue = null;
+            switch (matchEvent.EventId)
+            {
+                case 2:
+                case 3:
+                    totalValue = db.MatchEvents
+                        .SingleOrDefault(x => x.MatchId == matchEvent.MatchId && x.EventId == 1).EventValue;
+                    break;
+                case 11:
+                case 12:
+                    totalValue = db.MatchEvents
+                        .SingleOrDefault(x => x.MatchId == matchEvent.MatchId && x.EventId == 10).EventValue;
+                    break;
+                case 14:
+                case 15:
+                    totalValue = db.MatchEvents
+                        .SingleOrDefault(x => x.MatchId == matchEvent.MatchId && x.EventId == 13).EventValue;
+                    break;
+            }
             if (couponEvent == null)
             {
                 var sameMatchEvents = db.CouponEvents.Where(x => x.MatchId == matchEvent.MatchId);
@@ -47,8 +65,10 @@ namespace RosBets.Models
                     EventId = matchEvent.EventId,
                     MatchId = matchEvent.MatchId,
                     Coefficient = matchEvent.EventValue,
-                    Coupon = CouponId
+                    Coupon = CouponId,
+                    Total = totalValue
                 };
+                
                 db.CouponEvents.Add(couponEvent);
             }
             else
@@ -85,6 +105,7 @@ namespace RosBets.Models
             return db.CouponEvents
                 .Where(c => c.Coupon == CouponId)
                 .Include(c=>c.Match)
+                .Include(c=>c.Match.Championship)
                 .Include(c=>c.Event)
                 .ToList();
         }
@@ -102,10 +123,20 @@ namespace RosBets.Models
 
         }
 
-        public int CreateBet(Bet bet)
+        public void CreateBet(Bet bet, int? couponEventId)
         {
-            var couponEvents = GetCouponEvents();
             float totalCoefficient = 1f;
+            List<CouponEvent> couponEvents = new List<CouponEvent>();
+
+            if (couponEventId != null)
+            {
+                couponEvents.Add(db.CouponEvents.SingleOrDefault(x=>x.Id==couponEventId));
+            }
+            else
+            {
+                couponEvents = GetCouponEvents();
+            }
+            
             foreach (var couponEvent in couponEvents)
             {
                 var betEvent = new BetEvent
@@ -114,18 +145,18 @@ namespace RosBets.Models
                     EventId = (int)couponEvent.EventId,
                     MatchId = (int)couponEvent.MatchId,
                     Coefficient = couponEvent.Coefficient,
-                    BetEventStatusId = 4
+                    BetEventStatusId = 4,
+                    Total = couponEvent.Total
                 };
                 totalCoefficient *= couponEvent.Coefficient;
 
                 db.BetEvents.Add(betEvent);
+                db.CouponEvents.Remove(couponEvent);
             }
             bet.TotalCoefficient = totalCoefficient;
             bet.Payout = bet.BetAmount * (decimal)totalCoefficient;
+            db.Entry(bet).State=EntityState.Modified;
             db.SaveChanges();
-            ClearCoupon();
-
-            return bet.Id;
         }
         
         public string GetCouponId(HttpContextBase context)
