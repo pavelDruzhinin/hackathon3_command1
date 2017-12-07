@@ -2,19 +2,16 @@
 @{
     ViewBag.Title = "";
 }
+@using System.Web.UI.WebControls
 @using RosBets.Models
 @model  RosBets.ViewModels.FilterLineViewModel
 
-@foreach (var sport in Model.Sports)
+@Html.ValidationSummary(true)
+@if (Model != null)
 {
+    foreach (var champs in Model.Championships)
+    {
     <table class="table table-bordered table-line">
-        <thead>
-        <tr >
-           <td colspan="14" align="center"> @sport.Name</td>
-        </tr>
-        </thead>
-        @foreach (var champs in sport.Championships)
-        {
             <thead>
             <tr>
                 <td colspan="14" align="center">
@@ -44,12 +41,12 @@
             </tr>
 
             </thead>
-            foreach (var match in Model.Matches.Where(x => x.ChampionshipId == champs.Id))
+            @foreach (var match in champs.Matches.Where(x => x.ChampionshipId == champs.Id))
             {
                 <tbody>
-                @Html.Partial("_MatchInfo", match);
+                @Html.Partial("_MatchInfo", match)
                 </tbody>
             }
-        }
     </table>
+    }
 }

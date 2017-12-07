@@ -5,7 +5,7 @@ namespace RosBets.ViewModels
 {
     public class FilterLineViewModel
     {
-        public IEnumerable<Sport> Sports { get; set; }
+        public IEnumerable<Championship> Championships { get; set; }
         public IEnumerable<Match> Matches { get; set; }
     }
 }
