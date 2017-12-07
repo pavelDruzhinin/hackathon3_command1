@@ -16,3 +16,7 @@
     color: #ffffff;
     background-color: #2b2D42;
 }
+.table-bordered > tbody > tr > .match-table-border {
+    border-bottom: 2px solid #dddddd;
+    padding: 0px;
+}

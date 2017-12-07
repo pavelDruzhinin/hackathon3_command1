@@ -20,6 +20,14 @@
     padding:0px;
     position:fixed;
     right:0px;
+    overflow-x:hidden;
+    overflow-y:auto;
+    max-height:700px;
+}
+@media only screen and (max-height:700px) {
+    .cupon-menu {
+        max-height: 500px;
+    }
 }
 @media only screen and (max-width:990px){
     .cupon-menu{
