@@ -10,11 +10,11 @@
             data: JSON.stringify(obj),
             contentType: 'application/json; charset=UTF-8',
             success: function (response) {
-                console.log(response);                
+                /*console.log(response);                
                 var newHtml = response.map(function (el) {
                     return createPr(el);
-                }).join("");
-                $('#ourtable tbody').html(newHtml);                
+                }).join("");*/
+                $('#result-story').html(response);      
             },
             error: function (response) {
                 console.log(response);
