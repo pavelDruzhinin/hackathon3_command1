@@ -10,10 +10,13 @@ namespace RosBets.Context
 {
     public class RosBetsContext : DbContext
     {
-        public RosBetsContext()
-            : base("name=RosBetsContext")
+        public RosBetsContext() : base("name=RosBetsContext")
         {
-           // Database.SetInitializer<RosBetsContext>(null);
+        }
+
+        public RosBetsContext(String sqlConnectionName) :
+            base($"Name={sqlConnectionName}")
+        {
         }
 
         public DbSet<Bet> Bets { get; set; }
