@@ -157,6 +157,12 @@ namespace RosBets.Controllers
                 
                 if ((changePass.OldPassword == existingUser.Password) & (changePass.Id == existingUser.Id)) 
                 {
+
+                    if (changePass.NewPassword != changePass.ConfirmNewPassword)
+                    {
+                        ModelState.AddModelError("NewPassword", "Пароли не совпадают");
+                        return View();
+                    }
                     
                     existingUser.Password = changePass.NewPassword;
                     db.Entry(existingUser).State = EntityState.Modified;
@@ -179,15 +185,18 @@ namespace RosBets.Controllers
                             }
                         }
                     }
+
                     
                     return RedirectToAction("Details", "Account");
                 }
 
-                ModelState.AddModelError("", "Неверный пароль");
+                ModelState.AddModelError("OldPassword", "Неверный пароль");
                 return View();
 
             }
-            return RedirectToAction("Index", "Home");
+            //ModelState.AddModelError("NewPassword", "Пароли не совпадают");
+            return View();
+            
         }
 
 

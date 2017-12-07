@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RosBets.Context;
+using RosBets.Models;
+using RosBets.SqlServerNotifier;
 
 namespace RosBets.Controllers
 {
@@ -23,11 +25,23 @@ namespace RosBets.Controllers
             {
                 var line = db.Matches
                     .Include(x => x.MatchEvents)
-                    .Where(m => m.Date > DateTime.Now && m.ChampionshipId == id)
-                    .ToList();
+                    .Where(m => m.Date > DateTime.Now && m.ChampionshipId == id);
 
-                return View(line);
+                ViewBag.MatchesNotifierEntity = db.GetNotifierEntity<Match>(db.Matches).ToJson();
+                ViewBag.MatchEventsNotifierEntity = db.GetNotifierEntity<MatchEvent>(db.MatchEvents).ToJson();
+
+                return View(line.ToList());
             }
+        }
+
+        public ActionResult RenderTable(int? id)
+        {
+            var line = db.Matches
+                .Include(x => x.MatchEvents)
+                .Where(m => m.Date > DateTime.Now && m.ChampionshipId == id);
+
+            ViewBag.NotifierEntity = db.GetNotifierEntity<Match>(line).ToJson();
+            return PartialView("_LineTable", line.ToList());
         }
     }
 }

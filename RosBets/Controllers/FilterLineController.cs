@@ -28,7 +28,7 @@ namespace RosBets.Controllers
                 case 2:
                     matches = db.Matches
                         .Include(x => x.MatchEvents)
-                        .Where(x => x.Date == DateTime.Today)
+                        .Where(x => x.Date.Value.Day == DateTime.Now.Day)
                         .ToList();
                     break;
                 case 3:
@@ -41,15 +41,18 @@ namespace RosBets.Controllers
                 default:
                     return RedirectToAction("Index", "Home");
             }
-            var sports = db.Sports
-                .Include(x => x.Championships)
+            var champ = db.Championships
                 .ToList();
             var view = new FilterLineViewModel()
             {
-                Sports = sports,
+                Championships = champ,
                 Matches = matches
             };
-            return View(view);
+            if (matches.Count != 0)
+            {
+                return View(view);
+            }
+            else { ModelState.AddModelError("","На данный момент нет матчей"); return View(); }
         }
     }
 }
