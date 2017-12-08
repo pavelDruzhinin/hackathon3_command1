@@ -38,36 +38,11 @@
 
     <script type="text/javascript">
 
-//        var matchesHubInitialized = false;
         var eventsHubInitialized = false;
-        var coeffs = [];
+
         $(function() {
-//            InitializeMatchHub();
             InitializeEventHub();
         });
-
-        function InitializeMatchHub() {
-
-            if (matchesHubInitialized)
-                return;
-
-            try {
-                var matchesHub = $.connection.matchesHub;
-
-                matchesHub.client.broadcastMessage = function(message) {
-                    if (message === "Refresh")
-                        ReloadMatches();
-                };
-
-                $.connection.hub.start().done(function() {
-                    matchesHub.server.initialize($("#MatchesNotifierEntity").val());
-                    matchesHubInitialized = true;
-                });
-
-            } catch (err) {
-                matchesHubInitialized = false;
-            }
-        };
 
         function InitializeEventHub() {
 
@@ -92,13 +67,8 @@
             }
         };
 
-//        function ReloadMatches() {
-//            alert("RELOAD MATCHES");
-//        }
-
         function ReloadMatchEvents() {
             var champId = @ViewBag.ChampId;
-//            console.log(JSON.stringify({ champId }));
             $.ajax({
                 url: "/Refresh/GetCoefficients",
                 type: "POST",

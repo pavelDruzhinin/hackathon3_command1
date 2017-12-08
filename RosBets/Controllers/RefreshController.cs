@@ -23,7 +23,7 @@ namespace RosBets.Controllers
                     s.EventId,
                     s.EventValue
                 });
-            return Json(matchEvents, JsonRequestBehavior.AllowGet);
+            return Json(matchEvents);
         }
     }
 }

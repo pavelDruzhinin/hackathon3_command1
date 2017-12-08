@@ -6,17 +6,12 @@ using System.Web;
 
 namespace RosBets.Models
 {
-    [Serializable]
-    [DataContract(IsReference = true)]
     public class Championship : EntityBase
     {
-        [DataMember]
         public int Id { get; set; }
 
-        [DataMember]
         public string Name { get; set; }
 
-        [DataMember]
         public int SportId { get; set; }
         public Sport Sport { get; set; }
 
