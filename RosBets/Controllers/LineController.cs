@@ -25,11 +25,11 @@ namespace RosBets.Controllers
             {
                 var line = db.Matches
                     .Include(x => x.MatchEvents)
-                    .Where(m => m.Date > DateTime.Now && m.ChampionshipId == id);
+                    .Where(m=> m.ChampionshipId == id);
 
-                ViewBag.MatchesNotifierEntity = db.GetNotifierEntity<Match>(db.Matches).ToJson();
+//                ViewBag.MatchesNotifierEntity = db.GetNotifierEntity<MatchEvent>(db.MatchEvents).ToJson();
                 ViewBag.MatchEventsNotifierEntity = db.GetNotifierEntity<MatchEvent>(db.MatchEvents).ToJson();
-
+                ViewBag.ChampId = id;
                 return View(line.ToList());
             }
         }
@@ -43,5 +43,7 @@ namespace RosBets.Controllers
             ViewBag.NotifierEntity = db.GetNotifierEntity<Match>(line).ToJson();
             return PartialView("_LineTable", line.ToList());
         }
+        
     }
+
 }

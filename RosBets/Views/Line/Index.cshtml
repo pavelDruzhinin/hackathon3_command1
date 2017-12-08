@@ -37,12 +37,12 @@
     <script src="~/signalr/hubs"></script>
 
     <script type="text/javascript">
-        
-        var matchesHubInitialized = false;
-        var eventsHubInitialized = false;
 
+//        var matchesHubInitialized = false;
+        var eventsHubInitialized = false;
+        var coeffs = [];
         $(function() {
-            InitializeMatchHub();
+//            InitializeMatchHub();
             InitializeEventHub();
         });
 
@@ -92,12 +92,41 @@
             }
         };
 
-        function ReloadMatches() {
-            alert("RELOAD MATCHES");
-        }
+//        function ReloadMatches() {
+//            alert("RELOAD MATCHES");
+//        }
 
         function ReloadMatchEvents() {
-            alert("RELOAD COEFFS");
+            var champId = @ViewBag.ChampId;
+//            console.log(JSON.stringify({ champId }));
+            $.ajax({
+                url: "/Refresh/GetCoefficients",
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify({ champId }),
+                success: function(data) {
+                    data.forEach(function(item) {
+                        var cell = $("#" + item.EventId + "_" + item.MatchId);
+                        if (cell.html() < item.EventValue) {
+                            cell.html(item.EventValue);
+                            cell.addClass("increased");
+                            cell.on("transitionend",
+                                function() {
+                                    $(this).removeClass("increased");
+                                });
+                        } else if (cell.html() > item.EventValue) {
+                            cell.html(item.EventValue);
+                            cell.addClass("decreased");
+                            cell.on("transitionend",
+                                function() {
+                                    $(this).removeClass("decreased");
+                                });
+                        }
+                    });
+                    console.log(data);
+                }
+            });
         }
 
     </script>
