@@ -68,6 +68,7 @@
 {
     <div>
         @Html.ValidationSummary(true)
+        <h2>Операции с денежными средствами</h2>
         @Html.TextBox("Money")
         <input type="button" value="Внести" id="button1" onclick="checkTextBox(1);"/>
         <input type="button" value="Вывести" id="button2" onclick="checkTextBox(2);" />
@@ -75,12 +76,12 @@
     <div id="openModal" class="modalDialog">
         <div>
             <header>
-                <h2>Ввод денежных средств</h2>
+                <h2>Внесение денежных средств</h2>
             </header>
             <a href="#close" title="Закрыть" class="close" onclick="checkTextBox()">X</a>
             <p>Вы уверены что хотите внести <span class="MoneyOut"></span> р. ?
             </p>
-            <p><button type="submit" id="" name="action" value="put">Внести</button>
+            <p><button type="submit" id="" name="action" value="put">Да</button>
             </p>
         </div>
     </div>
