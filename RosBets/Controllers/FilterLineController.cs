@@ -26,6 +26,8 @@ namespace RosBets.Controllers
                         .ToList();
                     break;
                 case 2:
+                    var Date = DateTime.Now;
+                    Date = Date.Date;
                     matches = db.Matches
                         .Include(x => x.MatchEvents)
                         .Where(x => x.Date.Value.Day == DateTime.Now.Day)

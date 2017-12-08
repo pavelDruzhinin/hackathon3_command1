@@ -11,8 +11,10 @@
 {
     foreach (var champs in Model.Championships)
     {
+        if (Model.Matches.Where(x => x.ChampionshipId == champs.Id).Count()!=0)
+        {
     <table class="table table-bordered table-line">
-            <thead>
+        <thead>
             <tr>
                 <td colspan="14" align="center">
                     @champs.Name
@@ -41,12 +43,13 @@
             </tr>
 
             </thead>
-            @foreach (var match in champs.Matches.Where(x => x.ChampionshipId == champs.Id))
+            @foreach (var match in Model.Matches.Where(x => x.ChampionshipId == champs.Id))
             {
                 <tbody>
                 @Html.Partial("_MatchInfo", match)
                 </tbody>
             }
     </table>
+            }
+        }
     }
-}
