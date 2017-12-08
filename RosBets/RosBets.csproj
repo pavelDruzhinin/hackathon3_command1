@@ -223,6 +223,10 @@
     <Compile Include="Migrations\201712021855287_BetEventTotal.Designer.cs">
       <DependentUpon>201712021855287_BetEventTotal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712081418371_Pay.cs" />
+    <Compile Include="Migrations\201712081418371_Pay.Designer.cs">
+      <DependentUpon>201712081418371_Pay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\RegUser.cs" />
     <Compile Include="Models\BetEventStatus.cs" />
@@ -238,6 +242,8 @@
     <Compile Include="Models\MatchEvent.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\ObjectQueryExtensions.cs" />
+    <Compile Include="Models\Pay.cs" />
+    <Compile Include="Models\PayModel.cs" />
     <Compile Include="Models\RosBetsContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -286,6 +292,7 @@
     </Content>
     <Content Include="Scripts\details-ang.js" />
     <Content Include="Scripts\angular.min.js.map" />
+    <None Include="Properties\PublishProfiles\Ros.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ChangePass.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.js" />
@@ -337,6 +344,7 @@
     <Content Include="Views\Shared\_HistoryTable.cshtml" />
     <Content Include="Views\Line\_LineTable.cshtml" />
     <Content Include="Views\FilterLine\Index.cshtml" />
+    <Content Include="Views\Money\DepositingMoney.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -382,6 +390,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712021855287_BetEventTotal.resx">
       <DependentUpon>201712021855287_BetEventTotal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712081418371_Pay.resx">
+      <DependentUpon>201712081418371_Pay.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

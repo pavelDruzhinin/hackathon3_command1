@@ -1,0 +1,18 @@
+﻿@model RosBets.Models.PayModel
+
+<h3>Внесение средств на счёт пользователя: @Model.Name</h3>
+<div>
+    <form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml">
+        <input name="label" value="@Model.PayId.ToString()" type="hidden">
+        <input name="receiver" value="41001828005417" type="hidden">
+        <input name="quickpay-form" value="shop" type="hidden">
+        <input type="hidden" name="targets" value="Внесение средств на счёт пользователя: @Model.Name">
+        <label for="sum">Сумма: </label><br />
+        <input name="sum" value="@Model.Sum" maxlength="10" data-type="number" type="text" readonly><br /><br />
+        <label for="sum">Способ оплаты: </label><br />
+        <input type="radio" name="paymentType" value="PC">Яндекс.Деньгами<br />
+        <input type="submit" name="submit-button" value="Оплатить">
+        <input name="successURL" value="http://rosbets-001-site1.htempurl.com/Money/Paid" type="hidden">
+        <input name="quickpay-back-url" value="http://rosbets-001-site1.htempurl.com/" type="hidden">
+    </form>
+</div>
