@@ -179,6 +179,7 @@
     <Compile Include="Controllers\FilterLineController.cs" />
     <Compile Include="Controllers\LineController.cs" />
     <Compile Include="Controllers\MoneyController.cs" />
+    <Compile Include="Controllers\RefreshController.cs" />
     <Compile Include="Hubs\CouponHub.cs" />
     <Compile Include="Hubs\EventsHub.cs" />
     <Compile Include="Hubs\LineHub.cs" />
@@ -342,6 +343,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Bet\" />
     <Folder Include="Views\Filter\" />
+    <Folder Include="Views\Refresh\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>

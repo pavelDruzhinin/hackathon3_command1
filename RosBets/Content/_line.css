@@ -20,3 +20,15 @@
     border-bottom: 2px solid #dddddd;
     padding: 0px;
 }
+
+.table-bordered > tbody > tr > td {
+    transition: background-color 300ms linear;
+}
+
+.table-bordered > tbody > tr > td.increased {
+    background-color: green
+}
+
+    .table-bordered > tbody > tr > td.decreased {
+        background-color: red
+    }
