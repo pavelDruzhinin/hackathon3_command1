@@ -23,7 +23,15 @@
                                     <span>@bet.BetAmount р.</span>
                                     <span>Коэффицент: @bet.TotalCoefficient</span>
                         *@
-                        <span>Выигрыш: @bet.Payout р.</span>
+                        @if (bet.Success == null)
+                        {
+                            <span> Возможный выигрыш: @bet.Payout р.</span>
+                        }
+                        @if (bet.Success != null)
+                        {
+                            <span> Выигрыш: @bet.Payout р.</span>
+                        }
+
                     </a>
                 </h4>
             </div>

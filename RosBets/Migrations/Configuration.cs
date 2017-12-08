@@ -647,7 +647,7 @@ namespace RosBets.Migrations
                 new Bet() { Id=1, UserId=1, Date=DateTime.Parse("18.11.2017"), BetAmount = 500, Success = true, TotalCoefficient = 3.3f, Payout = 1650m},
                 new Bet() { Id=2, UserId=1, Date=DateTime.Parse("20.11.2017"), BetAmount = 100, Success = true, TotalCoefficient = 19.21f, Payout = 1921m},
                 new Bet() { Id = 3, UserId = 1, Date = DateTime.Parse("25.11.2017"), BetAmount = 420, Success = false,TotalCoefficient = 2.22f, Payout = 0 }, //932.4m},
-                new Bet() { Id = 4, UserId = 1, Date = DateTime.Parse("25.11.2017"), BetAmount = 322, TotalCoefficient = 203.4998784f, Payout = null } //65526.9608448m }
+                new Bet() { Id = 4, UserId = 1, Date = DateTime.Parse("25.11.2017"), BetAmount = 322, TotalCoefficient = 203.4998784f, Payout = 65526.9608448m } //65526.9608448m }
             );
 
             context.BetEvents.AddOrUpdate(
