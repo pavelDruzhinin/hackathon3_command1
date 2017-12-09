@@ -268,6 +268,18 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\down-hill-skiing-winter-games.jpg" />
+    <Content Include="Content\img\1.jpg" />
+    <Content Include="Content\img\2.jpg" />
+    <Content Include="Content\img\3.jpg" />
+    <Content Include="Content\img\4.jpg" />
+    <Content Include="Content\img\5.jpg" />
+    <Content Include="Content\img\6.jpg" />
+    <Content Include="Content\img\7.jpg" />
+    <Content Include="Content\img\8.jpg" />
+    <Content Include="Content\img\long-arrow-right.png" />
+    <Content Include="Content\Johnson_MSU_no_gradient.jpg" />
+    <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\_account-details.css" />
     <Content Include="Content\_line.css" />
     <Content Include="Content\_readjustment_bootstrap.css" />
@@ -298,6 +310,7 @@
     <Content Include="Scripts\ChangePass.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
+    <Content Include="Scripts\owl.carousel.js" />
     <Content Include="Scripts\RegisterUser.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

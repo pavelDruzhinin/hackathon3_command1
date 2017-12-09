@@ -6,6 +6,7 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/owl.carousel.css")
 </head>
 <body>
     <div id="back-layer">
@@ -26,7 +27,19 @@
         @{Html.RenderPartial("footer");}
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/owl.carousel")
         @RenderSection("scripts", required: false)
     </div>
+    <script>
+    $(document).ready(function () {
+        $(".owl-carousel").owlCarousel({
+            loop: true,
+            nav: true,
+            items: 1,
+            navText: ["<img src='/Content/img/long-arrow-left.png'>", "<img src='/Content/img/long-arrow-right.png'>"],
+            pagination : true
+        });
+    });
+    </script>
 </body>
 </html>
