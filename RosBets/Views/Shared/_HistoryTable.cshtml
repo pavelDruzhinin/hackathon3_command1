@@ -39,19 +39,21 @@
                 <div class="panel-body">
                     <table class="table" id="ourtable">
                         <thead>
-                            <tr>
-                                <th>Чемпионат</th>
-                                <th>Матч</th>
-                                <th>Событие</th>
-                                <th>Результат</th>
-                                <th>Успешность</th>
-                                <th>Коэффицент</th>
-                            </tr>
+                        <tr>
+                            <th>Дата матча</th>
+                            <th>Чемпионат</th>
+                            <th>Матч</th>
+                            <th>Событие</th>
+                            <th>Результат</th>
+                            <th>Успешность</th>
+                            <th>Коэффицент</th>
+                        </tr>
                         </thead>
                         <tbody>
                             @foreach (var betEvent in bet.BetEvents)
                             {
                                 <tr>
+                                    <td>@betEvent.Match.Date</td>
                                     <td>@betEvent.Match.Championship.Name</td>
                                     <td>@betEvent.Match.MatchName</td>
                                     <td>@betEvent.Event.FullName @betEvent.Total</td>
