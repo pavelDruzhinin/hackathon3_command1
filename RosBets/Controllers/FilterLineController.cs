@@ -23,6 +23,7 @@ namespace RosBets.Controllers
                 case 1:
                     matches = db.Matches
                         .Include(x => x.MatchEvents)
+                        .Where(x=>x.Date>DateTime.Now)
                         .ToList();
                     break;
                 case 2:
@@ -30,14 +31,14 @@ namespace RosBets.Controllers
                     Date = Date.Date;
                     matches = db.Matches
                         .Include(x => x.MatchEvents)
-                        .Where(x => x.Date.Value.Day == DateTime.Now.Day)
+                        .Where(x => x.Date.Value.Day == DateTime.Now.Day && x.Date>DateTime.Now)
                         .ToList();
                     break;
-                case 3:
-                    DateTime NextHour = DateTime.Now.AddHours(1);
+                case 3: //ближайший час
+                    var NextHour = DateTime.Now.Hour + 1;
                     matches=db.Matches
                         .Include(x => x.MatchEvents)
-                        .Where(x => x.Date >= DateTime.Now && x.Date<=NextHour)
+                        .Where(x => (x.Date >= DateTime.Now && x.Date.Value.Hour<=NextHour) && x.Date>DateTime.Now)
                         .ToList();
                     break;
                 default:
