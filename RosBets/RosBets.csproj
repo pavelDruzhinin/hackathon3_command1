@@ -180,6 +180,7 @@
     <Compile Include="Controllers\LineController.cs" />
     <Compile Include="Controllers\MoneyController.cs" />
     <Compile Include="Controllers\RefreshController.cs" />
+    <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="Hubs\CouponHub.cs" />
     <Compile Include="Hubs\EventsHub.cs" />
     <Compile Include="Hubs\LineHub.cs" />
@@ -359,6 +360,7 @@
     <Content Include="Views\Line\_LineTable.cshtml" />
     <Content Include="Views\FilterLine\Index.cshtml" />
     <Content Include="Views\Money\DepositingMoney.cshtml" />
+    <Content Include="Views\Results\ShowResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
