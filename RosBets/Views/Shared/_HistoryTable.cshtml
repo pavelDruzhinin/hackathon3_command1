@@ -40,7 +40,6 @@
                     <table class="table" id="ourtable">
                         <thead>
                             <tr>
-                                <th>Дата матча</th>
                                 <th>Чемпионат</th>
                                 <th>Матч</th>
                                 <th>Событие</th>
@@ -53,7 +52,6 @@
                             @foreach (var betEvent in bet.BetEvents)
                             {
                                 <tr>
-                                    <td>@betEvent.Match.Date</td>
                                     <td>@betEvent.Match.Championship.Name</td>
                                     <td>@betEvent.Match.MatchName</td>
                                     <td>@betEvent.Event.FullName @betEvent.Total</td>
