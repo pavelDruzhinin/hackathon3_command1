@@ -25,7 +25,7 @@ namespace RosBets.Controllers
             {
                 var line = db.Matches
                     .Include(x => x.MatchEvents)
-                    .Where(m=> m.ChampionshipId == id);
+                    .Where(m=> m.ChampionshipId == id &&  m.Date > DateTime.Now );
 
 //                ViewBag.MatchesNotifierEntity = db.GetNotifierEntity<MatchEvent>(db.MatchEvents).ToJson();
                 ViewBag.MatchEventsNotifierEntity = db.GetNotifierEntity<MatchEvent>(db.MatchEvents).ToJson();
