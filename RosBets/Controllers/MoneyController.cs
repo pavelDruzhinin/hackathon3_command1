@@ -78,7 +78,7 @@ namespace RosBets.Controllers
         {
             News news = (from x in db.News
                          select x).ToList().LastOrDefault();
-            return RedirectToAction("Index", "Home");
+            return View("~/Views/Home/Index.cshtml", news);
         }
         [HttpPost]
         public void Paid(string notification_type, string operation_id, string label, string datetime,

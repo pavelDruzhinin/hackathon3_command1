@@ -12,8 +12,7 @@ namespace RosBets.Controllers
     public class ResultsController : Controller
     {
         RosBetsContext db = new RosBetsContext();
-
-        //// GET: Results
+        // GET: Results
         public ActionResult ShowResults()
         {
 
