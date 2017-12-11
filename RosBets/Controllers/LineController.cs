@@ -23,9 +23,11 @@ namespace RosBets.Controllers
             }
             else
             {
+                var serverTime = DateTime.Now;
+                var localTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(serverTime, TimeZoneInfo.Local.Id, "Russian Standard Time");
                 var line = db.Matches
                     .Include(x => x.MatchEvents)
-                    .Where(m=> m.ChampionshipId == id &&  m.Date > DateTime.Now );
+                    .Where(m=> m.ChampionshipId == id &&  m.Date > localTime );
 
 //                ViewBag.MatchesNotifierEntity = db.GetNotifierEntity<MatchEvent>(db.MatchEvents).ToJson();
                 ViewBag.MatchEventsNotifierEntity = db.GetNotifierEntity<MatchEvent>(db.MatchEvents).ToJson();
