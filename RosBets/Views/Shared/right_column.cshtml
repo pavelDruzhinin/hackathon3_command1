@@ -20,18 +20,18 @@
                     <span class="match-name coupon-span">@couponEvent.Match.MatchName</span>
                     <span class="coupon-date coupon-span">@($"{couponEvent.Match.Date:dd.MM hh.mm}")</span>
                     <span class="event-name coupon-span">@couponEvent.Event.FullName @couponEvent.Total</span>
-                    <span class="coefficient-name coupon-span float-span-left">Коэффицент</span>
-                    <span class="coefficient coupon-span float-span-right">@couponEvent.Coefficient</span>
-                    <input id="value_@couponEvent.Id" name="amount">
-                    <button data-id="@couponEvent.Id" class="submitOrdinary">></button>
+                    <span class="coefficient-name coupon-span span-inline">Коэффицент</span>
+                    <span class="coefficient coupon-span span-inline span-right">@couponEvent.Coefficient</span>
+                    <input id="value_@couponEvent.Id" class="coupon-input" name="amount">
+                    <button data-id="@couponEvent.Id" class="submitOrdinary coupon-button">Поставить</button>
                 </div>
             }
 
-            <div class="coupon-summary">
-                <hr />
-                Общий коэффицент: @Model.TotalCoefficient
-                <input id="expressBetValue" name="amount" />
-                <button class="submitExpress">Все сразу</button>
+            <div class="col coupon-summary coupon">
+                <span class="coupon-span span-inline">Общий коэффицент:</span>
+                <span class="coupon-span span-inline span-right">@Model.TotalCoefficient</span>
+                <input id="expressBetValue" class="coupon-input" name="amount" />
+                <button class="submitExpress coupon-button">Все сразу</button>
             </div>
         }
 
