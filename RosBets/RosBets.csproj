@@ -281,7 +281,6 @@
     <Content Include="Content\img\6.jpg" />
     <Content Include="Content\img\7.jpg" />
     <Content Include="Content\img\8.jpg" />
-    <Content Include="Content\img\long-arrow-right.png" />
     <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\_account-details.css" />
     <Content Include="Content\_line.css" />
@@ -358,8 +357,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\ResultSearch.js" />
     <Content Include="Scripts\SearchHistory.js" />
+    <Content Include="Scripts\SearchResults.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

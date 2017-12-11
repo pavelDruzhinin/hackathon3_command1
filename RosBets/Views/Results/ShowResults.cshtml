@@ -5,29 +5,66 @@
 }
 
 <div class="container">
-    @using (Html.BeginForm("MyShowResults", "Results", FormMethod.Post))
-    {
-        <div class="row">
-            <div class="col-sm-4">
-                <label for="bets">Вид спорта:</label>
-                <select name="bets" id="bets">
-                    <option value="Все" selected>Все</option>
-                    @foreach(var sport in Model)
-                    {
-                        <option value="@sport.Name" id="sport">@sport.Name</option>
-                    }
-                </select>
-            </div>
-            <div class="col-md-4">
-                <input id="date" type="date">
-            </div>
-            <div class="col-md-4">
-                <button class="btn-filter" name="show" id="show">показать</button>
-            </div>
+    @*@using (Html.BeginForm("MyShowResults", "Results", FormMethod.Post))
+        {*@
+    <div class="row">
+        <div class="col-sm-3">
+            <label for="sport">Вид спорта:</label>
+            <select name="sport" id="sport">
+                <option value="Все" selected>Все</option>
+                @foreach (var sport in Model)
+            {
+                <option value="@sport.Name">@sport.Name</option>
+        }
+            </select>
         </div>
-     }
+        <div class="col-md-3">
+            <div class="col-md-2">C: </div>
+            <div class="col-md-10"><input id="date1" type="date" name="date1"></div>
+        </div>
+        <div class="col-md-3">
+            <div class="col-md-2">По: </div>
+            <div class="col-md-10"><input id="date2" type="date" name="date2"></div>
+        </div>
+        <div class="col-md-3">
+            <button class="btn-filter" name="mymy" id="mymy">показать</button>
+        </div>
+    </div>
+    @*}*@
     <div class="result-story" id="result-story">
         @Html.Action("MyShowResults", "Results")
     </div>
 </div>
-@Scripts.Render("")
+@*@Scripts.Render("~/Scripts/SearchResults.js")*@
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#mymy').click(function () {
+                alert("кнопка нажата");
+                var obj = {
+                    sport: $("#sport").val(),
+                    date1: $("#date1").val(),
+                    date2: $("#date2").val(),
+                };
+                //if (date1 > date2) {
+                //    alert("Дата некорректна");
+                //    break;
+                //};
+                $.ajax({
+                    type: 'POST',
+                    url: '/Results/MyShowResults',
+                    data: JSON.stringify(obj),
+                    contentType: 'application/json; charset=UTF-8',
+                    success: function (response) {
+                        $('#result-story').html(response);
+                    },
+                    error: function (response) {
+                        console.log(response);
+                    }
+                });
+            });
+
+        });
+    </script>
+}

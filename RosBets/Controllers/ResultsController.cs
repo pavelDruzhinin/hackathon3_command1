@@ -41,17 +41,17 @@ namespace RosBets.Controllers
 
 
         [HttpPost]
-        public ActionResult MyShowResults(string date, string sport)
+        public ActionResult MyShowResults(DateTime date1, DateTime date2, string sport)
         {
             var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
 
-            DateTime myDate = DateTime.Parse(date);
+            //DateTime myDate = DateTime.Parse(date);
 
             List<Match> results = db.Matches
                 .Where(x => x.Finished == true)
                 .Include(x => x.Championship)
                 .Include(z => z.Championship.Sport)
-                .Include(y => y.Championship.Sport.Name)
+                //.Include(path: y => y.Championship.Sport.Name)
                 .OrderBy(x => x.Date)
                 .ToList();
 
@@ -59,20 +59,23 @@ namespace RosBets.Controllers
             {
                 case "Все":
                     results = results
-                   .Where(y => y.Date == myDate)
+                   .Where(y => y.Date >= date1)
+                   .Where(y => y.Date <= date2)
                    .ToList();
                     break;
 
                 case "Футбол":
                     results = results
                    .Where(x => x.Championship.Sport.Name == "Футбол")
-                   .Where(y => y.Date == myDate)
+                   .Where(y => y.Date >= date1)
+                   .Where(y => y.Date <= date2)
                    .ToList();
                     break;
                 case "Хоккей":
                     results = results
-                   .Where(x => x.Championship.Sport.Name == "Футбол")
-                   .Where(y => y.Date == myDate)
+                   .Where(x => x.Championship.Sport.Name == "Хоккей")
+                   .Where(y => y.Date >= date1)
+                   .Where(y => y.Date <= date2)
                    .ToList();
                     break;
             }

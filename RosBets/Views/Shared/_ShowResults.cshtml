@@ -1,34 +1,17 @@
 ﻿@model List<RosBets.Models.Match>
 
-
-@*<div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                One of three columns
-            </div>
-            <div class="col-sm-4">
-                One of three columns
-            </div>
-            <div class="col-sm-4">
-                One of three columns
-            </div>
-        </div>
-    </div>*@
-
-@foreach (var res in Model)
+@foreach (var match in Model)
 {
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="col-sm-6">@res.Championship.Name</div>
-            </div>
-       </div>
-        <hr/>
-        <div class="row">
-            <div class="col-sm-4">@res.Date</div>
-            <div class="col-sm-4">@res.MatchName</div>
-            <div class="col-sm-4">@res.Team1Score - @res.Team2Score</div>
-        </div>
-        <hr/>
+<div class="container">
+    <div class="col-sm-12">
+        <div class="col-sm-4">@match.Championship.Name</div>
     </div>
+    <hr/>
+    <div class="col-sm-12">
+        <div class="col-sm-4">@match.Date</div>
+        <div class="col-sm-4">@match.MatchName</div>
+        <div class="col-sm-4">@match.Team1Score - @match.Team2Score</div>
+    </div>
+    <hr/>
+</div>
 }
