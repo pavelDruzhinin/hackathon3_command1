@@ -282,6 +282,7 @@
     <Content Include="Content\img\7.jpg" />
     <Content Include="Content\img\8.jpg" />
     <Content Include="Content\owl.carousel.css" />
+    <Content Include="Content\ResultsForm.css" />
     <Content Include="Content\_account-details.css" />
     <Content Include="Content\_line.css" />
     <Content Include="Content\_readjustment_bootstrap.css" />
@@ -358,6 +359,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\SearchHistory.js" />
+    <Content Include="Scripts\SearchResults.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -395,6 +397,7 @@
     <Content Include="Views\FilterLine\Index.cshtml" />
     <Content Include="Views\Money\DepositingMoney.cshtml" />
     <Content Include="Views\Results\ShowResults.cshtml" />
+    <Content Include="Views\Shared\_ShowResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
