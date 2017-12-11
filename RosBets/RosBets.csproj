@@ -281,7 +281,6 @@
     <Content Include="Content\img\6.jpg" />
     <Content Include="Content\img\7.jpg" />
     <Content Include="Content\img\8.jpg" />
-    <Content Include="Content\img\long-arrow-right.png" />
     <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\_account-details.css" />
     <Content Include="Content\_line.css" />
