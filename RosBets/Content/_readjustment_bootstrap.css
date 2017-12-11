@@ -21,9 +21,6 @@
 .panel-heading{
     border-radius:0px;
 }
-.table > tbody > tr > td{
-    border:none;
-}
 .table-line > tbody > tr .td-colspan-up {
     padding-bottom: 0px;
 }
