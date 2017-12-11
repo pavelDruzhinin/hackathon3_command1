@@ -18,7 +18,8 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("АПЛ", "Index", "Line",new { id = 6 },null)</li>
                     <li>@Html.ActionLink("Бундеслига", "Index", "Line",new { id=5 },null)</li>
-                    <li>@Html.ActionLink("НХЛ", "Index", "Line",new { id=11 },null)</li>
+                    <li>@Html.ActionLink("НХЛ", "Index", "Line", new { id = 11 }, null)</li>
+                    <li>@Html.ActionLink("Результаты", "ShowResults", "Results")</li>
                 </ul>
             </div>
         </div>
@@ -29,11 +30,9 @@
                 <div class="row">
                     
                     @if (!User.Identity.IsAuthenticated)
-                    {
+                    {                       
                         
-                        <div class="ol-xs-4 col-sm-4 col-md-4">
-                        </div>
-                        <div class="bar login col-xs-4 col-sm-4 col-md-4">
+                        <div class="bar login col-xs-12 col-sm-6 col-md-6">
                             <div class="round-box">
                                 <a class="circle" href="/Account/Registration">
                                     <i class="fa fa-sign-in fa-1x"></i>
@@ -43,7 +42,7 @@
                             
                         </div>
 
-                        <div class="bar login col-xs-4 col-sm-4 col-md-4">
+                        <div class="bar login col-xs-12 col-sm-6 col-md-6">
                             <div class="round-box">
                                 <a class="circle" href="/Account/Login">
                                     <i class="fa fa-sign-in fa-1x"></i>
@@ -54,7 +53,7 @@
                     }
                     else
                     {                        
-                        <div class="bar user col-xs-4 col-sm-4 col-md-4">
+                        <div class="bar user col-xs-12 col-sm-4 col-md-4">
                             <div class="round-box">
                                 <a class="circle" href="/Account/Details">
                                     <i class="fa fa-user fa-1x"></i>
@@ -62,7 +61,7 @@
                                 <span class="text" href="#">@User.Identity.Name</span>
                             </div>
                         </div>
-                        <div class="bar money col-xs-4 col-sm-4 col-md-4">
+                        <div class="bar money col-xs-12 col-sm-4 col-md-4">
                             <div class="round-box">
                                 <a class="circle" href="/Money/">
                                     <i class="fa fa-money fa-1x"></i>
@@ -70,7 +69,7 @@
                                 <span class="text" href="#">@Model р.</span>
                             </div>
                         </div>
-                        <div class="bar login col-xs-4 col-sm-4 col-md-4">
+                        <div class="bar login col-xs-12 col-sm-4 col-md-4">
                             <div class="round-box">
                                 <a class="circle" href="javascript:document.getElementById('logoutForm').submit()">
                                     <i class="fa fa-sign-out fa-1x"></i>
