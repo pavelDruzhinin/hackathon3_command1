@@ -7,16 +7,25 @@
     <div class="info">
         <p>RosBets is a free web platform for making money online</p>
     </div>
-    <div class="main-image">
-        <img class="img-responsive" src="~/Content/img/main.jpg"/>
-    </div>
+    <div class="owl-carousel">
+            <div class="item"> <img class="img-responsive" src="~/Content/img/main.jpg" /> </div>
+            <div class="item"> <img class="img-responsive" src="~/Content/img/1.jpg" /> </div>
+            <div class="item"> <img class="img-responsive" src="~/Content/img/2.jpg" /> </div>
+            <div class="item"> <img class="img-responsive" src="~/Content/img/3.jpg" /> </div>
+            <div class="item"> <img class="img-responsive" src="~/Content/img/4.jpg" /> </div>
+            <div class="item"> <img class="img-responsive" src="~/Content/img/5.jpg" /> </div>
+            <div class="item"> <img class="img-responsive" src="~/Content/img/6.jpg" /> </div>
+            <div class="item"> <img class="img-responsive" src="~/Content/img/7.jpg" /> </div>
+            <div class="item"> <img class="img-responsive" src="~/Content/img/8.jpg" /> </div>
+        </div>
     <div class="current-news">
-        <p><strong>ПАРИ ДНЯ</strong></p>
-        <p>@Model.Caption</p>
-        <p>@Html.Raw(Model.Text)</p>
-    </div>
-
+        <center><p><h4><strong> ПАРИ ДНЯ </strong></h4></p></center>
+        <center><p><u>@Html.Raw(Model.Caption)</u></p></center>
+            <p>@Html.Raw(Model.Text)</p>
 </div>
+</div>
+
+
 
             
         

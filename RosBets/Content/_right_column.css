@@ -25,13 +25,32 @@
     text-align: center;
 }
 
-.fa-coupon {
+.fa-coupon, .fa-bigcross {
     position: absolute;
     right: 6px;
     top:6px;
 }
 
-.fa-coupon:hover {
+.fa-coupon:hover, .fa-bigcross:hover {
     color: #D90429;
     cursor: pointer;
+}
+
+.toggle-coupon {
+    padding: 3px;
+    border: none;
+}
+
+.toggle-coupon > li{
+    float:none;
+    display:inline-block;
+}
+
+.toggle-coupon > li > a {
+    border-radius: 0px;
+    color: #EDF2F4;
+}
+
+.toggle-coupon > li > a:hover {
+    color: #D90429;
 }

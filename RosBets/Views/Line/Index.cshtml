@@ -26,10 +26,78 @@
                     <th>М</th>
                 </tr>
             </thead>
-            <tbody class="tbody-line">
-                @foreach (var match in Model)
-                {
-                    @Html.Partial("_MatchInfo", match)
-                }
+            <tbody id="lineTable">
+                @Html.Partial("_LineTable", Model)
             </tbody>
         </table>
+
+@section scripts {
+
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+
+    <script type="text/javascript">
+
+        var eventsHubInitialized = false;
+
+        $(function() {
+            InitializeEventHub();
+        });
+
+        function InitializeEventHub() {
+
+            if (eventsHubInitialized)
+                return;
+
+            try {
+                var eventsHub = $.connection.eventsHub;
+
+                eventsHub.client.broadcastMessage = function(message) {
+                    if (message === "Refresh")
+                        ReloadMatchEvents();
+                };
+
+                $.connection.hub.start().done(function() {
+                    eventsHub.server.initialize($("#MatchEventsNotifierEntity").val());
+                    eventsHubInitialized = true;
+                });
+
+            } catch (err) {
+                eventsHubInitialized = false;
+            }
+        };
+
+        function ReloadMatchEvents() {
+            var champId = @ViewBag.ChampId;
+            $.ajax({
+                url: "/Refresh/GetCoefficients",
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify({ champId }),
+                success: function(data) {
+                    data.forEach(function(item) {
+                        var cell = $("#" + item.EventId + "_" + item.MatchId);
+                        if (cell.html() < item.EventValue) {
+                            cell.html(item.EventValue);
+                            cell.addClass("increased");
+                            cell.on("transitionend",
+                                function() {
+                                    $(this).removeClass("increased");
+                                });
+                        } else if (cell.html() > item.EventValue) {
+                            cell.html(item.EventValue);
+                            cell.addClass("decreased");
+                            cell.on("transitionend",
+                                function() {
+                                    $(this).removeClass("decreased");
+                                });
+                        }
+                    });
+                    console.log(data);
+                }
+            });
+        }
+
+    </script>
+}

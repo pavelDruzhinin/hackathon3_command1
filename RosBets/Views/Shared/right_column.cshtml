@@ -1,29 +1,40 @@
 ﻿@model RosBets.ViewModels.CouponViewModel
 
 <div class="right-menu-header">
+    <i class="fa fa-times fa-bigcross"></i>
     <h2>Купон</h2>
+    <ul class="nav nav-tabs toggle-coupon text-center">
+        <li class="active"><a data-toggle="tab" href="#express">Экспресс</a></li>
+        <li><a data-toggle="tab" href="#ordinar">Ординар</a></li>
+    </ul>
 </div>
+<div class="tab-content">
+    <div id="express" class="tab-pane fade in active">
 
-@if (Model.CouponEvents.Count > 0)
-{
-        foreach (var couponEvent in Model.CouponEvents)
+        @if (Model.CouponEvents.Count > 0)
         {
-            <div class="col coupon">
-                <i class="fa fa-times fa-coupon" aria-hidden="true" data-bind-id="@($"{couponEvent.EventId}_{couponEvent.MatchId}")" id="@couponEvent.Id"></i>
-                <span class="match-name coupon-span">@couponEvent.Match.MatchName</span>
-                <span class="coupon-date coupon-span">@($"{couponEvent.Match.Date:dd.MM hh.mm}")</span>
-                <span class="event-name coupon-span">@couponEvent.Event.FullName @couponEvent.Total</span>
-                <span class="coefficient-name coupon-span float-span-left">Коэффицент</span>
-                <span class="coefficient coupon-span float-span-right">@couponEvent.Coefficient</span>
-                <input id="value_@couponEvent.Id"name="amount">
-                <button data-id="@couponEvent.Id" class="submitOrdinary">></button>
+            foreach (var couponEvent in Model.CouponEvents)
+            {
+                <div class="col coupon">
+                    <i class="fa fa-times fa-coupon" aria-hidden="true" data-bind-id="@($"{couponEvent.EventId}_{couponEvent.MatchId}")" id="@couponEvent.Id"></i>
+                    <span class="match-name coupon-span">@couponEvent.Match.MatchName</span>
+                    <span class="coupon-date coupon-span">@($"{couponEvent.Match.Date:dd.MM hh.mm}")</span>
+                    <span class="event-name coupon-span">@couponEvent.Event.FullName @couponEvent.Total</span>
+                    <span class="coefficient-name coupon-span float-span-left">Коэффицент</span>
+                    <span class="coefficient coupon-span float-span-right">@couponEvent.Coefficient</span>
+                    <input id="value_@couponEvent.Id" name="amount">
+                    <button data-id="@couponEvent.Id" class="submitOrdinary">></button>
+                </div>
+            }
+
+            <div class="coupon-summary">
+                <hr />
+                Общий коэффицент: @Model.TotalCoefficient
+                <input id="expressBetValue" name="amount" />
+                <button class="submitExpress">Все сразу</button>
             </div>
         }
-    
-    <div class="coupon-summary">
-        <hr/>
-        Общий коэффицент: @Model.TotalCoefficient
-        <input id="expressBetValue" name="amount" />
-        <button class="submitExpress">Все сразу</button>
+
     </div>
-}
+    <div id="ordinar" class="tab-pane fade"></div>
+</div>

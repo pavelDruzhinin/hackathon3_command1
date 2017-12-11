@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "";
+}
+@using System.Web.UI.WebControls
+@using RosBets.Models
+@model  RosBets.ViewModels.FilterLineViewModel
+
+@Html.ValidationSummary(true)
+@if (Model != null)
+{
+    foreach (var champs in Model.Championships)
+    {
+        if (Model.Matches.Where(x => x.ChampionshipId == champs.Id).Count()!=0)
+        {
+    <table class="table table-bordered table-line">
+        <thead>
+            <tr>
+                <td colspan="14" align="center">
+                    @champs.Name
+                </td>
+            </tr>
+
+            <tr>
+                <th>Дата</th>
+                <th>Событие</th>
+
+                <th>Т</th>
+                <th>Б</th>
+                <th>М</th>
+
+                <th>П1</th>
+                <th>Х</th>
+                <th>П2</th>
+
+                <th>1Х</th>
+                <th>12</th>
+                <th>Х2</th>
+
+                <th>iT</th>
+                <th>Б</th>
+                <th>М</th>
+            </tr>
+
+            </thead>
+            @foreach (var match in Model.Matches.Where(x => x.ChampionshipId == champs.Id))
+            {
+                <tbody>
+                @Html.Partial("_MatchInfo", match)
+                </tbody>
+            }
+    </table>
+            }
+        }
+    }

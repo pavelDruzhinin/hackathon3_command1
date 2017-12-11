@@ -20,6 +20,14 @@
     padding:0px;
     position:fixed;
     right:0px;
+    overflow-x:hidden;
+    overflow-y:auto;
+    max-height:700px;
+}
+@media only screen and (max-height:700px) {
+    .cupon-menu {
+        max-height: 500px;
+    }
 }
 @media only screen and (max-width:990px){
     .cupon-menu{
@@ -43,4 +51,19 @@
     position: absolute;
     top: 10%;
     left: 10%;
+}
+
+
+/*news*/
+
+.current-news div {
+    text-align: justify;
+    margin-top: 1px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.current-news p {
+    text-align: center;
+    margin-bottom: 10px;
 }

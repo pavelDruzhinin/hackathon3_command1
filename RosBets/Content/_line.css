@@ -1,6 +1,7 @@
 .table-line {
     margin-top: 15px;
     font-size: 0.9em;
+    border: 6px solid #dddddd;
 }
     .table-line > tbody > tr > td {
         font-size: 0.8em;
@@ -19,15 +20,21 @@
     background-color: #2b2D42;
 }
 
-.td-colspan-up{
-    vertical-align:bottom;
+.table-bordered > tbody > tr > .match-table-border {
+    border-bottom: 6px solid #dddddd;
+    padding: 0px;
 }
 
-.td-colspan-down {
-    vertical-align: top;
+.table-bordered > tbody > tr > td {
+    transition: background-color 300ms linear;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
-#table-separator {
-    line-height:0px;
-    border-bottom: 2px solid #dddddd;
+.table-bordered > tbody > tr > td.increased {
+    background-color: green
 }
+
+    .table-bordered > tbody > tr > td.decreased {
+        background-color: red
+    }
