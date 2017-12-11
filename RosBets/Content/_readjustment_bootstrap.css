@@ -21,3 +21,10 @@
 .panel-heading{
     border-radius:0px;
 }
+.table-line > tbody > tr .td-colspan-up {
+    padding-bottom: 0px;
+}
+
+.table-line > tbody > tr .td-colspan-down {
+    padding-top: 0px;
+}

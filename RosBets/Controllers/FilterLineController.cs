@@ -15,15 +15,20 @@ namespace RosBets.Controllers
         // GET: FilterLine
 
         RosBetsContext db = new RosBetsContext();
+
         public ActionResult Index(int? id)
         {
             var matches = new List<Match>();
+
+            var serverTime = DateTime.Now;
+            var localTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(serverTime, TimeZoneInfo.Local.Id, "Russian Standard Time");
+
             switch (id)
             {
                 case 1:
                     matches = db.Matches
                         .Include(x => x.MatchEvents)
-                        .Where(x=>x.Date>DateTime.Now)
+                        .Where(x=>x.Date>localTime)
                         .ToList();
                     break;
                 case 2:
@@ -31,14 +36,14 @@ namespace RosBets.Controllers
                     Date = Date.Date;
                     matches = db.Matches
                         .Include(x => x.MatchEvents)
-                        .Where(x => x.Date.Value.Day == DateTime.Now.Day && x.Date>DateTime.Now)
+                        .Where(x => x.Date.Value.Day == localTime.Day && x.Date>localTime)
                         .ToList();
                     break;
                 case 3: //ближайший час
-                    var NextHour = DateTime.Now.Hour + 1;
+                    var NextHour = localTime.AddHours(1);
                     matches=db.Matches
                         .Include(x => x.MatchEvents)
-                        .Where(x => (x.Date >= DateTime.Now && x.Date.Value.Hour<=NextHour) && x.Date>DateTime.Now)
+                        .Where(x => (x.Date >= localTime && x.Date<=NextHour) && x.Date>localTime)
                         .ToList();
                     break;
                 default:
