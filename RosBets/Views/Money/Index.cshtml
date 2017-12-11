@@ -78,7 +78,7 @@
             <header>
                 <h2>Внесение денежных средств</h2>
             </header>
-            <a href="#close" title="Закрыть" class="close" onclick="checkTextBox()">X</a>
+            <a href="#close" title="Закрыть" class="close">X</a>
             <p>Вы уверены что хотите внести <span class="MoneyOut"></span> р. ?
             </p>
             <p><button type="submit" id="" name="action" value="put">Да</button>
@@ -90,12 +90,28 @@
             <header>
                 <h2>Вывод денежных средств</h2>
             </header>
-            <a href="#close" title="Закрыть" class="close" onclick="checkTextBox()">X</a>
+            <a href="#close" title="Закрыть" class="close">X</a>
             <p>Вы уверены что хотите вывести <span class="MoneyOut"></span> р. ?
             </p>
-            <p><button type="submit" id="pick" name="action" value="pick">Вывести</button>
+            <hr>
+            <p><h4>Выберете офис для получения средств<h4>
+                <ul>
+                    <p>@Html.RadioButton("office", "г. Петрозаводск ул. Ровио, 3А") г. Петрозаводск ул. Ровио, 3А</p>
+                    <p>@Html.RadioButton("office", "г. Петрозаводск ул. Маршала Мерецкова, 11") г. Петрозаводск ул. Маршала Мерецкова, 11</p>
+                    <p>@Html.RadioButton("office", "г. Петрозаводск пр. Ленина, 14В") г. Петрозаводск пр. Ленина, 14В</p>
+</ul>
+            </p>
+            <p>
+                <input type="button" id="button3" name="action" value="Вывести" onclick="submodal()"/>
             </p>
         </div>
+    </div>
+    <div id="openSubModal" class="modalDialog">
+        <div>
+            <a href="#close" title="Закрыть" class="close" onclick="checkTextBox()">X</a>
+        <p>Вы можете забрать свои средства по адресу <span class="officeOut"></span>
+            <p><button type="submit" id="pick" name="action" value="pick">Ок</button></p>
+            </div>
     </div>
 }
 </body>
@@ -123,6 +139,10 @@
             $('.MoneyOut').html($("#Money").val());
         }
 
+        function submodal() {
+            parent.location = '#openSubModal';
+            $('.officeOut').html($('input[type=radio][name=office]').val())
+        }
         window.onhashchange = function() {
             history.pushState('', document.title, window.location.pathname);
         }
