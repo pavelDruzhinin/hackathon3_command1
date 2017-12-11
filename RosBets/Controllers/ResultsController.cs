@@ -51,7 +51,7 @@ namespace RosBets.Controllers
                 .Include(x => x.Championship)
                 .Include(z => z.Championship.Sport)
                 //.Include(path: y => y.Championship.Sport.Name)
-                .OrderBy(x => x.Date)
+                .OrderBy(d => d.Date)//.ThenBy(d => d.Date)
                 .ToList();
 
             switch (sport)

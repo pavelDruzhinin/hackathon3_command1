@@ -1,33 +1,15 @@
-@model List<RosBets.Models.Sport>
+﻿@model List<RosBets.Models.Sport>
 
-@*@foreach (var match in Model.GroupBy(x => x.Championship.Name))
-{
-    <div style="border: 1px solid black">
-        <br/>
-        <p style="font-size:2em; background: #ccc;"><strong>Чемпионат: @match.Key</strong></p>
-        <br />
-        @foreach (var item in match)
-        {
-            <br />
-            <p>Матч @item.Date</p>
-            <p>Матч @item.MatchName</p>
-            <p>Играли @item.Team1Name против @item.Team2Name</p>
-            <p>Счет @item.Team1Score : @item.Team2Score</p>
-            <br />
-        }             
-    </div>
-}*@
-<head><meta charset="utf-8"></head>
-<div class="container">
+<div class="container" style="margin-top: 10px;">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-3" id="wrapper-dropdown">
             <label for="sport">Вид спорта:</label>
             <select name="sport" id="sport">
                 <option value="Все" selected>Все</option>
                 @foreach (var sport in Model)
             {
                 <option value="@sport.Name">@sport.Name</option>
-        }
+            }
             </select>
         </div>
         <div class="col-md-3">
@@ -39,7 +21,7 @@
             <div class="col-md-10"><input id="date2" type="date" name="date2"></div>
         </div>
         <div class="col-md-3">
-            <button class="btn-filter" name="mymy" id="mymy">показать</button>
+            <button class="btn-filter" name="show" id="botShow">показать</button>
         </div>
     </div>
     <div class="result-story" id="result-story">
@@ -47,11 +29,13 @@
     </div>
 </div>
 @*@Scripts.Render("~/Scripts/SearchResults.js")*@
+@Styles.Render("~/Content/ResultsForm.css")
+
 
 @section scripts {
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#mymy').click(function () {
+            $('#botShow').click(function () {
                 //alert("кнопка нажата");
                 var obj = {
                     sport: $("#sport").val(),
