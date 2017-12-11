@@ -33,6 +33,8 @@ namespace RosBets
                       "~/Content/_right_column.css",
                       "~/Content/_line.css",
                       "~/Content/font-awesome-4.7.0/css/font-awesome.min.css"));
+            bundles.Add(new ScriptBundle("~/bundles/owl.carousel").Include(
+                        "~/Scripts/owl.carousel.js"));
         }
     }
 }
