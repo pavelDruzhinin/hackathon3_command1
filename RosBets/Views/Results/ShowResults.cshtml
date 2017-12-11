@@ -1,8 +1,6 @@
 @model List<RosBets.Models.Sport>
 
-<h2>ShowResults</h2>
-
-@foreach (var match in Model.GroupBy(x => x.Championship.Name))
+@*@foreach (var match in Model.GroupBy(x => x.Championship.Name))
 {
     <div style="border: 1px solid black">
         <br/>
@@ -18,12 +16,9 @@
             <br />
         }             
     </div>
-
-}
-
+}*@
+<head><meta charset="utf-8"></head>
 <div class="container">
-    @*@using (Html.BeginForm("MyShowResults", "Results", FormMethod.Post))
-        {*@
     <div class="row">
         <div class="col-sm-3">
             <label for="sport">Вид спорта:</label>
@@ -47,7 +42,6 @@
             <button class="btn-filter" name="mymy" id="mymy">показать</button>
         </div>
     </div>
-    @*}*@
     <div class="result-story" id="result-story">
         @Html.Action("MyShowResults", "Results")
     </div>
@@ -58,16 +52,12 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#mymy').click(function () {
-                alert("кнопка нажата");
+                //alert("кнопка нажата");
                 var obj = {
                     sport: $("#sport").val(),
                     date1: $("#date1").val(),
                     date2: $("#date2").val(),
                 };
-                //if (date1 > date2) {
-                //    alert("Дата некорректна");
-                //    break;
-                //};
                 $.ajax({
                     type: 'POST',
                     url: '/Results/MyShowResults',
