@@ -177,3 +177,30 @@
   z-index: 1;
   height: 100%;
   width: 100%; }
+
+/*Eugene's initiative START*/
+.owl-prev {
+    width: 15px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    margin-left: +20px;
+    display: block !IMPORTANT;
+    border: 0px solid black;
+}
+
+.owl-next {
+    width: 15px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    right: +15px;
+    display: block !IMPORTANT;
+    border: 0px solid black;
+}
+
+    .owl-prev i, .owl-next i {
+        transform: scale(4,6);
+        color: #f33030;
+    }
+/*Eugene's initiative FINISH*/
