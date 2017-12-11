@@ -1,0 +1,17 @@
+﻿@model List<RosBets.Models.Match>
+
+@foreach (var match in Model)
+{
+<div class="container">
+    <div class="col-sm-12">
+        <div class="col-sm-4">@match.Championship.Name</div>
+    </div>
+    <hr/>
+    <div class="col-sm-12">
+        <div class="col-sm-4">@match.Date</div>
+        <div class="col-sm-4">@match.MatchName</div>
+        <div class="col-sm-4">@match.Team1Score - @match.Team2Score</div>
+    </div>
+    <hr/>
+</div>
+}
