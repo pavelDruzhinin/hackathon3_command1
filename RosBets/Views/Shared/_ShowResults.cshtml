@@ -20,4 +20,5 @@
 
 Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
 
-@Html.PagedListPager(Model, page => Url.Action("MyShowResults", "Results", new { page, res = Model }))
+@*@Html.PagedListPager(Model, page => Url.Action("ShowResults", "Results", new { page, res = Model }))*@
+@Html.PagedListPager(Model, page => Url.Action("ShowResults", "Results", new { page}))

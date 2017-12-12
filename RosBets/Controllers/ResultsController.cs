@@ -15,48 +15,59 @@ namespace RosBets.Controllers
         RosBetsContext db = new RosBetsContext();
         // GET: Results
 
+        DateTime currentDate = DateTime.Now;
 
-        public ActionResult ShowResults()
+        public ActionResult ShowResults(int? page)
         {
-            
-            List<Sport> sports = db.Sports.
-                Where(x => x.Name != null)
-                .ToList();
 
-            return View(sports);
-        }
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
 
-        
-        public ActionResult MyShowResults(int? page)
+            List<Match> results = db.Matches
+                   .Where(x => x.Finished == true)
+                   .Include(x => x.Championship)
+                   .Include(z => z.Championship.Sport)
+                   .OrderBy(x => x.Date)
+                   .ToList();
+
+                
+                return View(results);
+         }
+
+
+        //public ActionResult NewShowResults(int? page, IPagedList<Match> res)
+        //{
+        //    int pageSize = 3;
+        //    int pageNumber = (page ?? 1);
+
+        //    IPagedList<Match> results = res;
+
+        //    return PartialView("_ShowResults", results);
+
+        //}
+
+        public ActionResult MyShowResults(int? page, IPagedList<RosBets.Models.Match> myModel)
         {
             int pageSize = 3;
             int pageNumber = (page ?? 1);
 
             //var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
+            IPagedList<Match> results = myModel;
 
-            List<Match> results = db.Matches
-                .Where(x => x.Finished == true)
-                .Include(x => x.Championship)
-                .Include(z => z.Championship.Sport)
-                .OrderBy(x => x.Date)
-                .ToList();
+            //List<Match> results = db.Matches
+            //    .Where(x => x.Finished == true)
+            //    .Include(x => x.Championship)
+            //    .Include(z => z.Championship.Sport)
+            //    .OrderBy(x => x.Date)
+            //    .ToList();
 
-            //return PartialView("_ShowResults", results);
-            return PartialView("_ShowResults", results.ToPagedList(pageNumber, pageSize));
+            return PartialView("_ShowResults", results);
+            //return PartialView("_ShowResults", results.ToPagedList(pageNumber, pageSize));
+            //return View("~/RosBets/Views/Results/ShowResults", results);
+            //return View("~/RosBets/Views/Results/ShowResults", results.ToPagedList(pageNumber, pageSize));
+
+
         }
-
-        //public ActionResult PagetShowResults(int? page, IPagedList<Match> res)
-        //{
-        //    int pageSize = 3;
-        //    int pageNumber = (page ?? 1);
-
-        //    //var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
-
-        //    List<Match> results = res.ToList();
-
-        //    //return PartialView("_ShowResults", results);
-        //    return PartialView("_ShowResults", results.ToPagedList(pageNumber, pageSize));
-        //}
 
 
 
@@ -64,7 +75,7 @@ namespace RosBets.Controllers
         public ActionResult MyShowResults(DateTime date1, DateTime date2, string sport, int? page)
         {
 
-            int pageSize = 10;
+            int pageSize = 3;
             int pageNumber = (page ?? 1);
 
             //var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
@@ -87,6 +98,8 @@ namespace RosBets.Controllers
 
                 //return PartialView("_ShowResults", results);
                 return PartialView("_ShowResults", results.ToPagedList(pageNumber, pageSize));
+                //return View("~/RosBets/Views/Results/ShowResults", results);
+                //return View("~/RosBets/Views/Results/ShowResults", results.ToPagedList(pageNumber, pageSize));
             }
 
             results = results
@@ -96,6 +109,8 @@ namespace RosBets.Controllers
                    .ToList();
 
             //return PartialView("_ShowResults", results);
+            //return View("~/RosBets/Views/Results/ShowResults", results);
+            //return View("~/RosBets/Views/Results/ShowResults", results.ToPagedList(pageNumber, pageSize));
             return PartialView("_ShowResults", results.ToPagedList(pageNumber, pageSize));
 
 

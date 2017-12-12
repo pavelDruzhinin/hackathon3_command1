@@ -1,5 +1,7 @@
-﻿@model List<RosBets.Models.Sport>
-
+﻿@*@model List<RosBets.Models.Sport>*@
+@model List < RosBets.Models.Match > 
+@*@model PagedList.IPagedList<RosBets.Models.Match>
+@using PagedList.Mvc;*@
 
 <div class="container" style="margin-top: 10px;">
     <div class="row">
@@ -7,10 +9,12 @@
             <label for="sport">Вид спорта:</label>
             <select name="sport" id="sport">
                 <option value="Все" selected>Все</option>
-                @foreach (var sport in Model)
+                <option value="Футбол">Футбол</option>
+                <option value="Хоккей">Хоккей</option>
+                @*@foreach (var sport in Model)
                 {
                     <option value="@sport.Name">@sport.Name</option>
-                }
+                }*@
             </select>
         </div>
         <div class="col-md-3">
@@ -26,10 +30,12 @@
         </div>
     </div>
     <div class="result-story" id="result-story">
-        @Html.Action("MyShowResults", "Results")
+         @Html.Action("MyShowResults", "Results")
+
+
     </div>
 </div>
-<hr />
+<hr/>
 
 
 @*@section scripts {
