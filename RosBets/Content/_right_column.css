@@ -2,47 +2,66 @@
 .coupon {
     position: relative;
     padding: 4px 4px 6px 4px;
-    max-width: 200px;
-    margin: 0px auto;
-    border-bottom: 1px solid #EDF2F4;
+    max-width: 250px;
+    margin: 5px auto;
+    border: 1px solid #EDF2F4;
     font-size:0.8em;
 }
-.coupon-summary {
-    font-size: 0.8em;
-    padding:4px 4px;
-} 
+
+.tab-content {
+    padding: 0px 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 500px;
+}
 
 .coupon-span {
     text-align: left;
     margin: 2px 0px 2px 5px;
     display: block;
+    min-width:140px;
 }
 
-.coupon-input{
-    max-width:70px;
-    height:1.4em;
-    margin-left:5px;
+.coefficient {
+    text-align: right;
+    min-width:20px;
+}
+
+.coupon-input {
+    max-width: 70px;
+    height: 22px;
+    margin-left: 5px;
+    line-height: 16px;
+    margin-top: 5px;
 }
 
 .coupon-button {
-    max-width: 100px;
-    height: 1.4em;
-    margin-left:5px;
-    line-height:0.6em;
+    color:#EDF2F4;
+    margin-top: 5px;
+    height:22px;
+    width: 70px;
+    text-align: center;
+    border-radius: 10px;
+    line-height: 23px;
+    background: #D90429;
+    box-shadow: 0 5px 20px -4px #D90429;
+    transition: all .2s ease-out;
 }
 
-.span-inline {
-    display:inline-block;
+.coupon-button:hover{
+    cursor:pointer;
 }
-.span-right {
-    margin-left:40px;
-    text-align:right;
+
+.float-elem-left {
+    float: left;
+}
+.float-elem-right {
+    float:right;
 }
 
 .right-menu-header {
     margin-bottom: 0px;
-    padding-bottom: 2px;
-    border-bottom: 1px solid #EDF2F4;
+    padding-bottom: 0px;
     text-align: center;
 }
 
@@ -58,12 +77,12 @@
 }
 
 .toggle-coupon {
-    padding: 3px;
+    padding: 0px 5px;
     border: none;
 }
 
 .toggle-coupon > li{
-    float:none;
+    width:50%;
     display:inline-block;
 }
 

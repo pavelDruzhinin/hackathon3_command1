@@ -9,29 +9,29 @@
     </ul>
 </div>
 <div class="tab-content">
-    <div id="express" class="tab-pane fade in active">
+    <div id="express" class="tab-pane fade in active clearfix">
 
         @if (Model.CouponEvents.Count > 0)
         {
             foreach (var couponEvent in Model.CouponEvents)
             {
-                <div class="col coupon">
+                <div class="col coupon clearfix">
                     <i class="fa fa-times fa-coupon" aria-hidden="true" data-bind-id="@($"{couponEvent.EventId}_{couponEvent.MatchId}")" id="@couponEvent.Id"></i>
                     <span class="match-name coupon-span">@couponEvent.Match.MatchName</span>
                     <span class="coupon-date coupon-span">@($"{couponEvent.Match.Date:dd.MM hh.mm}")</span>
                     <span class="event-name coupon-span">@couponEvent.Event.FullName @couponEvent.Total</span>
-                    <span class="coefficient-name coupon-span span-inline">Коэффицент</span>
-                    <span class="coefficient coupon-span span-inline span-right">@couponEvent.Coefficient</span>
-                    <input id="value_@couponEvent.Id" class="coupon-input" name="amount">
-                    <button data-id="@couponEvent.Id" class="submitOrdinary coupon-button">Поставить</button>
+                    <div class="coefficient-name coupon-span float-elem-left">Коэффицент</div>
+                    <div class="coefficient coupon-span float-elem-right">@couponEvent.Coefficient</div>
+                    <input id="value_@couponEvent.Id" class="float-elem-left coupon-input" name="amount">
+                    <div data-id="@couponEvent.Id" class="submitOrdinary float-elem-right coupon-button">Поставить</div>
                 </div>
             }
 
-            <div class="col coupon-summary coupon">
-                <span class="coupon-span span-inline">Общий коэффицент:</span>
-                <span class="coupon-span span-inline span-right">@Model.TotalCoefficient</span>
-                <input id="expressBetValue" class="coupon-input" name="amount" />
-                <button class="submitExpress coupon-button">Все сразу</button>
+            <div class="col coupon coupon-summary coupon clearfix">
+                <span class="coupon-span float-elem-left">Общий коэффицент:</span>
+                <span class="coefficient coupon-span float-elem-right">@Model.TotalCoefficient</span>
+                <input id="expressBetValue" class="float-elem-left coupon-input" name="amount" />
+                <div class="submitExpress float-elem-right coupon-button">Все сразу</div>
             </div>
         }
 
