@@ -46,7 +46,7 @@ namespace RosBets.Controllers
 
         //}
 
-        public ActionResult MyShowResults(int? page, IPagedList<RosBets.Models.Match> myModel)
+        public ActionResult MyShowResults(int? page)
         {
             int pageSize = 3;
             int pageNumber = (page ?? 1);
