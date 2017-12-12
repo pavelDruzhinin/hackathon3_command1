@@ -1,4 +1,5 @@
-﻿using RosBets.Context;
+﻿using PagedList;
+using RosBets.Context;
 using RosBets.Models;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,11 @@ namespace RosBets.Controllers
     {
         RosBetsContext db = new RosBetsContext();
         // GET: Results
+
+
         public ActionResult ShowResults()
         {
-
+            
             List<Sport> sports = db.Sports.
                 Where(x => x.Name != null)
                 .ToList();
@@ -23,10 +26,13 @@ namespace RosBets.Controllers
             return View(sports);
         }
 
-
-        public ActionResult MyShowResults()
+        
+        public ActionResult MyShowResults(int? page)
         {
-            var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            //var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
 
             List<Match> results = db.Matches
                 .Where(x => x.Finished == true)
@@ -35,14 +41,33 @@ namespace RosBets.Controllers
                 .OrderBy(x => x.Date)
                 .ToList();
 
-            return PartialView("_ShowResults", results);
+            //return PartialView("_ShowResults", results);
+            return PartialView("_ShowResults", results.ToPagedList(pageNumber, pageSize));
         }
+
+        //public ActionResult PagetShowResults(int? page, IPagedList<Match> res)
+        //{
+        //    int pageSize = 3;
+        //    int pageNumber = (page ?? 1);
+
+        //    //var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
+
+        //    List<Match> results = res.ToList();
+
+        //    //return PartialView("_ShowResults", results);
+        //    return PartialView("_ShowResults", results.ToPagedList(pageNumber, pageSize));
+        //}
+
 
 
         [HttpPost]
-        public ActionResult MyShowResults(DateTime date1, DateTime date2, string sport)
+        public ActionResult MyShowResults(DateTime date1, DateTime date2, string sport, int? page)
         {
-            var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            //var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
 
             //DateTime myDate = DateTime.Parse(date);
 
@@ -50,36 +75,57 @@ namespace RosBets.Controllers
                 .Where(x => x.Finished == true)
                 .Include(x => x.Championship)
                 .Include(z => z.Championship.Sport)
-                //.Include(path: y => y.Championship.Sport.Name)
                 .OrderBy(d => d.Date)//.ThenBy(d => d.Date)
                 .ToList();
 
-            switch (sport)
+            if (sport == "Все")
             {
-                case "Все":
-                    results = results
+                results = results
                    .Where(y => y.Date >= date1)
                    .Where(y => y.Date <= date2)
                    .ToList();
-                    break;
 
-                case "Футбол":
-                    results = results
-                   .Where(x => x.Championship.Sport.Name == "Футбол")
-                   .Where(y => y.Date >= date1)
-                   .Where(y => y.Date <= date2)
-                   .ToList();
-                    break;
-                case "Хоккей":
-                    results = results
-                   .Where(x => x.Championship.Sport.Name == "Хоккей")
-                   .Where(y => y.Date >= date1)
-                   .Where(y => y.Date <= date2)
-                   .ToList();
-                    break;
+                //return PartialView("_ShowResults", results);
+                return PartialView("_ShowResults", results.ToPagedList(pageNumber, pageSize));
             }
 
-            return PartialView("_ShowResults", results);
+            results = results
+                   .Where(x => x.Championship.Sport.Name == sport)
+                   .Where(y => y.Date >= date1)
+                   .Where(y => y.Date <= date2)
+                   .ToList();
+
+            //return PartialView("_ShowResults", results);
+            return PartialView("_ShowResults", results.ToPagedList(pageNumber, pageSize));
+
+
+
+            //switch (sport)
+            //{
+            //    case "Все":
+            //        results = results
+            //       .Where(y => y.Date >= date1)
+            //       .Where(y => y.Date <= date2)
+            //       .ToList();
+            //        break;
+
+            //    case "Футбол":
+            //        results = results
+            //       .Where(x => x.Championship.Sport.Name == "Футбол")
+            //       .Where(y => y.Date >= date1)
+            //       .Where(y => y.Date <= date2)
+            //       .ToList();
+            //        break;
+            //    case "Хоккей":
+            //        results = results
+            //       .Where(x => x.Championship.Sport.Name == "Хоккей")
+            //       .Where(y => y.Date >= date1)
+            //       .Where(y => y.Date <= date2)
+            //       .ToList();
+            //        break;
+            //}
+
+            //return PartialView("_ShowResults", results);
         }
 
         protected override void Dispose(bool disposing)
