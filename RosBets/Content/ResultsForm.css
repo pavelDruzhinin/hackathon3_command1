@@ -1,0 +1,47 @@
+﻿body {
+}
+
+.btn-filter {
+    /*margin: 20px 0 0 0;*/
+    line-height: 40px;
+    font-size: 1em;
+    padding: 0 20px 0 20px;
+    text-align: center;
+    color: #EDF2F4;
+    height: 40px;
+    border-radius: 40px;
+    background: #D90429;
+    border: none;
+    box-sizing: border-box;
+    box-shadow: 0 8px 18px -8px #D90429;
+    transition: all .2s ease-in-out;
+}
+
+#wrapper-dropdown {
+    /* размер и положение */
+    position: relative; /* Enable absolute positioning for children and pseudo elements */
+    width: 200px;
+    padding: 10px;
+    margin: 0 auto;
+    /* цвет и фон */
+    background: #D90429;
+    color: #EDF2F4;
+    outline: none;
+
+    border-radius: 40px;
+}
+    /*#wrapper-dropdown:after
+
+{
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    margin-top: -6px;
+    border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent #fff;
+}*/
+
