@@ -42,3 +42,10 @@ textarea {
 #back-layer {
     background-color: #2b2D42;
 }
+
+#ui-datepicker-div {
+    cursor: pointer;
+    padding: 15px;
+    border: 1px solid rgb(204, 204, 204);
+    background: white;
+}

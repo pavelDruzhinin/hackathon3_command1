@@ -1,17 +1,23 @@
-﻿@model List<RosBets.Models.Match>
+﻿@*@model List<RosBets.Models.Match>*@
+@model PagedList.IPagedList<RosBets.Models.Match>
+@using PagedList.Mvc;
 
 @foreach (var match in Model)
 {
-<div class="container">
-    <div class="col-sm-12">
-        <div class="col-sm-4" style="background: #ccc; margin-top: 10px;">@match.Championship.Name</div>
+    <div class="container">
+        <div class="col-sm-12">
+            <div class="col-sm-4" style="background: #ccc; margin-top: 10px;">@match.Championship.Name</div>
+        </div>
+        <hr />
+        <div class="col-sm-12" style="margin-top: 10px;">
+            <div class="col-sm-4">@match.Date</div>
+            <div class="col-sm-4">@match.MatchName</div>
+            <div class="col-sm-4">@match.Team1Score - @match.Team2Score</div>
+        </div>
+        <hr />
     </div>
-    <hr/>
-    <div class="col-sm-12" style="margin-top: 10px;">
-        <div class="col-sm-4">@match.Date</div>
-        <div class="col-sm-4">@match.MatchName</div>
-        <div class="col-sm-4">@match.Team1Score - @match.Team2Score</div>
-    </div>
-    <hr/>
-</div>
 }
+
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("MyShowResults", "Results", new { page, res = Model }))
