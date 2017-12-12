@@ -14,11 +14,11 @@
         </div>
         <div class="col-md-3">
             <div class="col-md-2">C: </div>
-            <div class="col-md-10"><input id="date1" type="date" name="date1"></div>
+            <div class="col-md-10"><input id="date1" name="date1"></div>
         </div>
         <div class="col-md-3">
             <div class="col-md-2">По: </div>
-            <div class="col-md-10"><input id="date2" type="date" name="date2"></div>
+            <div class="col-md-10"><input id="date2" name="date2"></div>
         </div>
         <div class="col-md-3">
             <button class="btn-filter" name="show" id="botShow">показать</button>
@@ -34,7 +34,23 @@
 
 @section scripts {
     <script type="text/javascript">
+        
         $(document).ready(function () {
+            $.datepicker.setDefaults($.datepicker.regional["ru"]);
+            $(function () {
+                $("#date1").datepicker({                    
+                    showAnim: "slide",
+                    yearRange: "2016:2020"
+                });
+            });
+            $(function () {
+                $("#date2").datepicker({                    
+                    showAnim: "slide",
+                    yearRange: "2016:2020"
+                });
+            });
+                        
+
             $('#botShow').click(function () {
                 //alert("кнопка нажата");
                 var obj = {
