@@ -1,8 +1,10 @@
 body {
 }
 
+
+
 .btn-filter {
-    /*margin: 20px 0 0 0;*/
+    margin: 20px 0 0 0;
     line-height: 40px;
     font-size: 1em;
     padding: 0 20px 0 20px;
@@ -18,30 +20,7 @@ body {
 }
 
 #wrapper-dropdown {
-    /* размер и положение */
-    position: relative; /* Enable absolute positioning for children and pseudo elements */
-    width: 200px;
-    padding: 10px;
-    margin: 0 auto;
-    /* цвет и фон */
-    background: #D90429;
-    color: #EDF2F4;
-    outline: none;
-
-    border-radius: 40px;
+    height: 60px;
+    background: transparent;
 }
-    /*#wrapper-dropdown:after
-
-{
-    content: "";
-    width: 0;
-    height: 0;
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    margin-top: -6px;
-    border-width: 6px 0 6px 6px;
-    border-style: solid;
-    border-color: transparent #fff;
-}*/
 

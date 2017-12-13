@@ -1,65 +1,35 @@
-﻿@*@model List<RosBets.Models.Sport>*@
-@*@model List < RosBets.Models.Match >*@ 
-@model PagedList.IPagedList<RosBets.Models.Match>
+﻿@model PagedList.IPagedList<RosBets.Models.Match>
 @using PagedList.Mvc;
 
-<div class="container" style="margin-top: 10px;">
+<div class="container" style="margin-top: 20px; align-content: center;">
     <div class="row">
         @using (Html.BeginForm("ShowResults", "Results", FormMethod.Post))
         {
-            <div class="col-sm-3" id="wrapper-dropdown">
+            <div class="col-sm-2" id="wrapper-dropdown">
                 <label for="sport">Вид спорта:</label>
                 <select name="sport" id="sport">
                     <option value="Все" selected>Все</option>
                     <option value="Футбол">Футбол</option>
                     <option value="Хоккей">Хоккей</option>
-                    @*@foreach (var sport in Model)
-                        {
-                            <option value="@sport.Name">@sport.Name</option>
-                        }*@
                 </select>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3" style="padding-top:15px;">
                 <div class="col-md-2">C: </div>
                 <div class="col-md-10"><input id="date1" name="date1"></div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3" style="padding-top:15px;">
                 <div class="col-md-2">По: </div>
                 <div class="col-md-10"><input id="date2" name="date2"></div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4" style="padding-left: 100px; padding-top: 0px; padding-bottom: 10px;">
                 <button class="btn-filter" name="show" id="botShow">Отправить</button>
             </div>
-        }
+          }
     </div>
 
-    @*<div class="row">
-            <div class="col-sm-3" id="wrapper-dropdown">
-                <label for="sport">Вид спорта:</label>
-                <select name="sport" id="sport">
-                    <option value="Все" selected>Все</option>
-                    <option value="Футбол">Футбол</option>
-                    <option value="Хоккей">Хоккей</option>
-                    @foreach (var sport in Model)
-                    {
-                        <option value="@sport.Name">@sport.Name</option>
-                    }
-                </select>
-            </div>
-            <div class="col-md-3">
-                <div class="col-md-2">C: </div>
-                <div class="col-md-10"><input id="date1" name="date1"></div>
-            </div>
-            <div class="col-md-3">
-                <div class="col-md-2">По: </div>
-                <div class="col-md-10"><input id="date2" name="date2"></div>
-            </div>
-            <div class="col-md-3">
-                <button class="btn-filter" name="show" id="botShow">показать</button>
-            </div>
-        </div>*@
+
     <div class="result-story" id="result-story">
-        @*@Html.Action("MyShowResults", "Results")*@
+
 
    @foreach (var match in Model)
     {
@@ -67,31 +37,25 @@
             <div class="col-sm-12">
                 <div class="col-sm-4" style="background: #ccc; margin-top: 10px;">@match.Championship.Name</div>
             </div>
-            <hr />
-            <div class="col-sm-12" style="margin-top: 10px;">
+            <hr style="margin-top: 9px;" />
+            <div class="col-sm-12" style="margin-top: 20px;">
                 <div class="col-sm-4">@match.Date</div>
-                <div class="col-sm-4">@match.MatchName</div>
-                <div class="col-sm-4">@match.Team1Score - @match.Team2Score</div>
+                <div class="col-sm-6">@match.MatchName</div>
+                <div class="col-sm-2">@match.Team1Score - @match.Team2Score</div>
             </div>
-            <hr />
+            <hr style="margin-top: 5px;"/>
         </div>
     }
-
+        <div style="margin-top:20px;">
         Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
-
-        @*@Html.PagedListPager(Model, page => Url.Action("ShowResults", "Results", new { page, res = Model }))*@
+        </div>
         @Html.PagedListPager(Model, page => Url.Action("ShowResults", "Results", new { page , date1 = ViewBag.date1, date2 = ViewBag.date2, sport = ViewBag.sport}))
 
     </div>
 </div>
 <hr/>
 
-
-@*@section scripts {
-    @Scripts.Render("~/Scripts/SearchResults.js")
-}*@
-    @Styles.Render("~/Content/ResultsForm.css")
-
+@Styles.Render("~/Content/ResultsForm.css")
 
 @section scripts {
     <script type="text/javascript">
@@ -111,28 +75,6 @@
                 });
             });
                         
-
-            //$('#botShow').click(function () {
-            //    //alert("кнопка нажата");
-            //    var obj = {
-            //        sport: $("#sport").val(),
-            //        date1: $("#date1").val(),
-            //        date2: $("#date2").val(),
-            //    };
-            //    $.ajax({
-            //        type: 'POST',
-            //        url: '/Results/MyShowResults',
-            //        data: JSON.stringify(obj),
-            //        contentType: 'application/json; charset=UTF-8',
-            //        success: function (response) {
-            //            $('#result-story').html(response);
-            //        },
-            //        error: function (response) {
-            //            console.log(response);
-            //        }
-            //    });
-            //});
-
             });
         </script>
     }
