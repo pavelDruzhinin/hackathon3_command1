@@ -26,7 +26,7 @@ namespace RosBets.Controllers
             ViewBag.sport = sport;
 
 
-            int pageSize = 3;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
 
             List<Match> results = db.Matches
