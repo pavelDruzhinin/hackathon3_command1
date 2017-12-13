@@ -1,4 +1,5 @@
-﻿using RosBets.Context;
+﻿using PagedList;
+using RosBets.Context;
 using RosBets.Models;
 using System;
 using System.Collections.Generic;
@@ -13,73 +14,55 @@ namespace RosBets.Controllers
     {
         RosBetsContext db = new RosBetsContext();
         // GET: Results
-        public ActionResult ShowResults()
+
+        DateTime currentDate = DateTime.Now;
+
+        public ActionResult ShowResults(int? page, DateTime? date1, DateTime? date2, string sport = "Все")
         {
-
-            List<Sport> sports = db.Sports.
-                Where(x => x.Name != null)
-                .ToList();
-
-            return View(sports);
-        }
-
-
-        public ActionResult MyShowResults()
-        {
-            var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
-
-            List<Match> results = db.Matches
-                .Where(x => x.Finished == true)
-                .Include(x => x.Championship)
-                .Include(z => z.Championship.Sport)
-                .OrderBy(x => x.Date)
-                .ToList();
-
-            return PartialView("_ShowResults", results);
-        }
-
-
-        [HttpPost]
-        public ActionResult MyShowResults(DateTime date1, DateTime date2, string sport)
-        {
-            var existingUser = db.Users.FirstOrDefault(u => u.Mail == User.Identity.Name);
-
-            //DateTime myDate = DateTime.Parse(date);
-
-            List<Match> results = db.Matches
-                .Where(x => x.Finished == true)
-                .Include(x => x.Championship)
-                .Include(z => z.Championship.Sport)
-                //.Include(path: y => y.Championship.Sport.Name)
-                .OrderBy(d => d.Date)//.ThenBy(d => d.Date)
-                .ToList();
-
-            switch (sport)
+            
+            if (date1 == null)
             {
-                case "Все":
-                    results = results
-                   .Where(y => y.Date >= date1)
-                   .Where(y => y.Date <= date2)
-                   .ToList();
-                    break;
-
-                case "Футбол":
-                    results = results
-                   .Where(x => x.Championship.Sport.Name == "Футбол")
-                   .Where(y => y.Date >= date1)
-                   .Where(y => y.Date <= date2)
-                   .ToList();
-                    break;
-                case "Хоккей":
-                    results = results
-                   .Where(x => x.Championship.Sport.Name == "Хоккей")
-                   .Where(y => y.Date >= date1)
-                   .Where(y => y.Date <= date2)
-                   .ToList();
-                    break;
+                date1 = default(DateTime);
             }
 
-            return PartialView("_ShowResults", results);
+            if (date2 == null)
+            {
+                date2 = currentDate;
+            }
+
+            ViewBag.date1 = date1;
+            ViewBag.date2 = date2;
+            ViewBag.sport = sport;
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            List<Match> results = db.Matches
+                   .Where(x => x.Finished == true)
+                   .Include(x => x.Championship)
+                   .Include(z => z.Championship.Sport)
+                   .OrderBy(y => y.Championship.Name)
+                   .ThenBy(x => x.Date)
+                   .ToList();
+
+            if (sport == "Все")
+            {
+                results = results
+                   .Where(y => y.Date >= date1)
+                   .Where(y => y.Date <= date2)
+                   .ToList();
+
+                return View(results.ToPagedList(pageNumber, pageSize));
+
+            }
+
+            results = results
+                   .Where(x => x.Championship.Sport.Name == sport)
+                   .Where(y => y.Date >= date1)
+                   .Where(y => y.Date <= date2)
+                   .ToList();
+
+            return View(results.ToPagedList(pageNumber, pageSize));
         }
 
         protected override void Dispose(bool disposing)
