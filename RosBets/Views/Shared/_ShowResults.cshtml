@@ -1,5 +1,5 @@
 ﻿@*@model List<RosBets.Models.Match>*@
-@model PagedList.IPagedList<RosBets.Models.Match>
+@*@model PagedList.IPagedList<RosBets.Models.Match>
 @using PagedList.Mvc;
 
 @foreach (var match in Model)
@@ -16,9 +16,9 @@
         </div>
         <hr />
     </div>
-}
+}*@
 
-Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+@*Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount*@
 
 @*@Html.PagedListPager(Model, page => Url.Action("ShowResults", "Results", new { page, res = Model }))*@
-@Html.PagedListPager(Model, page => Url.Action("ShowResults", "Results", new { page}))
+@*@Html.PagedListPager(Model, page => Url.Action("ShowResults", "Results", new { page}))*@
