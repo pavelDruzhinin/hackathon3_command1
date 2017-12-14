@@ -15,7 +15,7 @@ namespace RosBets.Controllers
         RosBetsContext db = new RosBetsContext();
         // GET: Results
 
-        DateTime currentDate = DateTime.Now;
+        DateTime localDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, TimeZoneInfo.Local.Id, "Russian Standard Time");
 
         public ActionResult ShowResults(int? page, DateTime? date1, DateTime? date2, string sport = "Все")
         {
@@ -27,7 +27,7 @@ namespace RosBets.Controllers
 
             if (date2 == null)
             {
-                date2 = currentDate;
+                date2 = localDate;
             }
 
             ViewBag.date1 = date1;
