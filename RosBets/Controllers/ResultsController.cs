@@ -34,7 +34,7 @@ namespace RosBets.Controllers
             ViewBag.date2 = date2;
             ViewBag.sport = sport;
 
-            int pageSize = 10;
+            int pageSize = 20;
             int pageNumber = (page ?? 1);
 
             List<Match> results = db.Matches

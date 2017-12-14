@@ -5,76 +5,80 @@
     <div class="row">
         @using (Html.BeginForm("ShowResults", "Results", FormMethod.Post))
         {
-            <div class="col-sm-2" id="wrapper-dropdown">
-                <label for="sport">Вид спорта:</label>
-                <select name="sport" id="sport">
-                    <option value="Все" selected>Все</option>
-                    <option value="Футбол">Футбол</option>
-                    <option value="Хоккей">Хоккей</option>
-                </select>
+            <div class="row">
+                <div class="col-sm-2" id="wrapper-dropdown" style="padding-top:15px;">
+                    <label for="sport">Вид спорта:</label>
+                    <select name="sport" id="sport">
+                        <option value="Все" selected>Все</option>
+                        <option value="Футбол">Футбол</option>
+                        <option value="Хоккей">Хоккей</option>
+                    </select>
+                </div>
+                <div class="col-md-3" style="padding-top:15px;">
+                    <div class="col-md-2">C: </div>
+                    <div class="col-md-10"><input id="date1" name="date1"></div>
+                </div>
+                <div class="col-md-3" style="padding-top:15px;">
+                    <div class="col-md-2">По: </div>
+                    <div class="col-md-10"><input id="date2" name="date2"></div>
+                </div>
+                <div class="col-md-4" style="padding-left: 100px; padding-top: 0px; padding-bottom: 10px;">
+                    <button class="btn-filter" name="show" id="botShow">Отправить</button>
+                </div>
             </div>
-            <div class="col-md-3" style="padding-top:15px;">
-                <div class="col-md-2">C: </div>
-                <div class="col-md-10"><input id="date1" name="date1"></div>
-            </div>
-            <div class="col-md-3" style="padding-top:15px;">
-                <div class="col-md-2">По: </div>
-                <div class="col-md-10"><input id="date2" name="date2"></div>
-            </div>
-            <div class="col-md-4" style="padding-left: 100px; padding-top: 0px; padding-bottom: 10px;">
-                <button class="btn-filter" name="show" id="botShow">Отправить</button>
-            </div>
-          }
+        }
     </div>
 
 
     <div class="result-story" id="result-story">
 
 
-   @foreach (var match in Model)
-    {
-        <div class="container">
-            <div class="col-sm-12">
-                <div class="col-sm-4" style="background: #ccc; margin-top: 10px;">@match.Championship.Name</div>
+        @foreach (var match in Model.GroupBy(m => m.Championship.Name))
+        {
+            <div class="container result-box">
+                <div class="col-sm-12 col-md-12 result-box__info row">
+                    <div class="col-sm-6 col-md-6 result-box__name">@match.Key</div>
+                    <div class="col-sm-6 col-md-6 result-box__half"></div>
+                </div>
+                @foreach (var item in match)
+                {
+                    <div class="col-sm-12 col-md-12 result-box__match row">
+                        <div class="col-sm-4 col-md-4 result-box__item">@item.Date</div>
+                        <div class="col-sm-6 col-md-6 result-box__item result-box__item_date">@item.MatchName</div>
+                        <div class="col-sm-2 col-md-2 result-box__item result-box__item_score">@item.Team1Score - @item.Team2Score</div>
+                    </div>
+                }
             </div>
-            <hr style="margin-top: 9px;" />
-            <div class="col-sm-12" style="margin-top: 20px;">
-                <div class="col-sm-4">@match.Date</div>
-                <div class="col-sm-6">@match.MatchName</div>
-                <div class="col-sm-2">@match.Team1Score - @match.Team2Score</div>
-            </div>
-            <hr style="margin-top: 5px;"/>
-        </div>
-    }
+        }
         <div style="margin-top:20px;">
-        Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+            Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
         </div>
-        @Html.PagedListPager(Model, page => Url.Action("ShowResults", "Results", new { page , date1 = ViewBag.date1, date2 = ViewBag.date2, sport = ViewBag.sport}))
+        @Html.PagedListPager(Model, page => Url.Action("ShowResults", "Results", new { page, date1 = ViewBag.date1, date2 = ViewBag.date2, sport = ViewBag.sport }))
 
     </div>
 </div>
-<hr/>
+<hr />
 
 @Styles.Render("~/Content/ResultsForm.css")
 
 @section scripts {
     <script type="text/javascript">
-        
+
         $(document).ready(function () {
             $.datepicker.setDefaults($.datepicker.regional["ru"]);
             $(function () {
-                $("#date1").datepicker({                    
+                $("#date1").datepicker({
                     showAnim: "slide",
                     yearRange: "2016:2020"
                 });
             });
             $(function () {
-                $("#date2").datepicker({                    
+                $("#date2").datepicker({
                     showAnim: "slide",
                     yearRange: "2016:2020"
                 });
             });
-                        
-            });
-        </script>
-    }
+
+        });
+    </script>
+}

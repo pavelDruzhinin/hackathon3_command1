@@ -1,8 +1,3 @@
-body {
-}
-
-
-
 .btn-filter {
     margin: 20px 0 0 0;
     line-height: 40px;
@@ -24,3 +19,37 @@ body {
     background: transparent;
 }
 
+.result-box {
+    margin: 20px 0 20px 0;
+}
+
+.result-box .result-box__name {
+    background: #ccc;    
+    border-top: 2px solid #D90429;  
+    padding: 10px;
+}
+
+.result-box .result-box__half {    
+    border-top: 2px solid #D90429;    
+}
+
+.result-box .result-box__info {
+    padding: 0px;
+    margin-bottom: 15px;
+}
+
+.result-box .result-box__match {
+    border-bottom: 1px solid #ccc;    
+}
+
+.result-box .result-box__match:nth-last-child(1) {
+    border-bottom: none;    
+}
+
+.result-box__item {
+    padding: 10px;    
+}
+
+.result-box__item_date, .result-box__item_score {
+    border-left: 1px solid #ccc;    
+}
