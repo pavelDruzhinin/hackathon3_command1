@@ -16,11 +16,11 @@
                 </div>
                 <div class="col-md-3" style="padding-top:15px;">
                     <div class="col-md-2">C: </div>
-                    <div class="col-md-10"><input id="date1" name="date1"></div>
+                    <div class="col-md-10"><input type="date" id="date1" name="date1"></div>
                 </div>
                 <div class="col-md-3" style="padding-top:15px;">
                     <div class="col-md-2">По: </div>
-                    <div class="col-md-10"><input id="date2" name="date2"></div>
+                    <div class="col-md-10"><input type="date" id="date2" name="date2"></div>
                 </div>
                 <div class="col-md-4" style="padding-left: 100px; padding-top: 0px; padding-bottom: 10px;">
                     <button class="btn-filter" name="show" id="botShow">Отправить</button>
@@ -43,7 +43,7 @@
                 @foreach (var item in match)
                 {
                     <div class="col-sm-12 col-md-12 result-box__match row">
-                        <div class="col-sm-4 col-md-4 result-box__item">@item.Date</div>
+                        <div class="col-sm-4 col-md-4 result-box__item">@($"{item.Date:dd/MM/yyyy H:mm}")</div>
                         <div class="col-sm-6 col-md-6 result-box__item result-box__item_date">@item.MatchName</div>
                         <div class="col-sm-2 col-md-2 result-box__item result-box__item_score">@item.Team1Score - @item.Team2Score</div>
                     </div>
@@ -64,21 +64,21 @@
 @section scripts {
     <script type="text/javascript">
 
-        $(document).ready(function () {
-            $.datepicker.setDefaults($.datepicker.regional["ru"]);
-            $(function () {
-                $("#date1").datepicker({
-                    showAnim: "slide",
-                    yearRange: "2016:2020"
-                });
-            });
-            $(function () {
-                $("#date2").datepicker({
-                    showAnim: "slide",
-                    yearRange: "2016:2020"
-                });
-            });
+        //$(document).ready(function () {
+        //    $.datepicker.setDefaults($.datepicker.regional["ru-Ru"]);
+        //    $(function () {
+        //        $("#date1").datepicker({
+        //            showAnim: "slide",
+        //            yearRange: "2016:2020"
+        //        });
+        //    });
+        //    $(function () {
+        //        $("#date2").datepicker({
+        //            showAnim: "slide",
+        //            yearRange: "2016:2020"
+        //        });
+        //    });
 
-        });
+        //});
     </script>
 }
