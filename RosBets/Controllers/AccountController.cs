@@ -71,7 +71,15 @@ namespace RosBets.Controllers
 
                 if (existingUser == null)
                 {
-                    db.Users.Add(user);
+                    db.Users.Add(new User {
+                    FirstName=user.FirstName,
+                    LastName=user.LastName,
+                    MiddleName=user.MiddleName,
+                    Mail=user.Mail,
+                    Phone=user.Phone,
+                    City=user.City,
+                    Password=user.Password,
+                    });
                     db.SaveChanges();
                     FormsAuthentication.SetAuthCookie(user.Mail, true);
                     return RedirectToAction("Index", "Home");
