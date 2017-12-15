@@ -30,6 +30,10 @@ namespace RosBets.Controllers
                 date2 = DateTime.Now;
             }
 
+            ViewBag.date1 = date1;
+            ViewBag.date2 = date2;
+            ViewBag.sport = sport;
+
             int pageSize = 20;
             int pageNumber = (page ?? 1);
 
