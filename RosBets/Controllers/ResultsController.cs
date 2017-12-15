@@ -15,10 +15,12 @@ namespace RosBets.Controllers
         RosBetsContext db = new RosBetsContext();
         // GET: Results
 
-        DateTime localDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, TimeZoneInfo.Local.Id, "Russian Standard Time");
+        
 
         public ActionResult ShowResults(int? page, DateTime? date1, DateTime? date2, string sport = "Все")
         {
+            var serverDate = DateTime.Now;
+            var localDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(serverDate, TimeZoneInfo.Local.Id, "Russian Standard Time");
 
             if (date1 == null)
             {
@@ -48,8 +50,8 @@ namespace RosBets.Controllers
             if (sport == "Все")
             {
                 results = results
-                   .Where(y => y.Date.Value.Date >= date1.Value.Date)
-                   .Where(y => y.Date.Value.Date <= date2.Value.Date)
+                   .Where(y => y.Date.Value.Date >= TimeZoneInfo.ConvertTimeBySystemTimeZoneId(date1.Value.Date, TimeZoneInfo.Local.Id, "Russian Standard Time"))
+                   .Where(y => y.Date.Value.Date <= TimeZoneInfo.ConvertTimeBySystemTimeZoneId(date2.Value.Date, TimeZoneInfo.Local.Id, "Russian Standard Time"))
                    .ToList();
 
                 return View(results.ToPagedList(pageNumber, pageSize));
@@ -58,8 +60,8 @@ namespace RosBets.Controllers
 
             results = results
                    .Where(x => x.Championship.Sport.Name == sport)
-                   .Where(y => y.Date.Value.Date >= date1.Value.Date)
-                   .Where(y => y.Date.Value.Date <= date2.Value.Date)
+                   .Where(y => y.Date.Value.Date >= TimeZoneInfo.ConvertTimeBySystemTimeZoneId(date1.Value.Date, TimeZoneInfo.Local.Id, "Russian Standard Time"))
+                   .Where(y => y.Date.Value.Date <= TimeZoneInfo.ConvertTimeBySystemTimeZoneId(date2.Value.Date, TimeZoneInfo.Local.Id, "Russian Standard Time"))
                    .ToList();
 
             return View(results.ToPagedList(pageNumber, pageSize));
