@@ -38,6 +38,11 @@ namespace RosBets.Controllers
                     ModelState.AddModelError("", "Пользователя с таким логином и паролем нет");
                     return View(user);
                 }
+                else if(user.Login == "admin@rosbets.ru" &&  existingUser != null)
+                {
+                    FormsAuthentication.SetAuthCookie(user.Login, true);
+                    return RedirectToAction("Index", "Admin");
+                }
                 else
                 {
                     FormsAuthentication.SetAuthCookie(user.Login, true);
