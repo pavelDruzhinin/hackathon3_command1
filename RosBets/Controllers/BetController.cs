@@ -62,10 +62,15 @@ namespace RosBets.Controllers
         public ActionResult CreateBet(decimal amount, int? couponEventId)
         {
             if (!User.Identity.IsAuthenticated)
-                return RedirectToAction("Login", "Account");
-
+            {
+                return Json(new { result = "NotLoggedIn"});
+            }
             var coupon = Coupon.GetCoupon(HttpContext);
             var user = db.Users.FirstOrDefault(x => x.Mail == User.Identity.Name);
+            if (user.Money < amount)
+            {
+                return Json(new { result = "NoMoney" });
+            }
             var bet = new Bet
             {
                 UserId = user.Id,
@@ -73,6 +78,7 @@ namespace RosBets.Controllers
                 Date = DateTime.Now
             };
             db.Bets.Add(bet);
+            user.Money -= amount;
             db.SaveChanges();
             coupon.CreateBet(bet, couponEventId);
             var viewmodel = new CouponViewModel

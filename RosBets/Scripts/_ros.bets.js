@@ -1,15 +1,12 @@
 ﻿// coupon action start
 $(document).ready(function () {
-    var ids = [];
-    $(".fa-coupon").each(function () {
-        ids.push(this.dataset.bindId);
-    });
-    $("#" + ids.join(",#")).addClass("clicked");
+    addClicked();
 
     $(".table-td").click(addEvent);
     $(document).on("click", ".fa-coupon", removeEvent);
     $(document).on("click", ".submitExpress", createExpress);
     $(document).on("click", ".submitOrdinary", createOrdinary);
+    $(document).on("click", ".coupon-message", hideMessage);
 });
 
 function addEvent() {
@@ -51,10 +48,18 @@ function createExpress() {
     $.ajax({
         url: "/Bet/CreateBet",
         type: "POST",
-        dataType: "html",
+      //  dataType: "html",
         data: value,
         success: function (data) {
-            $('.cupon-menu').html(data);
+            if (data.result === "NotLoggedIn") {
+                $(".login-error").show();
+            } else if (data.result === "NoMoney") {
+                $(".money-error").show();
+            } else {
+                $('.cupon-menu').html(data);
+                $(".bet-success").show();
+                clearClicked();
+            }
         }
     });
 }
@@ -66,12 +71,37 @@ function createOrdinary() {
     $.ajax({
         url: "/Bet/CreateBet",
         type: "POST",
-        dataType: "html",
+  //      dataType: "html",
         data: values,
         success: function (data) {
-            $('.cupon-menu').html(data);
+            if (data.result === "NotLoggedIn") {
+                $(".login-error").show();
+            } else if (data.result === "NoMoney") {
+                $(".money-error").show();
+            } else {
+                $('.cupon-menu').html(data);
+                $(".bet-success").show();
+                clearClicked();
+                addClicked();
+            }
         }
     });
+}
+
+function addClicked() {
+    var ids = [];
+    $(".fa-coupon").each(function() {
+        ids.push(this.dataset.bindId);
+    });
+    $("#" + ids.join(",#")).addClass("clicked");
+}
+
+function clearClicked() {
+    $("td").removeClass("clicked");
+}
+
+function hideMessage() {
+    $(this).hide();
 }
 // coupon action end
 

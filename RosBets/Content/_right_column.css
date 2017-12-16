@@ -1,4 +1,8 @@
-﻿
+﻿.match-name {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
 .coupon {
     position: relative;
     padding: 4px 4px 6px 4px;
@@ -28,7 +32,7 @@
 }
 
 .coupon-input {
-    max-width: 70px;
+    max-width: 90px;
     height: 22px;
     margin-left: 5px;
     line-height: 16px;
@@ -48,7 +52,20 @@
     transition: all .2s ease-out;
 }
 
-.coupon-button:hover{
+.coupon-button-small {
+    color: #EDF2F4;
+    margin-top: 5px;
+    height: 22px;
+    width: 40px;
+    text-align: center;
+    border-radius: 10px;
+    line-height: 23px;
+    background: #D90429;
+    box-shadow: 0 5px 20px -4px #D90429;
+    transition: all .2s ease-out;
+}
+
+.coupon-button:hover, .coupon-button-small:hover{
     cursor:pointer;
 }
 
@@ -95,4 +112,26 @@
 
 .toggle-coupon > li > a:hover {
     color: #D90429;
+}
+
+.login-error, .money-error {
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+    display: none;
+    border: 1px solid #D90429;
+    background-color: #D90429;
+}
+
+.bet-success {
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+    display: none;
+    border: 1px solid #007300;
+    background-color: #007300;
+}
+
+.coupon-message:hover {
+    cursor: pointer;
 }
