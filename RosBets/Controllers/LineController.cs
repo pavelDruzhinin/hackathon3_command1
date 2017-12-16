@@ -32,6 +32,7 @@ namespace RosBets.Controllers
 //                ViewBag.MatchesNotifierEntity = db.GetNotifierEntity<MatchEvent>(db.MatchEvents).ToJson();
                 ViewBag.MatchEventsNotifierEntity = db.GetNotifierEntity<MatchEvent>(db.MatchEvents).ToJson();
                 ViewBag.ChampId = id;
+                ViewBag.Title ="Линия - "+db.Championships.Where(x => x.Id == id).Select(x => x.Name).FirstOrDefault();
                 return View(line.ToList());
             }
         }
