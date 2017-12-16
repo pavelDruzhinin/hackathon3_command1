@@ -30,6 +30,7 @@ namespace RosBets.Controllers
                         .Include(x => x.MatchEvents)
                         .Where(x=>x.Date>localTime)
                         .ToList();
+                    ViewBag.Title = "Ставки не важно на какой день";
                     break;
                 case 2:
                     var Date = DateTime.Now;
@@ -38,6 +39,7 @@ namespace RosBets.Controllers
                         .Include(x => x.MatchEvents)
                         .Where(x => x.Date.Value.Day == localTime.Day && x.Date>localTime)
                         .ToList();
+                    ViewBag.Title = "Ставки на сегодня";
                     break;
                 case 3: //ближайший час
                     var NextHour = localTime.AddHours(1);
@@ -45,6 +47,7 @@ namespace RosBets.Controllers
                         .Include(x => x.MatchEvents)
                         .Where(x => (x.Date >= localTime && x.Date<=NextHour) && x.Date>localTime)
                         .ToList();
+                    ViewBag.Title = "Ставки на ближайший час";
                     break;
                 default:
                     return RedirectToAction("Index", "Home");
