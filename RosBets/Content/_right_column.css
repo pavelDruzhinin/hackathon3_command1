@@ -135,3 +135,7 @@
 .coupon-message:hover {
     cursor: pointer;
 }
+
+.espress-summary, .ordinary-summary {
+    display: none;
+}

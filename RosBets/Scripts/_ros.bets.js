@@ -7,6 +7,11 @@ $(document).ready(function () {
     $(document).on("click", ".submitExpress", createExpress);
     $(document).on("click", ".submitOrdinary", createOrdinary);
     $(document).on("click", ".coupon-message", hideMessage);
+    $(document).on("keyup", "#allOrdinary", copyToInputs);
+    $(document).on("keyup", ".ord-input", renewOrdSummary);
+    $(document).on("keyup", "#expressBetValue", renewExpSummary);
+    renewOrdSummary();
+    renewExpSummary();
 });
 
 function addEvent() {
@@ -102,6 +107,36 @@ function clearClicked() {
 
 function hideMessage() {
     $(this).hide();
+}
+
+function copyToInputs() {
+    $(".ord-input").val($(this).val());
+    renewOrdSummary();
+}
+
+function renewOrdSummary() {
+    var sum = 0;
+    $(".ord-input").each(function() {
+        sum += Number($(this).val());
+    });
+    if (sum) {
+        $("#ordinary-sum").text(sum);
+        var coeff = $("#ord-total-coeff").text().replace(",", ".");
+        console.log(coeff);
+        $("#ordinary-payout").text((sum * coeff).toFixed(2));
+        $(".ordinary-summary").show();
+    } else {
+        $(".ordinary-summary").hide();
+    }
+}
+
+function renewExpSummary() {
+    if ($("#expressBetValue").val()) {
+        $("#express-sum").text(($("#expressBetValue").val() * $("#exp-total-coeff").text().replace(",", ".")).toFixed(2));
+        $(".express-summary").show();
+    } else {
+        $(".express-summary").hide();
+    }
 }
 // coupon action end
 

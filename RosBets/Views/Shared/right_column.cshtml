@@ -46,9 +46,11 @@
 
             <div class="col coupon coupon-summary coupon clearfix">
                 <span class="coupon-span float-elem-left">Общий коэффицент:</span>
-                <span class="coefficient coupon-span float-elem-right">@Model.TotalCoefficient</span>
-                <span class="coupon-span float-elem-left">Возможный результат:</span>
-                <span class="coefficient coupon-span float-elem-right" id="ordinary-sum">1564654</span>
+                <span class="coefficient coupon-span float-elem-right" id="exp-total-coeff">@Model.TotalCoefficient</span>
+                <div class="express-summary">
+                    <span class="coupon-span float-elem-left">Возможный результат:</span>
+                    <span class="coefficient coupon-span float-elem-right" id="express-sum"></span>
+                </div>
                 <input id="expressBetValue" class="float-elem-left coupon-input" name="amount"/>
                 <div class="submitExpress float-elem-right coupon-button">Поставить</div>
             </div>
@@ -65,16 +67,20 @@
                     <span class="event-name coupon-span">@couponEvent.Event.FullName @couponEvent.Total</span>
                     <div class="coefficient-name coupon-span float-elem-left">Коэффицент</div>
                     <div class="coefficient coupon-span float-elem-right">@couponEvent.Coefficient</div>
-                    <input id="value_@couponEvent.Id" class="float-elem-left coupon-input" name="amount">
+                    <input id="value_@couponEvent.Id" class="float-elem-left coupon-input ord-input" name="amount">
                     <div data-id="@couponEvent.Id" class="submitOrdinary float-elem-right coupon-button-small">>></div>
                 </div>
             }
 
             <div class="col coupon coupon-summary coupon clearfix">
                 <span class="coupon-span float-elem-left">Общий коэффицент:</span>
-                <span class="coefficient coupon-span float-elem-right">@Model.TotalCoefficient</span>
-                <span class="coupon-span float-elem-left">Возможный результат:</span>
-                <span class="coefficient coupon-span float-elem-right" id="ordinary-sum">5465484</span>
+                <span class="coefficient coupon-span float-elem-right" id="ord-total-coeff">@Model.TotalCoefficient</span>
+                <div class="ordinary-summary">
+                    <span class="coupon-span float-elem-left">Общая сумма ставки:</span>
+                    <span class="coefficient coupon-span float-elem-right" id="ordinary-sum"></span>
+                    <span class="coupon-span float-elem-left">Возможный результат:</span>
+                    <span class="coefficient coupon-span float-elem-right" id="ordinary-payout"></span>
+                </div>
                 <input id="allOrdinary" class="float-elem-left coupon-input" />
                 <div class="multipleOrdinary float-elem-right coupon-button">Поставить</div>
             </div>
