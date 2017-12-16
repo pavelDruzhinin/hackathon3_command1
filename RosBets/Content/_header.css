@@ -110,6 +110,15 @@
     background: #D90429;
     box-shadow: 0 8px 18px -8px #D90429;
     transition: all .2s ease-out;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 170px;
+}
+
+@media only screen and (min-width:992px) and (max-width:1400px) {
+    .header .user-bar .round-box {
+        max-width: 100px;
+    }
 }
 
 .header .user-bar .round-box:hover {
