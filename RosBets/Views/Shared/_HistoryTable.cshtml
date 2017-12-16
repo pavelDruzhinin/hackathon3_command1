@@ -13,7 +13,8 @@
                 {<span>Ординар</span>}
                 else
                 {<span>Экспресс</span> }
-                        <span>от @bet.Date</span>
+                        <span>от @($"{bet.Date:dd/MM/yyyy H:mm}")</span>
+                        <span>на сумму: @bet.BetAmount</span>
                         @* @if (bet.Success == null)
                             {<span class="null">Не расчитано</span>}
                             else if (bet.Success == true)
@@ -53,7 +54,7 @@
                             @foreach (var betEvent in bet.BetEvents)
                             {
                                 <tr>
-                                    <td>@betEvent.Match.Date</td>
+                                    <td>@($"{betEvent.Match.Date:dd/MM/yyyy H:mm}")</td>
                                     <td>@betEvent.Match.Championship.Name</td>
                                     <td>@betEvent.Match.MatchName</td>
                                     <td>@betEvent.Event.FullName @betEvent.Total</td>
