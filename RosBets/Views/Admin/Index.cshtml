@@ -73,13 +73,33 @@
         </section>
         @{Html.RenderPartial("footer");}
         @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
     </div>
     <script>
         $(document).ready(function () {
             $('.money').hide();
             $('.sports').hide();
+            //admin section start
+            $(document).ready(function () {
+                var $rows = $('#client-table tr');
+                $('#seach-input').keyup(function () {
+                    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+                    $rows.show().filter(function () {
+                        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+                        return !~text.indexOf(val);
+                    }).hide();
+                });
+            });
+            //admin section end
         });
+        $(window).load(function () { headerFix() });
+        $(window).resize(function () { headerFix() });
+
+        function headerFix() {
+            var headerHeight = $("#header").outerHeight() + "px";
+            $("section").css({ "padding-top": headerHeight });
+        };
     </script>
+    <script src="/Scripts/bootstrap.js"></script>
 </body>
 </html>

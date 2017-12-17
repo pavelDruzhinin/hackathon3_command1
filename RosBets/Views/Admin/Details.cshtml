@@ -106,13 +106,20 @@
         </section>
         @{Html.RenderPartial("footer");}
         @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
     </div>
     <script>
         $(document).ready(function () {
             $('.money').hide();
             $('.sports').hide();
         });
+        $(window).load(function () { headerFix() });
+        $(window).resize(function () { headerFix() });
+
+        function headerFix() {
+            var headerHeight = $("#header").outerHeight() + "px";
+            $("section").css({ "padding-top": headerHeight });
+        };
     </script>
+    <script src="/Scripts/bootstrap.js"></script>
 </body>
 </html>
