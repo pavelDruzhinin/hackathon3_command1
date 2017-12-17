@@ -49,3 +49,13 @@ textarea {
     border: 1px solid rgb(204, 204, 204);
     background: white;
 }
+
+/*admin styles start*/
+#client-table td a {
+    color: #2b2D42;
+}
+
+#client-table td a:hover {
+    color: #EF233C;
+}
+/*admin styles end*/

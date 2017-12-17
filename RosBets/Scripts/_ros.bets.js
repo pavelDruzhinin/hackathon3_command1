@@ -214,3 +214,17 @@ function headerFix() {
     $("section").css({ "padding-top": headerHeight });
 };
 //fixed header end
+
+//admin section start
+$(document).ready(function () {
+    var $rows = $('#client-table tr');
+    $('#seach-input').keyup(function () {
+        var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+        $rows.show().filter(function () {
+            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+            return !~text.indexOf(val);
+        }).hide();
+    });
+});
+//admin section end
