@@ -113,32 +113,31 @@ namespace RosBets.Controllers
         [HttpPost]
         public ActionResult AllOrdinary(params BetTO[] couponEvents)
         {
-            
-                if (!User.Identity.IsAuthenticated)
-                {
-                    return Json(new {result = "NotLoggedIn"});
-                }
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Json(new { result = "NotLoggedIn" });
+            }
             var user = new User();
             using (var db = new RosBetsContext())
             {
                 user = db.Users.FirstOrDefault(x => x.Mail == User.Identity.Name);
             }
             var betAmount = couponEvents.Sum(x => x.Value);
-                if (betAmount > user.Money)
+            if (betAmount > user.Money)
+            {
+                return Json(new {result = "NoMoney"});
+            }
+            var coupon = Coupon.GetCoupon(HttpContext);
+            foreach (var e in couponEvents)
+            {
+                var bet = new Bet
                 {
-                    return Json(new {result = "NoMoney"});
-                }
-                var coupon = Coupon.GetCoupon(HttpContext);
-                foreach (var e in couponEvents)
+                    UserId = user.Id,
+                    BetAmount = e.Value,
+                    Date = DateTime.Now
+                };
+                using (var db = new RosBetsContext())
                 {
-                    var bet = new Bet
-                    {
-                        UserId = user.Id,
-                        BetAmount = e.Value,
-                        Date = DateTime.Now
-                    };
-                    using (var db = new RosBetsContext())
-                { 
                     db.Bets.Add(bet);
                     user.Money -= e.Value;
                     db.Entry(user).State = EntityState.Modified;
@@ -146,12 +145,12 @@ namespace RosBets.Controllers
                     coupon.CreateBet(bet, e.EventId);
                 }
             }
-                var viewmodel = new CouponViewModel
-                {
-                    CouponEvents = coupon.GetCouponEvents(),
-                    TotalCoefficient = coupon.GetCoefficient()
-                };
-                return PartialView("right_column", viewmodel);
+            var viewmodel = new CouponViewModel
+            {
+                CouponEvents = coupon.GetCouponEvents(),
+                TotalCoefficient = coupon.GetCoefficient()
+            };
+            return PartialView("right_column", viewmodel);
             
         }
     }

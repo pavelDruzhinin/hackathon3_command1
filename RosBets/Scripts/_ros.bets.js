@@ -41,7 +41,7 @@ function allOrdinary() {
     $.ajax({
         url: "/Bet/AllOrdinary",
         type: "POST",
-        dataType: "html",
+  //      dataType: "html",
         contentType: "application/json",
         data: JSON.stringify(values),
         success: function (data) {
