@@ -68,8 +68,10 @@
                     <div class="coefficient-name coupon-span float-elem-left">Коэффицент</div>
                     <div class="coefficient coupon-span float-elem-right">@couponEvent.Coefficient</div>
                     <input id="value_@couponEvent.Id" class="float-elem-left coupon-input ord-input" name="amount">
-                    <div data-id="@couponEvent.Id" class="submitOrdinary float-elem-right coupon-button-small">>></div>
+                    <div data-id="@couponEvent.Id" class="submitOrdinary float-elem-right coupon-button-small">>></div>                  
                 </div>
+                <div class="empty-input coupon-message" data-msgid="@couponEvent.Id">Введите сумму ставки.</div>
+
             }
 
             <div class="col coupon coupon-summary coupon clearfix">
@@ -82,7 +84,7 @@
                     <span class="coefficient coupon-span float-elem-right" id="ordinary-payout"></span>
                 </div>
                 <input id="allOrdinary" class="float-elem-left coupon-input" />
-                <div class="multipleOrdinary float-elem-right coupon-button">Поставить</div>
+                <div class="allOrdinary float-elem-right coupon-button">Поставить</div>
             </div>
         </div>
 

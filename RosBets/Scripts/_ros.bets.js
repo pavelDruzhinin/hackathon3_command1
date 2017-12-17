@@ -4,8 +4,10 @@ $(document).ready(function () {
 
     $(".table-td").click(addEvent);
     $(document).on("click", ".fa-coupon", removeEvent);
+    $(document).on("click", ".fa-bigcross", clearCoupon);
     $(document).on("click", ".submitExpress", createExpress);
     $(document).on("click", ".submitOrdinary", createOrdinary);
+    $(document).on("click", ".allOrdinary", allOrdinary);
     $(document).on("click", ".coupon-message", hideMessage);
     $(document).on("keyup", "#allOrdinary", copyToInputs);
     $(document).on("keyup", ".ord-input", renewOrdSummary);
@@ -13,6 +15,45 @@ $(document).ready(function () {
     renewOrdSummary();
     renewExpSummary();
 });
+
+function allOrdinary() {
+    var allInputs = true;
+    var values = [];
+    $(".ord-input").each(function () {
+        if ($(this).val()) {
+            var obj = {
+                eventId: $(this).attr("id").split("_").pop(),
+                value: $(this).val()
+            }
+            values.push(obj);
+        } else {
+            allInputs = false;
+            var id = $(this).attr("id").split("_").pop();
+            $("div[data-msgid=" + id + "]").show();
+        }
+    });
+    if(allInputs) {
+    $.ajax({
+        url: "/Bet/AllOrdinary",
+        type: "POST",
+        dataType: "html",
+        contentType: "application/json",
+        data: JSON.stringify(values),
+        success: function (data) {
+            if (data.result === "NotLoggedIn") {
+                $(".login-error").show();
+            } else if (data.result === "NoMoney") {
+                $(".money-error").show();
+            } else {
+                $('.cupon-menu').html(data);
+                $(".bet-success").show();
+                clearClicked();
+            }
+        }
+        });
+    }
+
+}
 
 function addEvent() {
     $(this).toggleClass("clicked");
@@ -47,6 +88,18 @@ function removeEvent() {
     });
 }
 
+function clearCoupon() {
+    $.ajax({
+        url: "/Bet/ClearCoupon",
+        type: "POST",
+        dataType: "html",
+        success: function (data) {
+            $('.cupon-menu').html(data);
+            clearClicked();
+        }
+    });
+}
+
 function createExpress() {
     var value = $("#expressBetValue").serialize();
     console.log(value);
@@ -71,26 +124,29 @@ function createExpress() {
 
 function createOrdinary() {
     var eventId = $(this).attr("data-id");
-    var values = $("#value_" + eventId).serialize() + "&couponEventId=" + eventId;
-    console.log(values);
-    $.ajax({
-        url: "/Bet/CreateBet",
-        type: "POST",
-  //      dataType: "html",
-        data: values,
-        success: function (data) {
-            if (data.result === "NotLoggedIn") {
-                $(".login-error").show();
-            } else if (data.result === "NoMoney") {
-                $(".money-error").show();
-            } else {
-                $('.cupon-menu').html(data);
-                $(".bet-success").show();
-                clearClicked();
-                addClicked();
+    if ($("#value_" + eventId).val()) {
+        var values = $("#value_" + eventId).serialize() + "&couponEventId=" + eventId;
+        $.ajax({
+            url: "/Bet/CreateBet",
+            type: "POST",
+            //      dataType: "html",
+            data: values,
+            success: function(data) {
+                if (data.result === "NotLoggedIn") {
+                    $(".login-error").show();
+                } else if (data.result === "NoMoney") {
+                    $(".money-error").show();
+                } else {
+                    $('.cupon-menu').html(data);
+                    $(".bet-success").show();
+                    clearClicked();
+                    addClicked();
+                }
             }
-        }
-    });
+        });
+    } else {
+        $("div[data-msgid=" + eventId + "]").show();
+    }
 }
 
 function addClicked() {

@@ -238,6 +238,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\RegUser.cs" />
     <Compile Include="Models\BetEventStatus.cs" />
+    <Compile Include="Models\BetTO.cs" />
     <Compile Include="Models\Championship.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Models\BetEvent.cs" />

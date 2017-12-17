@@ -136,6 +136,16 @@
     cursor: pointer;
 }
 
-.espress-summary, .ordinary-summary {
+.express-summary, .ordinary-summary {
     display: none;
+}
+
+.empty-input {
+    font-size: 0.8em;
+    text-align: center;
+    margin: 2px;
+    display: none;
+    min-width: 140px;
+    border: 1px solid #D90429;
+    background-color: #D90429;
 }

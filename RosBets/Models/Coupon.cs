@@ -11,7 +11,7 @@ namespace RosBets.Models
 {
     public class Coupon
     {
-        RosBetsContext db = new RosBetsContext();
+        //RosBetsContext db = new RosBetsContext();
 
         string CouponId { get; set; }
 
@@ -23,7 +23,7 @@ namespace RosBets.Models
             coupon.CouponId = coupon.GetCouponId(context);
             return coupon;
         }
-        
+
         public static Coupon GetCoupon(Controller controller)
         {
             return GetCoupon(controller.HttpContext);
@@ -31,134 +31,158 @@ namespace RosBets.Models
 
         public void AddToCoupon(MatchEvent matchEvent)
         {
-            var couponEvent = db.CouponEvents.SingleOrDefault(c => c.Coupon == CouponId
-                     && c.MatchId == matchEvent.MatchId
-                     && c.EventId == matchEvent.EventId);
-            float? totalValue = null;
-            switch (matchEvent.EventId)
+            using (var db = new RosBetsContext())
             {
-                case 2:
-                case 3:
-                    totalValue = db.MatchEvents
-                        .SingleOrDefault(x => x.MatchId == matchEvent.MatchId && x.EventId == 1).EventValue;
-                    break;
-                case 11:
-                case 12:
-                    totalValue = db.MatchEvents
-                        .SingleOrDefault(x => x.MatchId == matchEvent.MatchId && x.EventId == 10).EventValue;
-                    break;
-                case 14:
-                case 15:
-                    totalValue = db.MatchEvents
-                        .SingleOrDefault(x => x.MatchId == matchEvent.MatchId && x.EventId == 13).EventValue;
-                    break;
-            }
-            if (couponEvent == null)
-            {
-                var sameMatchEvents = db.CouponEvents.Where(x => x.MatchId == matchEvent.MatchId);
-                if (sameMatchEvents.Any())
+                var couponEvent = db.CouponEvents
+                    .SingleOrDefault(c => c.Coupon == CouponId
+                    && c.MatchId == matchEvent.MatchId 
+                    && c.EventId == matchEvent.EventId);
+                float? totalValue = null;
+                switch (matchEvent.EventId)
                 {
-                    db.CouponEvents.RemoveRange(sameMatchEvents);
+                    case 2:
+                    case 3:
+                        totalValue = db.MatchEvents
+                            .SingleOrDefault(x => x.MatchId == matchEvent.MatchId && x.EventId == 1).EventValue;
+                        break;
+                    case 11:
+                    case 12:
+                        totalValue = db.MatchEvents
+                            .SingleOrDefault(x => x.MatchId == matchEvent.MatchId && x.EventId == 10).EventValue;
+                        break;
+                    case 14:
+                    case 15:
+                        totalValue = db.MatchEvents
+                            .SingleOrDefault(x => x.MatchId == matchEvent.MatchId && x.EventId == 13).EventValue;
+                        break;
                 }
-                couponEvent = new CouponEvent
+                if (couponEvent == null)
                 {
-                    EventId = matchEvent.EventId,
-                    MatchId = matchEvent.MatchId,
-                    Coefficient = matchEvent.EventValue,
-                    Coupon = CouponId,
-                    Total = totalValue
-                };
-                
-                db.CouponEvents.Add(couponEvent);
+                    var sameMatchEvents = db.CouponEvents.Where(x => x.MatchId == matchEvent.MatchId);
+                    if (sameMatchEvents.Any())
+                    {
+                        db.CouponEvents.RemoveRange(sameMatchEvents);
+                    }
+                    couponEvent = new CouponEvent
+                    {
+                        EventId = matchEvent.EventId,
+                        MatchId = matchEvent.MatchId,
+                        Coefficient = matchEvent.EventValue,
+                        Coupon = CouponId,
+                        Total = totalValue
+                    };
+
+                    db.CouponEvents.Add(couponEvent);
+                }
+                else
+                {
+                    db.CouponEvents.Remove(couponEvent);
+                }
+                db.SaveChanges();
             }
-            else
-            {
-                db.CouponEvents.Remove(couponEvent);
-            }
-            db.SaveChanges();
         }
 
         public void RemoveFromCoupon(int id)
         {
-            var couponEvent = db.CouponEvents.Single(c => c.Coupon == CouponId && c.Id == id);
-
-            if (couponEvent != null)
+            using (var db = new RosBetsContext())
             {
-                db.CouponEvents.Remove(couponEvent);
+                var couponEvent = db.CouponEvents.Single(c => c.Coupon == CouponId && c.Id == id);
+
+                if (couponEvent != null)
+                {
+                    db.CouponEvents.Remove(couponEvent);
+                }
+                db.SaveChanges();
             }
-            db.SaveChanges();
         }
 
         public void ClearCoupon()
         {
-            var couponEvents = db.CouponEvents.Where(c => c.Coupon == CouponId);
-
-            foreach (var couponEvent in couponEvents)
+            using (var db = new RosBetsContext())
             {
-                db.CouponEvents.Remove(couponEvent);
+                var couponEvents = db.CouponEvents.Where(c => c.Coupon == CouponId);
+
+                foreach (var couponEvent in couponEvents)
+                {
+                    db.CouponEvents.Remove(couponEvent);
+                }
+                db.SaveChanges();
             }
-            db.SaveChanges();
         }
 
         public List<CouponEvent> GetCouponEvents()
         {
-            return db.CouponEvents
-                .Where(c => c.Coupon == CouponId)
-                .Include(c=>c.Match)
-                .Include(c=>c.Match.Championship)
-                .Include(c=>c.Event)
-                .ToList();
+            using (var db = new RosBetsContext())
+            {
+                return db.CouponEvents
+                    .Where(c => c.Coupon == CouponId)
+                    .Include(c => c.Match)
+                    .Include(c => c.Match.Championship)
+                    .Include(c => c.Event)
+                    .ToList();
+            }
         }
-        
+
         public float? GetCoefficient()
         {
-            var coefficients = db.CouponEvents
-                .Where(c => c.Coupon == CouponId)
-                .Select(c => c.Coefficient).ToArray();
+            float? totalCoefficient;
+            using (var db = new RosBetsContext())
+            {
+                var coefficients = db.CouponEvents
+                    .Where(c => c.Coupon == CouponId)
+                    .Select(c => c.Coefficient).ToArray();
 
-            float? totalCoefficient = coefficients.Aggregate(1f, (a, b) => a * b);
-
-
+                totalCoefficient = coefficients.Aggregate(1f, (a, b) => a * b);
+            }
             return totalCoefficient;
-
         }
+
 
         public void CreateBet(Bet bet, int? couponEventId)
         {
-            float totalCoefficient = 1f;
-            List<CouponEvent> couponEvents = new List<CouponEvent>();
+            using (var db = new RosBetsContext())
+            {
+                float totalCoefficient = 1f;
+                List<CouponEvent> couponEvents = new List<CouponEvent>();
 
-            if (couponEventId != null)
-            {
-                couponEvents.Add(db.CouponEvents.SingleOrDefault(x=>x.Id==couponEventId));
-            }
-            else
-            {
-                couponEvents = GetCouponEvents();
-            }
-            
-            foreach (var couponEvent in couponEvents)
-            {
-                var betEvent = new BetEvent
+                if (couponEventId != null)
                 {
-                    BetId = bet.Id,
-                    EventId = (int)couponEvent.EventId,
-                    MatchId = (int)couponEvent.MatchId,
-                    Coefficient = couponEvent.Coefficient,
-                    BetEventStatusId = 4,
-                    Total = couponEvent.Total
-                };
-                totalCoefficient *= couponEvent.Coefficient;
+                    couponEvents.Add(db.CouponEvents.Where(x => x.Id == couponEventId).FirstOrDefault());
+                }
+                else
+                {
+                    couponEvents = GetCouponEvents();
+                }
 
-                db.BetEvents.Add(betEvent);
-                db.CouponEvents.Remove(couponEvent);
+                foreach (var couponEvent in couponEvents)
+                {
+                    var betEvent = new BetEvent
+                    {
+                        BetId = bet.Id,
+                        EventId = (int) couponEvent.EventId,
+                        MatchId = (int) couponEvent.MatchId,
+                        Coefficient = couponEvent.Coefficient,
+                        BetEventStatusId = 4,
+                        Total = couponEvent.Total
+                    };
+                    totalCoefficient *= couponEvent.Coefficient;
+
+                    db.BetEvents.Add(betEvent);
+                    if (!db.CouponEvents.Local.Contains(couponEvent))
+                    {
+                        db.CouponEvents.Attach(couponEvent);
+                    }
+                    db.CouponEvents.Remove(couponEvent);
+                    db.SaveChanges();
+                }
+                bet.TotalCoefficient = totalCoefficient;
+                bet.Payout = bet.BetAmount * (decimal) totalCoefficient;
+
+                db.Entry(bet).State = EntityState.Modified;
+                db.SaveChanges();
             }
-            bet.TotalCoefficient = totalCoefficient;
-            bet.Payout = bet.BetAmount * (decimal)totalCoefficient;
-            db.Entry(bet).State=EntityState.Modified;
-            db.SaveChanges();
         }
-        
+
         public string GetCouponId(HttpContextBase context)
         {
             if (context.Session[SessionKey] == null)
@@ -175,16 +199,19 @@ namespace RosBets.Models
             }
             return context.Session[SessionKey].ToString();
         }
-        
+
         public void AssignUsername(string userName)
         {
-            var couponEvents = db.CouponEvents.Where(c => c.Coupon == CouponId);
-
-            foreach (var couponEvent in couponEvents)
+            using (var db = new RosBetsContext())
             {
-                couponEvent.Coupon = userName;
+                var couponEvents = db.CouponEvents.Where(c => c.Coupon == CouponId);
+
+                foreach (var couponEvent in couponEvents)
+                {
+                    couponEvent.Coupon = userName;
+                }
+                db.SaveChanges();
             }
-            db.SaveChanges();
         }
     }
 }
