@@ -37,6 +37,13 @@ namespace RosBets
                       "~/Content/font-awesome-4.7.0/css/font-awesome.min.css"));
             bundles.Add(new ScriptBundle("~/bundles/owl.carousel").Include(
                         "~/Scripts/owl.carousel.js"));
+            bundles.Add(new ScriptBundle("~/bundles/inputmask").Include(
+                "~/Scripts/Inputmask/inputmask.js",
+                "~/Scripts/Inputmask/jquery.inputmask.js",
+                "~/Scripts/Inputmask/inputmask.extensions.js",
+                "~/Scripts/Inputmask/inputmask.date.extensions.js",
+                "~/Scripts/Inputmask/inputmask.numeric.extensions.js"));
         }
+
     }
 }

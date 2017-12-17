@@ -1,7 +1,7 @@
 ﻿// coupon action start
 $(document).ready(function () {
     addClicked();
-
+    
     $(".table-td").click(addEvent);
     $(document).on("click", ".fa-coupon", removeEvent);
     $(document).on("click", ".fa-bigcross", clearCoupon);
@@ -14,7 +14,12 @@ $(document).ready(function () {
     $(document).on("keyup", "#expressBetValue", renewExpSummary);
     renewOrdSummary();
     renewExpSummary();
+    addMask();
 });
+
+function addMask() {
+    Inputmask({ regex: "[0-9]+(\\.[0-9][0-9]?)?", placeholder:"" }).mask(".coupon-input");
+}
 
 function allOrdinary() {
     var allInputs = true;
@@ -67,6 +72,7 @@ function addEvent() {
         data: JSON.stringify({ id }),
         success: function (data) {
             $('.cupon-menu').html(data);
+            addMask();
         }
     });
 
@@ -141,6 +147,7 @@ function createOrdinary() {
                     $(".bet-success").show();
                     clearClicked();
                     addClicked();
+                    addMask();
                 }
             }
         });

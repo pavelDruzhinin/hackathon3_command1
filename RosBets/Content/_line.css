@@ -31,10 +31,12 @@
     padding-top: 5px;
 }
 
-.table-bordered > tbody > tr > td.increased {
-    background-color: green
-}
+    .table-bordered > tbody > tr > td.increased {
+        transition: background-color 5s ease;
+        background-color: #32CD1A
+    }
 
     .table-bordered > tbody > tr > td.decreased {
-        background-color: red
+        transition: background-color 5s ease;
+        background-color: #F25974
     }
