@@ -4,43 +4,82 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Список клиентов</h2>
-<input type="text" id="seach-input" class="form-control" placeholder="Поиск по имени и фамилии">
-<table class="table">
-    <thead class="thead-light">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MiddleName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody  id="client-table">
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MiddleName)
-                </td>
-                <td>
-                    @Html.ActionLink("Детали", "Details", new { id = item.Id })
-                </td>
-            </tr>
-        }
-    </tbody>
+@{
+    Layout = null;
+}
 
-    
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div id="back-layer">
+        @{Html.RenderAction("RenderHeader", "Home");}
+        <section id="section" class="index-page">
+            <div class="row no-gutters">
+                <div class="left-menu col-md-2 col-xs-12">
+                    @{Html.RenderAction("RenderLineSelect", "Home");}
+                </div>
+                <div class="main background-main col-md-8 col-xs-12">
+                   
+                    <h2>Список клиентов</h2>
+                    <input type="text" id="seach-input" class="form-control" placeholder="Поиск по имени и фамилии">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FirstName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.LastName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.MiddleName)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="client-table">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FirstName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LastName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MiddleName)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Детали", "Details", new { id = item.Id })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
 
-</table>
+                </div>
+                <div class="cupon-menu col-md-2 col-xs-12">
+                    @{Html.RenderAction("RenderCoupon", "Bet");}
+                </div>
+            </div>
+        </section>
+        @{Html.RenderPartial("footer");}
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.money').hide();
+            $('.sports').hide();
+        });
+    </script>
+</body>
+</html>

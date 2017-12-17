@@ -152,9 +152,8 @@ function headerFix() {
 };
 //fixed header end
 
-//online admin client seach start
+//admin section start
 $(document).ready(function () {
-    $('.money').hide();
     var $rows = $('#client-table tr');
     $('#seach-input').keyup(function () {
         var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
@@ -165,4 +164,4 @@ $(document).ready(function () {
         }).hide();
     });
 });
-//online admin client seach end
+//admin section end
