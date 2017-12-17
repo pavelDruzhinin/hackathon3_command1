@@ -35,7 +35,7 @@
 }
 
 .header .navbar-header {
-    margin-left: 40px;
+    margin-left: 20px;
     display: inline-block;
 }
 
@@ -59,13 +59,13 @@
 .header .navbar-nav {
     display: block;
     margin: 0;
-    margin-left: 40px;
+    margin-left: 20px;
     padding: 0;
 }
 
 .header .navbar-nav li a {
     padding: 0;
-    padding-left: 30px;
+    padding-left: 15px;
     text-align: left;
     font-size: 1.5em;
     display: block;
@@ -112,12 +112,12 @@
     transition: all .2s ease-out;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 170px;
+    max-width: 250px;
 }
 
 @media only screen and (min-width:992px) and (max-width:1400px) {
     .header .user-bar .round-box {
-        max-width: 100px;
+        max-width: 250px;
     }
 }
 

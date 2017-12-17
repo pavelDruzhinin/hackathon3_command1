@@ -149,3 +149,11 @@
     border: 1px solid #D90429;
     background-color: #D90429;
 }
+
+.coupon-message {
+    position: relative;
+    padding: 4px 4px 6px 4px;
+    max-width: 250px;
+    margin: 5px auto;
+    font-size: 0.8em;
+}

@@ -35,3 +35,7 @@
 .thead-light {
     background-color: #d8d8d8;
 }
+#header .container{
+    padding-left:0px;
+    padding-right:0px;
+}
